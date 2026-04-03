@@ -24,7 +24,6 @@ const tools = [
     logic: "var out = KatakanaEngine.convert(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes;",
     deps: '<script src="../js/engine.js"></script>',
     h1: 'Katakana Name Converter',
-    sectionIntro: 'Writing a personal name in Katakana is about matching sound, not preserving English spelling letter by letter.',
     sections: [
       {
         heading: 'What is Katakana Name Converter?',
@@ -70,7 +69,6 @@ const tools = [
     logic: "var out = KatakanaEngine.convert(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes;",
     deps: '<script src="../js/engine.js"></script>',
     h1: 'English Name to Katakana',
-    sectionIntro: 'English names often need sound-based adaptation before they can be written naturally in Japanese Katakana.',
     sections: [
       {
         heading: 'What is English Name to Katakana Converter?',
@@ -116,7 +114,6 @@ const tools = [
     logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full-Width Katakana Converter',
-    sectionIntro: 'Japanese systems often require zenkaku formatting, which makes character width just as important as the actual spelling.',
     sections: [
       {
         heading: 'What is Full-Width Katakana Converter?',
@@ -162,7 +159,6 @@ const tools = [
     logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full Width Katakana Name Converter',
-    sectionIntro: 'Name-entry errors on Japanese forms are often caused by width rules rather than by the name itself.',
     sections: [
       {
         heading: 'What is Full Width Katakana Name Converter?',
@@ -208,7 +204,6 @@ const tools = [
     logic: "var text = wanakana.toHiragana(val); outEl.textContent = text ? text : 'ひらがな'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Katakana to Hiragana Converter',
-    sectionIntro: 'Katakana and Hiragana represent the same Japanese sounds, but they serve different visual and contextual roles.',
     sections: [
       {
         heading: 'What is Katakana to Hiragana Converter?',
@@ -254,7 +249,6 @@ const tools = [
     logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Hiragana to Katakana Converter',
-    sectionIntro: 'Switching from Hiragana to Katakana changes presentation and tone while keeping the underlying pronunciation the same.',
     sections: [
       {
         heading: 'What is Hiragana to Katakana Converter?',
@@ -300,7 +294,6 @@ const tools = [
     logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Japanese Name to Katakana',
-    sectionIntro: 'Japanese names are often shown in Katakana when a service asks for furigana or a reading field.',
     sections: [
       {
         heading: 'What is Japanese Name to Katakana?',
@@ -346,7 +339,6 @@ const tools = [
     logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Romaji to Katakana Converter',
-    sectionIntro: 'Romaji input makes it possible to type Japanese sounds from a standard Latin keyboard without switching IMEs first.',
     sections: [
       {
         heading: 'What is Romaji to Katakana Converter?',
@@ -392,7 +384,6 @@ const tools = [
     logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Latin to Katakana Converter',
-    sectionIntro: 'Latin-letter input is often the fastest way to rough out Japanese phonetic text before moving it into a native script.',
     sections: [
       {
         heading: 'What is Latin to Katakana Converter?',
@@ -438,7 +429,6 @@ const tools = [
     logic: "if(!window.kuroshiroInstance){phEl.textContent='Please wait, loading Kanji dictionary (20MB)...';return;}phEl.textContent='Converting...';window.kuroshiroInstance.convert(val,{to:'katakana'}).then(function(result){outEl.textContent=result;phEl.textContent='Powered by Kuroshiro & Kuromoji';}).catch(function(err){console.error(err);phEl.textContent='Error parsing Kanji';});",
     deps: '<script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script>',
     h1: 'Kanji to Katakana Converter',
-    sectionIntro: 'Kanji cannot be read reliably one character at a time because pronunciation depends heavily on context and word boundaries.',
     sections: [
       {
         heading: 'What is Kanji to Katakana Converter?',
@@ -484,7 +474,6 @@ const tools = [
     logic: "if(!window.kuroshiroInstance){phEl.textContent='Please wait, loading Kanji dictionary (20MB)...';return;}phEl.textContent='Converting...';window.kuroshiroInstance.convert(val,{to:'hiragana'}).then(function(result){outEl.textContent=result;phEl.textContent='Powered by Kuroshiro & Kuromoji';}).catch(function(err){console.error(err);phEl.textContent='Error parsing Kanji';});",
     deps: '<script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script>',
     h1: 'Kanji to Hiragana Converter',
-    sectionIntro: 'Hiragana output is often easier for learners to read because it strips away kanji complexity while preserving the Japanese reading.',
     sections: [
       {
         heading: 'What is Kanji to Hiragana Converter?',
@@ -530,7 +519,6 @@ const tools = [
     logic: "if(!window.kuroshiroInstance){phEl.textContent='Please wait, loading Kanji dictionary (20MB)...';return;}phEl.textContent='Converting...';window.kuroshiroInstance.convert(val,{to:'katakana'}).then(function(result){outEl.textContent=result;phEl.textContent='Powered by Kuroshiro & Kuromoji';}).catch(function(err){console.error(err);phEl.textContent='Error parsing Chinese Characters';});",
     deps: '<script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script>',
     h1: 'Chinese to Katakana Converter',
-    sectionIntro: 'Chinese-origin characters can overlap with Japanese writing systems, but their Japanese readings still need phonetic interpretation.',
     sections: [
       {
         heading: 'What is Chinese to Katakana Converter?',
@@ -638,9 +626,6 @@ function buildSemanticBody(tool, relPath) {
   return (
     '<section class="seo-content-section">' +
       '<div class="container">' +
-        '<div class="content-intro">' +
-          '<p>' + tool.sectionIntro + '</p>' +
-        '</div>' +
         '<div class="content-flow">' + sectionsHtml + '</div>' +
       '</div>' +
     '</section>'
