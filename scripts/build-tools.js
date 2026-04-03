@@ -806,7 +806,7 @@ tools.forEach(function (tool) {
   if (semanticStart === -1 || mainEnd === -1) {
     throw new Error('Unable to locate replaceable content region for ' + tool.path);
   }
-  locHtml = locHtml.substring(0, semanticStart) + semanticBody + '\n\n    ' + exploreHtml + '\n\n    ' + faqHtml + '\n\n  </main>' + locHtml.substring(mainEnd + 7);
+  locHtml = locHtml.substring(0, semanticStart) + exploreHtml + '\n\n    ' + semanticBody + '\n\n    ' + faqHtml + '\n\n  </main>' + locHtml.substring(mainEnd + 7);
 
   locHtml = locHtml.replace('<script src="js/engine.js"></script>', '');
   locHtml = locHtml.replace('<script src="../js/engine.js"></script>', '');
@@ -823,7 +823,7 @@ tools.forEach(function (tool) {
     locHtml = locHtml.replace(/SiteLayout\.init\('\/'\);/g, 'SiteLayout.init(\'/' + tool.path + '\');');
   }
 
-  const customScript = tool.deps + '<script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var charCount = document.getElementById("char-count"); function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "カタカナ"; phEl.textContent = ""; return; } outEl.classList.remove("placeholder-text"); ' + tool.logic + ' } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); input.addEventListener("keypress", function(e) { if(e.key === "Enter") process(); }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = ""; charCount.textContent = "0"; }); });</script></body>';
+  const customScript = tool.deps + '<script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var sourceTag = document.getElementById("source-tag"); var charCount = document.getElementById("char-count"); function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; return; } outEl.classList.remove("placeholder-text"); ' + tool.logic + ' } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); input.addEventListener("keypress", function(e) { if(e.key === "Enter") process(); }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; charCount.textContent = "0"; }); });</script></body>';
   locHtml = locHtml.replace(/<\/body>/, customScript);
 
   if (tool.isFile) {

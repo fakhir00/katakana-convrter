@@ -118,7 +118,7 @@
     <!-- ════════════ HERO ════════════ -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
-        <div class="hero-badge">Zero-API · Phoneme-Based · Browser-Only</div>
+        <div class="hero-badge">Built for names, forms, and fast Japanese text conversion</div>
         <h1 id="hero-title">English to Katakana<br>Converter</h1>
         <p>Transform any English word into accurate Japanese Katakana using our phoneme-based conversion engine. No APIs, no dependencies — runs entirely in your browser.</p>
       </div>
@@ -157,12 +157,14 @@
             <button class="btn-secondary" id="clear-btn" type="button">Clear</button>
           </div>
 
-          <div id="result-card">
+          <div id="result-card" class="visible">
             <div class="result-header">
-              <span class="result-label">Katakana Result</span>
-              <span id="source-tag"></span>
+              <span class="result-label">Live Output Screen</span>
+              <span id="source-tag">Ready to convert</span>
             </div>
+            <div class="result-overline">Katakana Preview</div>
             <div id="katakana-output" class="placeholder-text" aria-live="polite">カタカナ</div>
+            <p class="result-support">Your converted text appears here with a clean phonetic breakdown below, making it easier to review before you copy it into forms, profiles, or localization drafts.</p>
             <div class="phoneme-section">
               <div class="phoneme-label">Phoneme Breakdown</div>
               <div id="phoneme-output" aria-live="polite"></div>
@@ -198,29 +200,6 @@
             <h3>Post-Process</h3>
             <p>Long vowels are normalized, invalid combinations removed, and the output is polished to valid Katakana.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════ ABOUT / FAQ ════════════ -->
-    <section class="seo-content-section" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <div class="content-intro">
-          <p>Katakana Converter is built for quick English-to-Japanese phonetic conversion without server-side processing. It focuses on practical Katakana output for names, borrowed words, and form-friendly Japanese text.</p>
-        </div>
-        <div class="content-flow">
-          <article class="content-block">
-            <h2 id="about-title">What Is Katakana Converter?</h2>
-            <p>Katakana is one of the Japanese writing systems and is commonly used for foreign words, imported names, and sound-driven labels. This site helps turn English input into a Katakana result that is easier to reuse across study, branding, and localization tasks.</p>
-          </article>
-          <article class="content-block">
-            <h2>When to Use This Katakana Converter?</h2>
-            <p>Use it when you need a fast browser-based Katakana rendering for a name, phrase, or draft Japanese label. It is especially useful when you want a sound-based output without leaving the page or calling an external API.</p>
-          </article>
-          <article class="content-block">
-            <h2>Why This Tool Is Useful</h2>
-            <p>The site combines rule-based phoneme handling with a lightweight browser workflow, so you can test inputs quickly and then continue into related converters for width normalization or kana-only transformations. If your next step is form formatting, the <a href="full-width-katakana-converter/">Full-Width Katakana Converter</a> is a natural follow-up.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -318,6 +297,29 @@
     <div class="tool-link-text">Use Now &rarr;</div>
   </a>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ABOUT / FAQ ════════════ -->
+    <section class="seo-content-section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="content-intro">
+          <p>Katakana Converter is built for quick English-to-Japanese phonetic conversion without server-side processing. It focuses on practical Katakana output for names, borrowed words, and form-friendly Japanese text.</p>
+        </div>
+        <div class="content-flow">
+          <article class="content-block">
+            <h2 id="about-title">What Is Katakana Converter?</h2>
+            <p>Katakana is one of the Japanese writing systems and is commonly used for foreign words, imported names, and sound-driven labels. This site helps turn English input into a Katakana result that is easier to reuse across study, branding, and localization tasks.</p>
+          </article>
+          <article class="content-block">
+            <h2>When to Use This Katakana Converter?</h2>
+            <p>Use it when you need a fast browser-based Katakana rendering for a name, phrase, or draft Japanese label. It is especially useful when you want a sound-based output without leaving the page or calling an external API.</p>
+          </article>
+          <article class="content-block">
+            <h2>Why This Tool Is Useful</h2>
+            <p>The site combines rule-based phoneme handling with a lightweight browser workflow, so you can test inputs quickly and then continue into related converters for width normalization or kana-only transformations. If your next step is form formatting, the <a href="full-width-katakana-converter/">Full-Width Katakana Converter</a> is a natural follow-up.</p>
+          </article>
         </div>
       </div>
     </section>

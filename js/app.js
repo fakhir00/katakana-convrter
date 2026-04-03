@@ -20,11 +20,10 @@
     function doConvert() {
       var text = inputField.value.trim();
       if (!text) {
-        katakanaOutput.textContent = 'テキストを入力してください';
+        katakanaOutput.textContent = 'カタカナ';
         katakanaOutput.classList.add('placeholder-text');
-        phonemeOutput.textContent = '';
-        sourceTag.textContent = '';
-        resultCard.classList.remove('visible');
+        phonemeOutput.textContent = 'Your phoneme breakdown will appear here after conversion.';
+        sourceTag.textContent = 'Ready to convert';
         return;
       }
       var rulesOnly = rulesOnlyToggle && rulesOnlyToggle.checked;
@@ -60,9 +59,8 @@
       inputField.value = '';
       katakanaOutput.textContent = 'カタカナ';
       katakanaOutput.classList.add('placeholder-text');
-      phonemeOutput.textContent = '';
-      sourceTag.textContent = '';
-      resultCard.classList.remove('visible');
+      phonemeOutput.textContent = 'Your phoneme breakdown will appear here after conversion.';
+      sourceTag.textContent = 'Ready to convert';
       if (charCount) charCount.textContent = '0';
       inputField.focus();
     });
