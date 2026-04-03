@@ -805,6 +805,7 @@ tools.forEach(function (tool) {
   const fullUrl = tool.isFile
     ? 'https://katakana-convrter-4vwi.vercel.app/' + tool.path
     : 'https://katakana-convrter-4vwi.vercel.app/' + tool.path + '/';
+  const canonicalPath = tool.isFile ? '/' + tool.path : '/' + tool.path + '/';
   const faqSchema = JSON.stringify(buildFaqSchema(tool), null, 2);
   const metaDescription = buildMetaDescription(tool.title);
   const organizationSchema = buildOrganizationSchema();
@@ -852,7 +853,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<link rel="canonical" href=".*?">/,
-    '<link rel="canonical" href="' + fullUrl + '">',
+    '<link rel="canonical" href="' + canonicalPath + '">',
     'canonical link'
   );
   locHtml = ensureReplaced(
