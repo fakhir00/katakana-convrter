@@ -65,36 +65,5 @@
       inputField.focus();
     });
 
-    /* ── Smooth scroll for nav links ── */
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    /* ── Mobile nav toggle ── */
-    var mobileToggle = document.getElementById('mobile-nav-toggle');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileToggle && mobileMenu) {
-      mobileToggle.addEventListener('click', function () {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        mobileMenu.setAttribute('aria-hidden', expanded);
-        mobileMenu.classList.toggle('open');
-        document.body.classList.toggle('menu-open');
-      });
-      mobileMenu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          mobileToggle.setAttribute('aria-expanded', 'false');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-          mobileMenu.classList.remove('open');
-          document.body.classList.remove('menu-open');
-        });
-      });
-    }
   });
 })();

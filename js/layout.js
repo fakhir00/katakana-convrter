@@ -30,18 +30,18 @@
       isDropdown: true,
       href: '#',
       items: [
-        { label: 'Katakana Name Converter', href: '/katakana-name-converter/' },
-        { label: 'English Name to Katakana', href: '/english-name-to-katakana/' },
-        { label: 'Full-Width Katakana', href: '/full-width-katakana-converter/' },
-        { label: 'Full-Width Katakana Name', href: '/full-width-katakana-name-converter/' },
-        { label: 'Katakana to Hiragana', href: '/katakana-to-hiragana.html' },
-        { label: 'Hiragana to Katakana', href: '/hiragana-to-katakana/' },
-        { label: 'Japanese Name Katakana', href: '/japanese-name-to-katakana/' },
-        { label: 'Romaji to Katakana', href: '/romaji-to-katakana/' },
-        { label: 'Latin to Katakana', href: '/latin-to-katakana/' },
-        { label: 'Kanji to Katakana', href: '/kanji-to-katakana/' },
+        { label: 'Katakana Name Converter', href: '/name/' },
+        { label: 'English Name to Katakana', href: '/english-name/' },
+        { label: 'Full-Width Katakana', href: '/full-width-katakana/' },
+        { label: 'Full-Width Katakana Name', href: '/full-width-name/' },
+        { label: 'Katakana to Hiragana', href: '/to-hiragana/' },
+        { label: 'Hiragana to Katakana', href: '/hiragana-to/' },
+        { label: 'Japanese Name Katakana', href: '/japanese-name/' },
+        { label: 'Romaji to Katakana', href: '/romaji/' },
+        { label: 'Latin to Katakana', href: '/latin/' },
+        { label: 'Kanji to Katakana', href: '/kanji/' },
         { label: 'Kanji to Hiragana', href: '/kanji-to-hiragana/' },
-        { label: 'Chinese to Katakana', href: '/chinese-to-katakana/' }
+        { label: 'Chinese to Katakana', href: '/chinese/' }
       ]
     }
   ];
@@ -56,15 +56,15 @@
   ];
 
   var TOOL_LINKS = [
-    { label: 'Katakana Name Converter', href: '/katakana-name-converter/' },
-    { label: 'English Name to Katakana', href: '/english-name-to-katakana.html' },
-    { label: 'Katakana to Hiragana', href: '/katakana-to-hiragana.html' },
-    { label: 'Hiragana to Katakana', href: '/hiragana-to-katakana.html' },
-    { label: 'Romaji to Katakana', href: '/romaji-to-katakana/' },
-    { label: 'Japanese Name to Katakana', href: '/japanese-name-to-katakana/' },
-    { label: 'Full-Width Katakana', href: '/full-width-katakana-converter/' },
-    { label: 'Full-Width Katakana Name', href: '/full-width-katakana-name-converter/' },
-    { label: 'Kanji to Katakana', href: '/kanji-to-katakana/' }
+    { label: 'Katakana Name Converter', href: '/name/' },
+    { label: 'English Name to Katakana', href: '/english-name/' },
+    { label: 'Katakana to Hiragana', href: '/to-hiragana/' },
+    { label: 'Hiragana to Katakana', href: '/hiragana-to/' },
+    { label: 'Romaji to Katakana', href: '/romaji/' },
+    { label: 'Japanese Name to Katakana', href: '/japanese-name/' },
+    { label: 'Full-Width Katakana', href: '/full-width-katakana/' },
+    { label: 'Full-Width Katakana Name', href: '/full-width-name/' },
+    { label: 'Kanji to Katakana', href: '/kanji/' }
   ];
 
   function renderHeader(activePage) {

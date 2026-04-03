@@ -14,7 +14,7 @@ const rootHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
 
 const tools = [
   {
-    path: 'katakana-name-converter',
+    path: 'name',
     isFile: false,
     title: 'Katakana Name Converter',
     desc: 'Convert any English name into Japanese Katakana instantly.',
@@ -56,10 +56,10 @@ const tools = [
         answer: 'No. The conversion runs in the browser, so your input stays on your device during normal use.'
       }
     ],
-    relatedPath: 'english-name-to-katakana'
+    relatedPath: 'english-name'
   },
   {
-    path: 'english-name-to-katakana',
+    path: 'english-name',
     isFile: false,
     title: 'English Name to Katakana Converter',
     desc: 'Find out how your English name is pronounced and written in Japan.',
@@ -101,10 +101,10 @@ const tools = [
         answer: 'It is optimized for names rather than long sentences. For broader phonetic keyboard input, a romaji-focused converter is usually better.'
       }
     ],
-    relatedPath: 'romaji-to-katakana'
+    relatedPath: 'romaji'
   },
   {
-    path: 'full-width-katakana-converter',
+    path: 'full-width-katakana',
     isFile: false,
     title: 'Full-Width Katakana Converter',
     desc: 'Format half-width characters or romaji into beautiful, standard Full-Width Katakana.',
@@ -146,10 +146,10 @@ const tools = [
         answer: 'Yes, that is the main use case. You can copy the output and use it in another application immediately.'
       }
     ],
-    relatedPath: 'full-width-katakana-name-converter'
+    relatedPath: 'full-width-name'
   },
   {
-    path: 'full-width-katakana-name-converter',
+    path: 'full-width-name',
     isFile: false,
     title: 'Full Width Katakana Name Converter',
     desc: 'Quickly format your name into Full-Width Katakana for Japanese web forms.',
@@ -191,11 +191,11 @@ const tools = [
         answer: 'Yes. The conversion runs client-side in the browser, so your name is not uploaded during normal use.'
       }
     ],
-    relatedPath: 'full-width-katakana-converter'
+    relatedPath: 'full-width-katakana'
   },
   {
-    path: 'katakana-to-hiragana.html',
-    isFile: true,
+    path: 'to-hiragana',
+    isFile: false,
     title: 'Katakana to Hiragana Converter',
     desc: 'Instantly swap angular Katakana text to smooth, curvy Hiragana characters.',
     inputLabel: 'Katakana Text',
@@ -236,10 +236,10 @@ const tools = [
         answer: 'Yes. Many learners find Hiragana easier to read at an early stage, so converting text can make practice materials more approachable.'
       }
     ],
-    relatedPath: 'hiragana-to-katakana'
+    relatedPath: 'hiragana-to'
   },
   {
-    path: 'hiragana-to-katakana',
+    path: 'hiragana-to',
     isFile: false,
     title: 'Hiragana to Katakana Converter',
     desc: 'Instantly convert native Japanese Hiragana syllabaries into Katakana.',
@@ -281,10 +281,10 @@ const tools = [
         answer: 'No. It only changes the kana script and does not translate meaning into another language.'
       }
     ],
-    relatedPath: 'katakana-to-hiragana.html'
+    relatedPath: 'to-hiragana'
   },
   {
-    path: 'japanese-name-to-katakana',
+    path: 'japanese-name',
     isFile: false,
     title: 'Japanese Name to Katakana',
     desc: 'Easily transcribe Romaji or Hiragana combinations into Katakana characters.',
@@ -326,10 +326,10 @@ const tools = [
         answer: 'If you only have kanji text and need the reading inferred automatically, a kanji-reading tool is usually the better fit.'
       }
     ],
-    relatedPath: 'kanji-to-katakana'
+    relatedPath: 'kanji'
   },
   {
-    path: 'romaji-to-katakana',
+    path: 'romaji',
     isFile: false,
     title: 'Romaji to Katakana Converter',
     desc: 'The best tool for typing Japanese Katakana using your standard English keyboard.',
@@ -371,10 +371,10 @@ const tools = [
         answer: 'Yes, as long as the input follows recognizable romaji patterns. More standard romanization usually leads to cleaner Katakana output.'
       }
     ],
-    relatedPath: 'hiragana-to-katakana'
+    relatedPath: 'hiragana-to'
   },
   {
-    path: 'latin-to-katakana',
+    path: 'latin',
     isFile: false,
     title: 'Latin to Katakana Converter',
     desc: 'Map standard Latin alphabet characters to Katakana representations natively.',
@@ -416,10 +416,10 @@ const tools = [
         answer: 'Yes, those are common use cases as long as you want a sound-based Katakana rendering instead of a semantic translation.'
       }
     ],
-    relatedPath: 'romaji-to-katakana'
+    relatedPath: 'romaji'
   },
   {
-    path: 'kanji-to-katakana',
+    path: 'kanji',
     isFile: false,
     title: 'Kanji to Katakana Converter',
     desc: 'Use morphology to read complex Japanese Kanji characters and extract their Katakana pronunciation.',
@@ -506,10 +506,10 @@ const tools = [
         answer: 'Not completely. It is a strong reading aid, but vocabulary nuance and rare proper nouns may still require additional reference checks.'
       }
     ],
-    relatedPath: 'kanji-to-katakana'
+    relatedPath: 'kanji'
   },
   {
-    path: 'chinese-to-katakana',
+    path: 'chinese',
     isFile: false,
     title: 'Chinese to Katakana Converter',
     desc: 'Convert Chinese Hanzi characters into Japanese Katakana readings for localization.',
@@ -551,41 +551,41 @@ const tools = [
         answer: 'Yes. This tool is most useful for first-pass phonetic support, not final editorial approval.'
       }
     ],
-    relatedPath: 'kanji-to-katakana'
+    relatedPath: 'kanji'
   }
 ];
 
 const exploreCards = [
-  { path: 'katakana-name-converter', isFile: false, icon: 'Name', title: 'Katakana Name', desc: 'Convert your English name into a Japanese Katakana reading.' },
-  { path: 'english-name-to-katakana', isFile: false, icon: 'EN', title: 'English Name Converter', desc: 'See how English names are commonly adapted into Japanese.' },
-  { path: 'full-width-katakana-converter', isFile: false, icon: 'FW', title: 'Full-Width Katakana', desc: 'Normalize romaji or narrow input into full-width Katakana.' },
-  { path: 'full-width-katakana-name-converter', isFile: false, icon: 'Form', title: 'Full-Width Name', desc: 'Prepare your name for Japanese web forms and signups.' },
-  { path: 'katakana-to-hiragana.html', isFile: true, icon: 'K->H', title: 'Katakana to Hiragana', desc: 'Rewrite Katakana into the matching Hiragana script.' },
-  { path: 'hiragana-to-katakana', isFile: false, icon: 'H->K', title: 'Hiragana to Katakana', desc: 'Convert Hiragana text into a Katakana presentation.' },
-  { path: 'japanese-name-to-katakana', isFile: false, icon: 'JP', title: 'Japanese Name to Katakana', desc: 'Create Katakana readings for Japanese-style name input.' },
-  { path: 'romaji-to-katakana', isFile: false, icon: 'Roma', title: 'Romaji to Katakana', desc: 'Type Japanese sounds from a standard Latin keyboard.' },
-  { path: 'latin-to-katakana', isFile: false, icon: 'ABC', title: 'Latin to Katakana', desc: 'Map Latin-letter phonetic input into Katakana quickly.' },
-  { path: 'kanji-to-katakana', isFile: false, icon: 'Kanji', title: 'Kanji to Katakana', desc: 'Extract a Katakana reading from Japanese kanji text.' },
+  { path: 'name', isFile: false, icon: 'Name', title: 'Katakana Name', desc: 'Convert your English name into a Japanese Katakana reading.' },
+  { path: 'english-name', isFile: false, icon: 'EN', title: 'English Name Converter', desc: 'See how English names are commonly adapted into Japanese.' },
+  { path: 'full-width-katakana', isFile: false, icon: 'FW', title: 'Full-Width Katakana', desc: 'Normalize romaji or narrow input into full-width Katakana.' },
+  { path: 'full-width-name', isFile: false, icon: 'Form', title: 'Full-Width Name', desc: 'Prepare your name for Japanese web forms and signups.' },
+  { path: 'to-hiragana', isFile: false, icon: 'K->H', title: 'Katakana to Hiragana', desc: 'Rewrite Katakana into the matching Hiragana script.' },
+  { path: 'hiragana-to', isFile: false, icon: 'H->K', title: 'Hiragana to Katakana', desc: 'Convert Hiragana text into a Katakana presentation.' },
+  { path: 'japanese-name', isFile: false, icon: 'JP', title: 'Japanese Name to Katakana', desc: 'Create Katakana readings for Japanese-style name input.' },
+  { path: 'romaji', isFile: false, icon: 'Roma', title: 'Romaji to Katakana', desc: 'Type Japanese sounds from a standard Latin keyboard.' },
+  { path: 'latin', isFile: false, icon: 'ABC', title: 'Latin to Katakana', desc: 'Map Latin-letter phonetic input into Katakana quickly.' },
+  { path: 'kanji', isFile: false, icon: 'Kanji', title: 'Kanji to Katakana', desc: 'Extract a Katakana reading from Japanese kanji text.' },
   { path: 'kanji-to-hiragana', isFile: false, icon: 'Read', title: 'Kanji to Hiragana', desc: 'Turn kanji-heavy text into a Hiragana reading aid.' },
-  { path: 'chinese-to-katakana', isFile: false, icon: 'CN', title: 'Chinese to Katakana', desc: 'Generate rough Japanese Katakana readings from Hanzi.' }
+  { path: 'chinese', isFile: false, icon: 'CN', title: 'Chinese to Katakana', desc: 'Generate rough Japanese Katakana readings from Hanzi.' }
 ];
 
 const siteNavItems = [
   { name: 'Home', url: 'https://katakana-converter.com/' },
   { name: 'About', url: 'https://katakana-converter.com/about-us/' },
   { name: 'Contact', url: 'https://katakana-converter.com/contact-us/' },
-  { name: 'Katakana Name Converter', url: 'https://katakana-converter.com/katakana-name-converter/' },
-  { name: 'English Name to Katakana', url: 'https://katakana-converter.com/english-name-to-katakana/' },
-  { name: 'Full-Width Katakana Converter', url: 'https://katakana-converter.com/full-width-katakana-converter/' },
-  { name: 'Full Width Katakana Name Converter', url: 'https://katakana-converter.com/full-width-katakana-name-converter/' },
-  { name: 'Katakana to Hiragana Converter', url: 'https://katakana-converter.com/katakana-to-hiragana.html' },
-  { name: 'Hiragana to Katakana Converter', url: 'https://katakana-converter.com/hiragana-to-katakana/' },
-  { name: 'Japanese Name to Katakana', url: 'https://katakana-converter.com/japanese-name-to-katakana/' },
-  { name: 'Romaji to Katakana Converter', url: 'https://katakana-converter.com/romaji-to-katakana/' },
-  { name: 'Latin to Katakana Converter', url: 'https://katakana-converter.com/latin-to-katakana/' },
-  { name: 'Kanji to Katakana Converter', url: 'https://katakana-converter.com/kanji-to-katakana/' },
+  { name: 'Katakana Name Converter', url: 'https://katakana-converter.com/name/' },
+  { name: 'English Name to Katakana', url: 'https://katakana-converter.com/english-name/' },
+  { name: 'Full-Width Katakana Converter', url: 'https://katakana-converter.com/full-width-katakana/' },
+  { name: 'Full Width Katakana Name Converter', url: 'https://katakana-converter.com/full-width-name/' },
+  { name: 'Katakana to Hiragana Converter', url: 'https://katakana-converter.com/to-hiragana/' },
+  { name: 'Hiragana to Katakana Converter', url: 'https://katakana-converter.com/hiragana-to/' },
+  { name: 'Japanese Name to Katakana', url: 'https://katakana-converter.com/japanese-name/' },
+  { name: 'Romaji to Katakana Converter', url: 'https://katakana-converter.com/romaji/' },
+  { name: 'Latin to Katakana Converter', url: 'https://katakana-converter.com/latin/' },
+  { name: 'Kanji to Katakana Converter', url: 'https://katakana-converter.com/kanji/' },
   { name: 'Kanji to Hiragana Converter', url: 'https://katakana-converter.com/kanji-to-hiragana/' },
-  { name: 'Chinese to Katakana Converter', url: 'https://katakana-converter.com/chinese-to-katakana/' }
+  { name: 'Chinese to Katakana Converter', url: 'https://katakana-converter.com/chinese/' }
 ];
 
 function buildMetaDescription(keyword) {
