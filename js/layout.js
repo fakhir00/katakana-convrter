@@ -9,8 +9,9 @@
     name: 'Katakana Converter',
     tagline: 'Free English to Katakana Conversion Tool',
     url: 'https://katakana-converter.com',
-    description: 'Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate rule-based transliteration engine with built-in benchmarking.',
+    description: 'Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate browser-based transliteration for names, scripts, and form-friendly Japanese text.',
     email: 'contact@katakana-converter.com',
+    phone: '+1 (555) 240-9087',
     logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%236366f1'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E3%82%AB%3C/text%3E%3C/svg%3E",
     social: {
       twitter: 'https://twitter.com/katakanaconvert',
@@ -24,7 +25,25 @@
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about-us/' },
     { label: 'Contact', href: '/contact-us/' },
-    { label: 'Sitemap', href: '/sitemap/' }
+    { 
+      label: 'Our Tools ▼', 
+      isDropdown: true,
+      href: '#',
+      items: [
+        { label: 'Katakana Name Converter', href: '/katakana-name-converter/' },
+        { label: 'English Name to Katakana', href: '/english-name-to-katakana/' },
+        { label: 'Full-Width Katakana', href: '/full-width-katakana-converter/' },
+        { label: 'Full-Width Katakana Name', href: '/full-width-katakana-name-converter/' },
+        { label: 'Katakana to Hiragana', href: '/katakana-to-hiragana.html' },
+        { label: 'Hiragana to Katakana', href: '/hiragana-to-katakana/' },
+        { label: 'Japanese Name Katakana', href: '/japanese-name-to-katakana/' },
+        { label: 'Romaji to Katakana', href: '/romaji-to-katakana/' },
+        { label: 'Latin to Katakana', href: '/latin-to-katakana/' },
+        { label: 'Kanji to Katakana', href: '/kanji-to-katakana/' },
+        { label: 'Kanji to Hiragana', href: '/kanji-to-hiragana/' },
+        { label: 'Chinese to Katakana', href: '/chinese-to-katakana/' }
+      ]
+    }
   ];
 
   var FOOTER_LINKS = [
@@ -36,22 +55,45 @@
     { label: 'Sitemap', href: '/sitemap/' }
   ];
 
+  var TOOL_LINKS = [
+    { label: 'Katakana Name Converter', href: '/katakana-name-converter/' },
+    { label: 'English Name to Katakana', href: '/english-name-to-katakana.html' },
+    { label: 'Katakana to Hiragana', href: '/katakana-to-hiragana.html' },
+    { label: 'Hiragana to Katakana', href: '/hiragana-to-katakana.html' },
+    { label: 'Romaji to Katakana', href: '/romaji-to-katakana/' },
+    { label: 'Japanese Name to Katakana', href: '/japanese-name-to-katakana/' },
+    { label: 'Full-Width Katakana', href: '/full-width-katakana-converter/' },
+    { label: 'Full-Width Katakana Name', href: '/full-width-katakana-name-converter/' },
+    { label: 'Kanji to Katakana', href: '/kanji-to-katakana/' }
+  ];
+
   function renderHeader(activePage) {
     var header = document.querySelector('.site-header');
     if (!header) return;
 
     var navHTML = NAV_LINKS.map(function (link) {
-      var cls = activePage === link.href ? ' class="active"' : '';
-      return '<li><a href="' + link.href + '"' + cls + ' id="nav-' + link.label.toLowerCase() + '">' + link.label + '</a></li>';
+      if (link.isDropdown) {
+        var dropItems = link.items.map(function(sub) {
+          var cls = activePage === sub.href ? ' class="active"' : '';
+          return '<li><a href="' + sub.href + '"' + cls + '>' + sub.label + '</a></li>';
+        }).join('');
+        return '<li class="nav-dropdown"><a href="#" aria-haspopup="true">' + link.label + '</a><ul class="dropdown-content">' + dropItems + '</ul></li>';
+      } else {
+        var cls = activePage === link.href ? ' class="active"' : '';
+        return '<li><a href="' + link.href + '"' + cls + '>' + link.label + '</a></li>';
+      }
     }).join('');
 
     header.innerHTML =
       '<div class="container header-inner">' +
         '<a href="/" class="logo" aria-label="Katakana Converter Home">' +
           '<span class="logo-icon" aria-hidden="true">カ</span>' +
-          '<span>Katakana Converter</span>' +
+          '<span class="logo-text">' +
+            '<span class="logo-title">Katakana Converter</span>' +
+            '<span class="logo-tagline">' + SITE.tagline + '</span>' +
+          '</span>' +
         '</a>' +
-        '<nav aria-label="Main Navigation">' +
+        '<nav class="header-nav-shell" aria-label="Main Navigation">' +
           '<ul class="desktop-nav">' + navHTML + '</ul>' +
         '</nav>' +
         '<button id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">' +
@@ -59,7 +101,12 @@
         '</button>' +
       '</div>' +
       '<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile Navigation">' +
-        NAV_LINKS.map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
+        NAV_LINKS.map(function (l) {
+          if (l.isDropdown) {
+            return l.items.map(function(sub) { return '<a href="' + sub.href + '" style="padding-left:30px; font-size:0.9rem;">' + sub.label + '</a>'; }).join('');
+          }
+          return '<a href="' + l.href + '">' + l.label + '</a>';
+        }).join('') +
       '</nav>';
 
     // Mobile toggle
@@ -106,6 +153,10 @@
       return '<li><a href="' + l.href + '">' + l.label + '</a></li>';
     }).join('');
 
+    var toolsHTML = TOOL_LINKS.map(function (l) {
+      return '<li><a href="' + l.href + '">' + l.label + '</a></li>';
+    }).join('');
+
     var socialHTML = '';
     var socials = SITE.social;
     ['facebook', 'twitter', 'linkedin', 'pinterest'].forEach(function (key) {
@@ -113,6 +164,18 @@
         socialHTML += '<a href="' + socials[key] + '" target="_blank" rel="noopener noreferrer" aria-label="' + key + '" class="social-icon">' + socialIcon(key) + '</a>';
       }
     });
+
+    var contactHTML =
+      '<div class="footer-contact-list">' +
+        '<a href="tel:+15552409087" class="footer-contact-item">' +
+          '<span class="footer-contact-label">Phone</span>' +
+          '<span>' + SITE.phone + '</span>' +
+        '</a>' +
+        '<a href="mailto:' + SITE.email + '" class="footer-contact-item">' +
+          '<span class="footer-contact-label">Email</span>' +
+          '<span>' + SITE.email + '</span>' +
+        '</a>' +
+      '</div>';
 
     footer.innerHTML =
       '<div class="container footer-inner">' +
@@ -127,14 +190,20 @@
           '<h3>Navigation</h3>' +
           '<ul class="footer-links">' + linksHTML + '</ul>' +
         '</div>' +
+        '<div class="footer-nav-col">' +
+          '<h3>Our Tools</h3>' +
+          '<ul class="footer-links" style="font-size:0.8rem;">' + toolsHTML + '</ul>' +
+        '</div>' +
         '<div class="footer-social-col">' +
           '<h3>Connect</h3>' +
+          contactHTML +
           '<div class="social-icons">' + socialHTML + '</div>' +
         '</div>' +
       '</div>' +
       '<div class="container footer-bottom">' +
         '<p>&copy; ' + new Date().getFullYear() + ' ' + SITE.name + '. All rights reserved.</p>' +
-      '</div>';
+      '</div>' +
+      '<button class="back-to-top" type="button" aria-label="Back to top">↑</button>';
   }
 
   function injectOrganizationSchema() {
@@ -179,6 +248,19 @@
           if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
       });
+
+      var backToTop = document.querySelector('.back-to-top');
+      function syncBackToTop() {
+        if (!backToTop) return;
+        backToTop.classList.toggle('visible', window.scrollY > 360);
+      }
+      if (backToTop) {
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        syncBackToTop();
+        window.addEventListener('scroll', syncBackToTop, { passive: true });
+      }
     });
   }
 

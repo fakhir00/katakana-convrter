@@ -13,10 +13,6 @@
     var phonemeOutput = document.getElementById('phoneme-output');
     var sourceTag = document.getElementById('source-tag');
     var resultCard = document.getElementById('result-card');
-    var benchmarkBtn = document.getElementById('benchmark-btn');
-    var benchmarkResults = document.getElementById('benchmark-results');
-    var benchmarkBody = document.getElementById('benchmark-body');
-    var benchmarkSummary = document.getElementById('benchmark-summary');
     var rulesOnlyToggle = document.getElementById('rules-only-toggle');
     var charCount = document.getElementById('char-count');
 
@@ -69,59 +65,6 @@
       resultCard.classList.remove('visible');
       if (charCount) charCount.textContent = '0';
       inputField.focus();
-    });
-
-    /* ── Benchmark Action ── */
-    benchmarkBtn.addEventListener('click', function () {
-      benchmarkBtn.classList.add('loading');
-      benchmarkBtn.textContent = 'Running...';
-
-      setTimeout(function () {
-        var rulesOnly = rulesOnlyToggle && rulesOnlyToggle.checked;
-        var evalResult = KatakanaBenchmark.evaluate(null, { rulesOnly: rulesOnly });
-        KatakanaBenchmark.printReport(evalResult);
-
-        // Populate table
-        benchmarkBody.innerHTML = '';
-        evalResult.results.forEach(function (r) {
-          var tr = document.createElement('tr');
-          tr.className = r.exact ? 'pass' : 'fail';
-          tr.innerHTML =
-            '<td>' + r.input + '</td>' +
-            '<td>' + r.expected + '</td>' +
-            '<td>' + r.output + '</td>' +
-            '<td class="status-cell">' + (r.exact ? '<span class="badge pass">✓</span>' : '<span class="badge fail">✗</span>') + '</td>' +
-            '<td>' + r.editDistance + '</td>' +
-            '<td>' + (r.normalizedSimilarity * 100).toFixed(0) + '%</td>' +
-            '<td><span class="source-badge ' + r.source + '">' + r.source + '</span></td>';
-          benchmarkBody.appendChild(tr);
-        });
-
-        // Summary
-        var s = evalResult.summary;
-        benchmarkSummary.innerHTML =
-          '<div class="metric-card">' +
-            '<div class="metric-value">' + s.exactMatchRate + '</div>' +
-            '<div class="metric-label">Exact Match</div>' +
-          '</div>' +
-          '<div class="metric-card">' +
-            '<div class="metric-value">' + s.avgEditDistance + '</div>' +
-            '<div class="metric-label">Avg Edit Distance</div>' +
-          '</div>' +
-          '<div class="metric-card">' +
-            '<div class="metric-value">' + s.avgNormalizedSimilarity + '</div>' +
-            '<div class="metric-label">Char Similarity</div>' +
-          '</div>' +
-          '<div class="metric-card">' +
-            '<div class="metric-value">' + s.avgSyllableSimilarity + '</div>' +
-            '<div class="metric-label">Syllable Similarity</div>' +
-          '</div>';
-
-        benchmarkResults.classList.add('visible');
-        benchmarkBtn.classList.remove('loading');
-        benchmarkBtn.textContent = '▶ Run Benchmark';
-        benchmarkResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
     });
 
     /* ── Smooth scroll for nav links ── */
