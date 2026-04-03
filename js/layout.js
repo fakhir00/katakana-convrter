@@ -7,7 +7,7 @@
 
   var SITE = {
     name: 'Katakana Converter',
-    tagline: 'Free English to Katakana Conversion Tool',
+    tagline: 'Free Katakana Conversion Tool',
     url: 'https://katakana-converter.com',
     description: 'Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate browser-based transliteration for names, scripts, and form-friendly Japanese text.',
     email: 'contact@katakana-converter.com',
