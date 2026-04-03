@@ -6,7 +6,7 @@
 
 ## Site Information
 - URL: https://katakana-converter.com
-- Contact: contact@katakana-converter.com
+- Contact: contact@katakanaconverter.com
 - Sitemap: https://katakana-converter.com/sitemap/
 
 ## Pages

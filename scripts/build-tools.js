@@ -571,21 +571,21 @@ const exploreCards = [
 ];
 
 const siteNavItems = [
-  { name: 'Home', url: 'https://katakana-converter.com/' },
-  { name: 'About', url: 'https://katakana-converter.com/about-us/' },
-  { name: 'Contact', url: 'https://katakana-converter.com/contact-us/' },
-  { name: 'Katakana Name Converter', url: 'https://katakana-converter.com/name/' },
-  { name: 'English Name to Katakana', url: 'https://katakana-converter.com/english-name/' },
-  { name: 'Full-Width Katakana Converter', url: 'https://katakana-converter.com/full-width-katakana/' },
-  { name: 'Full Width Katakana Name Converter', url: 'https://katakana-converter.com/full-width-name/' },
-  { name: 'Katakana to Hiragana Converter', url: 'https://katakana-converter.com/to-hiragana/' },
-  { name: 'Hiragana to Katakana Converter', url: 'https://katakana-converter.com/hiragana-to/' },
-  { name: 'Japanese Name to Katakana', url: 'https://katakana-converter.com/japanese-name/' },
-  { name: 'Romaji to Katakana Converter', url: 'https://katakana-converter.com/romaji/' },
-  { name: 'Latin to Katakana Converter', url: 'https://katakana-converter.com/latin/' },
-  { name: 'Kanji to Katakana Converter', url: 'https://katakana-converter.com/kanji/' },
-  { name: 'Kanji to Hiragana Converter', url: 'https://katakana-converter.com/kanji-to-hiragana/' },
-  { name: 'Chinese to Katakana Converter', url: 'https://katakana-converter.com/chinese/' }
+  { name: 'Home', url: 'https://katakana-convrter-4vwi.vercel.app/' },
+  { name: 'About', url: 'https://katakana-convrter-4vwi.vercel.app/about-us/' },
+  { name: 'Contact', url: 'https://katakana-convrter-4vwi.vercel.app/contact-us/' },
+  { name: 'Katakana Name Converter', url: 'https://katakana-convrter-4vwi.vercel.app/name/' },
+  { name: 'English Name to Katakana', url: 'https://katakana-convrter-4vwi.vercel.app/english-name/' },
+  { name: 'Full-Width Katakana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/full-width-katakana/' },
+  { name: 'Full Width Katakana Name Converter', url: 'https://katakana-convrter-4vwi.vercel.app/full-width-name/' },
+  { name: 'Katakana to Hiragana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/to-hiragana/' },
+  { name: 'Hiragana to Katakana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/hiragana-to/' },
+  { name: 'Japanese Name to Katakana', url: 'https://katakana-convrter-4vwi.vercel.app/japanese-name/' },
+  { name: 'Romaji to Katakana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/romaji/' },
+  { name: 'Latin to Katakana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/latin/' },
+  { name: 'Kanji to Katakana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/kanji/' },
+  { name: 'Kanji to Hiragana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/kanji-to-hiragana/' },
+  { name: 'Chinese to Katakana Converter', url: 'https://katakana-convrter-4vwi.vercel.app/chinese/' }
 ];
 
 function buildMetaDescription(keyword) {
@@ -623,10 +623,10 @@ function buildOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Katakana Converter',
-    url: 'https://katakana-converter.com/',
-    logo: 'https://katakana-converter.com/favicon.svg',
+    url: 'https://katakana-convrter-4vwi.vercel.app/',
+    logo: 'https://katakana-convrter-4vwi.vercel.app/favicon.svg',
     description: 'Free Katakana conversion tool for names, forms, and Japanese text formatting.',
-    email: 'contact@katakana-converter.com',
+    email: 'contact@katakanaconverter.com',
     telephone: '+1-555-240-9087',
     sameAs: [
       'https://twitter.com/katakanaconvert',
@@ -659,7 +659,7 @@ function buildBreadcrumbSchema(name, url) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://katakana-converter.com/'
+        item: 'https://katakana-convrter-4vwi.vercel.app/'
       },
       {
         '@type': 'ListItem',
@@ -803,8 +803,8 @@ tools.forEach(function (tool) {
   const exploreHtml = buildExploreHtml(relPath);
   const faqHtml = buildFaqHtml(tool);
   const fullUrl = tool.isFile
-    ? 'https://katakana-converter.com/' + tool.path
-    : 'https://katakana-converter.com/' + tool.path + '/';
+    ? 'https://katakana-convrter-4vwi.vercel.app/' + tool.path
+    : 'https://katakana-convrter-4vwi.vercel.app/' + tool.path + '/';
   const faqSchema = JSON.stringify(buildFaqSchema(tool), null, 2);
   const metaDescription = buildMetaDescription(tool.title);
   const organizationSchema = buildOrganizationSchema();
@@ -899,7 +899,7 @@ tools.forEach(function (tool) {
     description: 'Free Katakana conversion tool for names, forms, and Japanese text formatting.',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://katakana-converter.com/?q={search_term_string}',
+      target: 'https://katakana-convrter-4vwi.vercel.app/?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   });
