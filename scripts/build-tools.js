@@ -589,33 +589,31 @@ const siteNavItems = [
 ];
 
 function buildMetaDescription(keyword) {
-  const prefix = keyword + ' for fast browser-based Japanese text conversion, phonetic checks, and Japan-ready formatting.';
-  const tails = [
-    ' Free and easy to use online.',
-    ' Free, accurate, and easy to use.',
-    ' Free and accurate online.',
-    ' Free to use online.'
+  const candidates = [
+    keyword + ' for fast browser-based Japanese text conversion, phonetic checks, and Japan-ready formatting. Try it now online.',
+    keyword + ' for browser-based Japanese text conversion, phonetic checks, and form-ready formatting. Try it now for free.',
+    keyword + ' for fast Japanese text conversion, phonetic checks, and Japan-ready formatting in your browser. Try it free online.'
   ];
 
-  for (const tail of tails) {
-    const candidate = prefix + tail;
-    if (candidate.length >= 150 && candidate.length <= 155) {
+  for (const candidate of candidates) {
+    if (candidate.length >= 145 && candidate.length <= 160) {
       return candidate;
     }
   }
 
-  let best = prefix + tails[0];
-  if (best.length > 155) {
-    best = best.slice(0, 155).replace(/\s+\S*$/, '') + '.';
-  }
-  while (best.length < 150) {
-    best += ' Free.';
+  let best = candidates[0];
+  if (best.length > 160) {
+    best = best.slice(0, 160).replace(/\s+\S*$/, '') + '.';
   }
   return best;
 }
 
 function buildHeroDescription(keyword) {
   return '<strong>' + keyword + '</strong> for fast browser-based Japanese text conversion, phonetic checks, and Japan-ready formatting. Free and easy to use online.';
+}
+
+function buildMetaTitle(keyword) {
+  return keyword + ' | Free Online Tool';
 }
 
 function buildOrganizationSchema() {
@@ -816,7 +814,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<title>.*?<\/title>/,
-    '<title>' + tool.title + ' - Katakana Converter</title>',
+    '<title>' + buildMetaTitle(tool.title) + '</title>',
     'title'
   );
   locHtml = ensureReplaced(
@@ -828,7 +826,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<meta property="og:title" content=".*?">/,
-    '<meta property="og:title" content="' + tool.title + ' - Katakana Converter">',
+    '<meta property="og:title" content="' + buildMetaTitle(tool.title) + '">',
     'og:title'
   );
   locHtml = ensureReplaced(
@@ -840,7 +838,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<meta name="twitter:title" content=".*?">/,
-    '<meta name="twitter:title" content="' + tool.title + ' - Katakana Tool">',
+    '<meta name="twitter:title" content="' + buildMetaTitle(tool.title) + '">',
     'twitter:title'
   );
   locHtml = ensureReplaced(
