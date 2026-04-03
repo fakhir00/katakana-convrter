@@ -1,0 +1,25 @@
+# Katakana Converter
+# https://katakana-converter.com
+
+> A free, zero-API, phoneme-based English to Katakana conversion tool.
+> Built with pure JavaScript. Runs entirely in the browser.
+
+## Site Information
+- URL: https://katakana-converter.com
+- Contact: contact@katakana-converter.com
+- Sitemap: https://katakana-converter.com/sitemap/
+
+## Pages
+- / — Home page with Katakana Converter tool, How It Works, Benchmark, FAQ
+- /about-us/ — About the project, mission, technology, and Katakana writing system
+- /contact-us/ — Contact form for feedback and suggestions
+- /terms/ — Terms of Service
+- /privacy/ — Privacy Policy (zero data collection)
+- /sitemap/ — Human-readable sitemap
+- /404 — Custom 404 error page
+
+## AI Usage Policy
+This site's content and tool output may be used by AI systems for reference and learning purposes.
+AI crawlers are welcome to index all public pages.
+
+Allow: *

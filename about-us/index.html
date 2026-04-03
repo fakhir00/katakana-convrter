@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Katakana Converter</title>
+  <meta name="description" content="Learn about Katakana Converter, a free phoneme-based English to Katakana transliteration engine built with pure JavaScript. No APIs, no dependencies.">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://katakana-converter.com/about-us/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%236366f1'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>カ</text></svg>" type="image/svg+xml">
+  <meta property="og:title" content="About Us — Katakana Converter">
+  <meta property="og:description" content="Learn about our free English to Katakana conversion tool. Zero-API, phoneme-based, browser-only.">
+  <meta property="og:url" content="https://katakana-converter.com/about-us/">
+  <meta property="og:site_name" content="Katakana Converter">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Us — Katakana Converter">
+  <meta name="twitter:description" content="Learn about our free English to Katakana conversion tool.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"AboutPage","name":"About Katakana Converter","url":"https://katakana-converter.com/about-us/","description":"Learn about the Katakana Converter, a free phoneme-based English to Katakana transliteration engine."}
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner"></header>
+  <main id="main-content" role="main">
+    <section class="page-hero" aria-labelledby="about-title">
+      <div class="container">
+        <h1 id="about-title">About Katakana Converter</h1>
+        <p>A free, open-source tool for converting English text to Japanese Katakana — built entirely in the browser.</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <div class="content-card glass-card">
+          <h2>Our Mission</h2>
+          <p>Katakana Converter was created to provide a fast, accurate, and completely free way to convert English words into Japanese Katakana characters. Unlike other tools that rely on external APIs or machine learning services, our converter runs entirely in your browser using pure JavaScript.</p>
+          <p>We believe language tools should be accessible to everyone — no accounts, no subscriptions, no data collection. Your text never leaves your device.</p>
+
+          <h2>How It Works</h2>
+          <p>Our conversion engine uses a sophisticated multi-stage pipeline:</p>
+          <ol>
+            <li><strong>Normalization</strong> — Input text is cleaned, lowercased, and tokenized into individual words.</li>
+            <li><strong>Grapheme-to-Phoneme (G2P)</strong> — Each word is processed through 100+ ordered rules that analyze English spelling patterns to extract phonemes (speech sounds) using an ARPAbet-style notation system.</li>
+            <li><strong>Phoneme-to-Katakana Mapping</strong> — Phonemes are mapped to Japanese Katakana syllables using a comprehensive consonant-vowel table, with proper handling of long vowels (ー), geminate consonants (ッ), and moraic nasals (ン).</li>
+            <li><strong>Post-Processing</strong> — The output is polished by normalizing long vowels, removing invalid combinations, and ensuring only valid Katakana characters remain.</li>
+          </ol>
+          <p>For common English loanwords with irregular pronunciations, we also maintain a curated dictionary of 200+ words to ensure the most accurate standard Katakana representations.</p>
+
+          <h2>Technology</h2>
+          <p>Katakana Converter is built with:</p>
+          <ul>
+            <li><strong>Zero external dependencies</strong> — Pure vanilla JavaScript, HTML, and CSS</li>
+            <li><strong>No API calls</strong> — Everything runs client-side in your browser</li>
+            <li><strong>No build tools required</strong> — Just open the HTML file and start converting</li>
+            <li><strong>Built-in benchmarking</strong> — Test accuracy against a curated dataset of 20 English words with Levenshtein distance and syllable similarity metrics</li>
+          </ul>
+
+          <h2>About Katakana</h2>
+          <p>Katakana (カタカナ) is one of three Japanese writing systems, alongside Hiragana and Kanji. It is primarily used for:</p>
+          <ul>
+            <li>Foreign loanwords (gairaigo) — e.g., コーヒー (coffee), コンピュータ (computer)</li>
+            <li>Technical and scientific terms</li>
+            <li>Onomatopoeia (sound words)</li>
+            <li>Emphasis (similar to italics in English)</li>
+            <li>Names of plants, animals, and foreign names</li>
+          </ul>
+          <p>The Katakana writing system consists of 46 basic characters, each representing a syllable (mora) in the Japanese language. When English words are borrowed into Japanese, they are adapted to fit the Japanese phonological system — for example, consonant clusters are broken up with epenthetic vowels, and sounds not present in Japanese (like "l" and "th") are approximated with the closest Japanese equivalents.</p>
+
+          <h2>Contact</h2>
+          <p>Have questions or suggestions? Visit our <a href="../contact-us/">Contact page</a> to get in touch.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" role="contentinfo"></footer>
+  <script src="../js/layout.js"></script>
+  <script>SiteLayout.init('/about-us/');</script>
+</body>
+</html>

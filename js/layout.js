@@ -1,0 +1,186 @@
+/**
+ * Shared Layout — Consistent header, footer, and schema injection
+ * for all pages of Katakana Converter
+ */
+(function (global) {
+  'use strict';
+
+  var SITE = {
+    name: 'Katakana Converter',
+    tagline: 'Free English to Katakana Conversion Tool',
+    url: 'https://katakana-converter.com',
+    description: 'Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate rule-based transliteration engine with built-in benchmarking.',
+    email: 'contact@katakana-converter.com',
+    logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%236366f1'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E3%82%AB%3C/text%3E%3C/svg%3E",
+    social: {
+      twitter: 'https://twitter.com/katakanaconvert',
+      facebook: 'https://facebook.com/katakanaconverter',
+      linkedin: 'https://linkedin.com/company/katakana-converter',
+      pinterest: 'https://pinterest.com/katakanaconverter'
+    }
+  };
+
+  var NAV_LINKS = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about-us/' },
+    { label: 'Contact', href: '/contact-us/' },
+    { label: 'Sitemap', href: '/sitemap/' }
+  ];
+
+  var FOOTER_LINKS = [
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about-us/' },
+    { label: 'Contact Us', href: '/contact-us/' },
+    { label: 'Terms', href: '/terms/' },
+    { label: 'Privacy', href: '/privacy/' },
+    { label: 'Sitemap', href: '/sitemap/' }
+  ];
+
+  function renderHeader(activePage) {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+
+    var navHTML = NAV_LINKS.map(function (link) {
+      var cls = activePage === link.href ? ' class="active"' : '';
+      return '<li><a href="' + link.href + '"' + cls + ' id="nav-' + link.label.toLowerCase() + '">' + link.label + '</a></li>';
+    }).join('');
+
+    header.innerHTML =
+      '<div class="container header-inner">' +
+        '<a href="/" class="logo" aria-label="Katakana Converter Home">' +
+          '<span class="logo-icon" aria-hidden="true">カ</span>' +
+          '<span>Katakana Converter</span>' +
+        '</a>' +
+        '<nav aria-label="Main Navigation">' +
+          '<ul class="desktop-nav">' + navHTML + '</ul>' +
+        '</nav>' +
+        '<button id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">' +
+          '<span class="hamburger-icon">☰</span><span class="close-icon" style="display:none">✕</span>' +
+        '</button>' +
+      '</div>' +
+      '<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile Navigation">' +
+        NAV_LINKS.map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
+      '</nav>';
+
+    // Mobile toggle
+    var toggle = document.getElementById('mobile-nav-toggle');
+    var menu = document.getElementById('mobile-menu');
+    if (toggle && menu) {
+      toggle.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        menu.setAttribute('aria-hidden', expanded);
+        menu.classList.toggle('open');
+        document.body.classList.toggle('menu-open');
+        this.querySelector('.hamburger-icon').style.display = expanded ? '' : 'none';
+        this.querySelector('.close-icon').style.display = expanded ? 'none' : '';
+      });
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          toggle.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+          menu.classList.remove('open');
+          document.body.classList.remove('menu-open');
+          toggle.querySelector('.hamburger-icon').style.display = '';
+          toggle.querySelector('.close-icon').style.display = 'none';
+        });
+      });
+    }
+  }
+
+  function socialIcon(type) {
+    var icons = {
+      facebook: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>',
+      twitter: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>',
+      linkedin: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg>',
+      pinterest: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>'
+    };
+    return icons[type] || '';
+  }
+
+  function renderFooter() {
+    var footer = document.querySelector('.site-footer');
+    if (!footer) return;
+
+    var linksHTML = FOOTER_LINKS.map(function (l) {
+      return '<li><a href="' + l.href + '">' + l.label + '</a></li>';
+    }).join('');
+
+    var socialHTML = '';
+    var socials = SITE.social;
+    ['facebook', 'twitter', 'linkedin', 'pinterest'].forEach(function (key) {
+      if (socials[key]) {
+        socialHTML += '<a href="' + socials[key] + '" target="_blank" rel="noopener noreferrer" aria-label="' + key + '" class="social-icon">' + socialIcon(key) + '</a>';
+      }
+    });
+
+    footer.innerHTML =
+      '<div class="container footer-inner">' +
+        '<div class="footer-brand">' +
+          '<a href="/" class="logo" aria-label="Home">' +
+            '<span class="logo-icon" aria-hidden="true">カ</span>' +
+            '<span>Katakana Converter</span>' +
+          '</a>' +
+          '<p class="footer-desc">' + SITE.description + '</p>' +
+        '</div>' +
+        '<div class="footer-nav-col">' +
+          '<h3>Navigation</h3>' +
+          '<ul class="footer-links">' + linksHTML + '</ul>' +
+        '</div>' +
+        '<div class="footer-social-col">' +
+          '<h3>Connect</h3>' +
+          '<div class="social-icons">' + socialHTML + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="container footer-bottom">' +
+        '<p>&copy; ' + new Date().getFullYear() + ' ' + SITE.name + '. All rights reserved.</p>' +
+      '</div>';
+  }
+
+  function injectOrganizationSchema() {
+    var schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.url,
+      legalName: SITE.name,
+      logo: { '@type': 'ImageObject', url: SITE.url + '/favicon.svg' },
+      description: SITE.description,
+      sameAs: Object.values(SITE.social).filter(Boolean)
+    };
+    var script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }
+
+  function injectSiteNavSchema() {
+    var items = NAV_LINKS.map(function (l) {
+      return { '@type': 'SiteNavigationElement', name: l.label, url: SITE.url + l.href };
+    });
+    var schema = { '@context': 'https://schema.org', '@graph': items };
+    var script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }
+
+  function initLayout(activePage) {
+    document.addEventListener('DOMContentLoaded', function () {
+      renderHeader(activePage || '/');
+      renderFooter();
+      injectOrganizationSchema();
+      injectSiteNavSchema();
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+      });
+    });
+  }
+
+  global.SiteLayout = { init: initLayout, SITE: SITE, NAV_LINKS: NAV_LINKS, FOOTER_LINKS: FOOTER_LINKS };
+})(typeof window !== 'undefined' ? window : this);

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katakana-converter.com/sitemap-index.xml

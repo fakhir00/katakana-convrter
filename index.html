@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <!-- Core Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katakana Converter — Free English to Katakana Conversion Tool</title>
+  <meta name="description" content="Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate rule-based transliteration engine with built-in benchmarking.">
+  <meta name="keywords" content="katakana converter, english to katakana, katakana transliteration, japanese writing, phoneme converter, katakana tool">
+  <meta name="author" content="Katakana Converter">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://katakana-converter.com/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%236366f1'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>カ</text></svg>" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Katakana Converter — Free English to Katakana Conversion Tool">
+  <meta property="og:description" content="Convert English to Katakana instantly. Zero-API, phoneme-based transliteration engine with built-in accuracy benchmarking.">
+  <meta property="og:url" content="https://katakana-converter.com/">
+  <meta property="og:site_name" content="Katakana Converter">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://katakana-converter.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Katakana Converter — English to Katakana Conversion Tool">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Katakana Converter — Free English to Katakana Tool">
+  <meta name="twitter:description" content="Convert English to Katakana instantly with our free phoneme-based engine. No API required.">
+  <meta name="twitter:image" content="https://katakana-converter.com/og-image.png">
+
+  <!-- Preconnect for Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JSON-LD: WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Katakana Converter",
+    "url": "https://katakana-converter.com/",
+    "description": "Free English to Katakana conversion tool using phoneme-based transliteration.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://katakana-converter.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Katakana Converter",
+    "url": "https://katakana-converter.com/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Convert English text to Japanese Katakana using a phoneme-based rule engine. Free, offline-capable, no API required."
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Katakana Converter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Katakana Converter transliterates English words into Japanese Katakana characters using phoneme-based rules. It approximates how English words sound when written in the Japanese Katakana writing system."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this Katakana Converter require an API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This Katakana Converter runs entirely in your browser using pure JavaScript. No API calls, no server requests, and no external dependencies are needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate is the Katakana conversion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The converter uses a multi-stage pipeline including grapheme-to-phoneme rules and a loanword dictionary. You can run the built-in benchmark to see exact accuracy metrics against a test set of common English words."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ════════════ HEADER (rendered by layout.js) ════════════ -->
+  <header class="site-header" role="banner"></header>
+
+  <main id="main-content" role="main">
+
+    <!-- ════════════ HERO ════════════ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-badge">Zero-API · Phoneme-Based · Browser-Only</div>
+        <h1 id="hero-title">English to Katakana<br>Converter</h1>
+        <p>Transform any English word into accurate Japanese Katakana using our phoneme-based conversion engine. No APIs, no dependencies — runs entirely in your browser.</p>
+      </div>
+    </section>
+
+    <!-- ════════════ CONVERTER ════════════ -->
+    <section class="converter-section" id="converter" aria-labelledby="converter-title">
+      <div class="container">
+        <div class="converter-card glass-card">
+          <div class="input-group">
+            <label for="english-input">English Text</label>
+            <input type="text"
+                   id="english-input"
+                   placeholder="Type an English word or phrase..."
+                   autocomplete="off"
+                   spellcheck="false"
+                   aria-describedby="input-help">
+            <div class="input-meta">
+              <span id="input-help">Press Enter or click Convert</span>
+              <span><span id="char-count">0</span> characters</span>
+            </div>
+          </div>
+
+          <div class="input-meta" style="margin-bottom: 16px;">
+            <div class="toggle-row">
+              <label class="toggle-switch" title="Rules-only mode bypasses the dictionary">
+                <input type="checkbox" id="rules-only-toggle">
+                <span class="toggle-slider"></span>
+              </label>
+              <span>Rules-only mode</span>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-primary" id="convert-btn" type="button">Convert to Katakana</button>
+            <button class="btn-secondary" id="clear-btn" type="button">Clear</button>
+          </div>
+
+          <div id="result-card">
+            <div class="result-header">
+              <span class="result-label">Katakana Result</span>
+              <span id="source-tag"></span>
+            </div>
+            <div id="katakana-output" class="placeholder-text" aria-live="polite">カタカナ</div>
+            <div class="phoneme-section">
+              <div class="phoneme-label">Phoneme Breakdown</div>
+              <div id="phoneme-output" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ HOW IT WORKS ════════════ -->
+    <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <h2 class="section-title" id="how-title">How Katakana Converter Works</h2>
+        <p class="section-subtitle">A multi-stage pipeline converts English text into phonetically accurate Katakana</p>
+        <div class="steps-grid">
+          <div class="step-card glass-card">
+            <div class="step-number">1</div>
+            <h3>Normalize</h3>
+            <p>Input is lowercased, cleaned of non-alphabet characters, and tokenized into individual words.</p>
+          </div>
+          <div class="step-card glass-card">
+            <div class="step-number">2</div>
+            <h3>Grapheme → Phoneme</h3>
+            <p>Each word is processed through 100+ ordered rules to extract English phonemes (ARPAbet-style).</p>
+          </div>
+          <div class="step-card glass-card">
+            <div class="step-number">3</div>
+            <h3>Phoneme → Katakana</h3>
+            <p>Phonemes are mapped to Katakana syllables using a full CV table with epenthetic vowel insertion.</p>
+          </div>
+          <div class="step-card glass-card">
+            <div class="step-number">4</div>
+            <h3>Post-Process</h3>
+            <p>Long vowels are normalized, invalid combinations removed, and the output is polished to valid Katakana.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ BENCHMARK ════════════ -->
+    <section class="benchmark-section" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="container">
+        <div class="benchmark-header">
+          <div>
+            <h2 class="section-title" id="benchmark-title" style="text-align:left;margin-bottom:4px;">Accuracy Benchmark</h2>
+            <p class="section-subtitle" style="text-align:left;margin-bottom:0;">Test the Katakana Converter against a curated dataset of 20 English words</p>
+          </div>
+          <button class="btn-benchmark" id="benchmark-btn" type="button">▶ Run Benchmark</button>
+        </div>
+
+        <div id="benchmark-results">
+          <div id="benchmark-summary"></div>
+          <div class="table-wrap glass-card" style="padding:0;">
+            <table class="benchmark-table" aria-label="Benchmark results table">
+              <thead>
+                <tr>
+                  <th>Input</th>
+                  <th>Expected</th>
+                  <th>Output</th>
+                  <th>Match</th>
+                  <th>Edit Dist</th>
+                  <th>Similarity</th>
+                  <th>Source</th>
+                </tr>
+              </thead>
+              <tbody id="benchmark-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ ABOUT / FAQ ════════════ -->
+    <section class="how-section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="section-title" id="about-title">About Katakana Converter</h2>
+        <p class="section-subtitle">Frequently asked questions about our English to Katakana conversion tool</p>
+        <div class="steps-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <div class="glass-card" style="text-align:left;">
+            <h3 style="margin-bottom:12px;font-size:1rem;color:var(--text-accent);">What is Katakana?</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">Katakana (カタカナ) is one of the three Japanese writing systems, primarily used for foreign loanwords, onomatopoeia, and technical terms. When English words are borrowed into Japanese, they are written in Katakana to approximate their original pronunciation.</p>
+          </div>
+          <div class="glass-card" style="text-align:left;">
+            <h3 style="margin-bottom:12px;font-size:1rem;color:var(--text-accent);">How does this Katakana Converter work?</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">This converter uses a multi-stage phoneme-based pipeline. It first converts English letters to phonemes using 100+ context-sensitive rules, then maps those phonemes to Katakana syllables following Japanese phonotactic constraints. A loanword dictionary handles irregular words.</p>
+          </div>
+          <div class="glass-card" style="text-align:left;">
+            <h3 style="margin-bottom:12px;font-size:1rem;color:var(--text-accent);">Is this Katakana Converter free?</h3>
+            <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;">Yes, completely free and open-source. The entire Katakana Converter runs in your browser using pure JavaScript — no server, no API keys, no account required. Your text never leaves your device.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════ FOOTER (rendered by layout.js) ════════════ -->
+  <footer class="site-footer" role="contentinfo"></footer>
+
+  <!-- Scripts -->
+  <script src="js/layout.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/benchmark.js"></script>
+  <script src="js/app.js"></script>
+  <script>SiteLayout.init('/');</script>
+</body>
+</html>
