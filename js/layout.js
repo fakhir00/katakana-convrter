@@ -23,6 +23,7 @@
 
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'About', href: '/about-us/' },
     { label: 'Contact', href: '/contact-us/' },
     { 
@@ -48,6 +49,7 @@
 
   var FOOTER_LINKS = [
     { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'About Us', href: '/about-us/' },
     { label: 'Contact Us', href: '/contact-us/' },
     { label: 'Terms', href: '/terms/' },
