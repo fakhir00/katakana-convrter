@@ -570,8 +570,105 @@ const exploreCards = [
   { path: 'chinese-to-katakana', isFile: false, icon: 'CN', title: 'Chinese to Katakana', desc: 'Generate rough Japanese Katakana readings from Hanzi.' }
 ];
 
-function escapeRegExp(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const siteNavItems = [
+  { name: 'Home', url: 'https://katakana-converter.com/' },
+  { name: 'About', url: 'https://katakana-converter.com/about-us/' },
+  { name: 'Contact', url: 'https://katakana-converter.com/contact-us/' },
+  { name: 'Katakana Name Converter', url: 'https://katakana-converter.com/katakana-name-converter/' },
+  { name: 'English Name to Katakana', url: 'https://katakana-converter.com/english-name-to-katakana/' },
+  { name: 'Full-Width Katakana Converter', url: 'https://katakana-converter.com/full-width-katakana-converter/' },
+  { name: 'Full Width Katakana Name Converter', url: 'https://katakana-converter.com/full-width-katakana-name-converter/' },
+  { name: 'Katakana to Hiragana Converter', url: 'https://katakana-converter.com/katakana-to-hiragana.html' },
+  { name: 'Hiragana to Katakana Converter', url: 'https://katakana-converter.com/hiragana-to-katakana/' },
+  { name: 'Japanese Name to Katakana', url: 'https://katakana-converter.com/japanese-name-to-katakana/' },
+  { name: 'Romaji to Katakana Converter', url: 'https://katakana-converter.com/romaji-to-katakana/' },
+  { name: 'Latin to Katakana Converter', url: 'https://katakana-converter.com/latin-to-katakana/' },
+  { name: 'Kanji to Katakana Converter', url: 'https://katakana-converter.com/kanji-to-katakana/' },
+  { name: 'Kanji to Hiragana Converter', url: 'https://katakana-converter.com/kanji-to-hiragana/' },
+  { name: 'Chinese to Katakana Converter', url: 'https://katakana-converter.com/chinese-to-katakana/' }
+];
+
+function buildMetaDescription(keyword) {
+  const prefix = keyword + ' for fast browser-based Japanese text conversion, phonetic checks, and Japan-ready formatting.';
+  const tails = [
+    ' Free and easy to use online.',
+    ' Free, accurate, and easy to use.',
+    ' Free and accurate online.',
+    ' Free to use online.'
+  ];
+
+  for (const tail of tails) {
+    const candidate = prefix + tail;
+    if (candidate.length >= 150 && candidate.length <= 155) {
+      return candidate;
+    }
+  }
+
+  let best = prefix + tails[0];
+  if (best.length > 155) {
+    best = best.slice(0, 155).replace(/\s+\S*$/, '') + '.';
+  }
+  while (best.length < 150) {
+    best += ' Free.';
+  }
+  return best;
+}
+
+function buildHeroDescription(keyword) {
+  return '<strong>' + keyword + '</strong> for fast browser-based Japanese text conversion, phonetic checks, and Japan-ready formatting. Free and easy to use online.';
+}
+
+function buildOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Katakana Converter',
+    url: 'https://katakana-converter.com/',
+    logo: 'https://katakana-converter.com/favicon.svg',
+    description: 'Free Katakana conversion tool for names, forms, and Japanese text formatting.',
+    email: 'contact@katakana-converter.com',
+    telephone: '+1-555-240-9087',
+    sameAs: [
+      'https://twitter.com/katakanaconvert',
+      'https://facebook.com/katakanaconverter',
+      'https://linkedin.com/company/katakana-converter',
+      'https://pinterest.com/katakanaconverter'
+    ]
+  };
+}
+
+function buildSiteNavigationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': siteNavItems.map(function (item) {
+      return {
+        '@type': 'SiteNavigationElement',
+        name: item.name,
+        url: item.url
+      };
+    })
+  };
+}
+
+function buildBreadcrumbSchema(name, url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://katakana-converter.com/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: name,
+        item: url
+      }
+    ]
+  };
 }
 
 function resolveHref(tool, relPath) {
@@ -593,6 +690,18 @@ function buildFaqSchema(tool) {
       };
     })
   };
+}
+
+function replaceJsonLdBlock(html, label, schemaObject) {
+  const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp('<!-- ' + escapedLabel + ' -->\\s*<script type="application/ld\\+json">[\\s\\S]*?<\\/script>');
+  if (!pattern.test(html)) {
+    throw new Error('Unable to update schema block for ' + label);
+  }
+  return html.replace(
+    pattern,
+    '<!-- ' + label + ' -->\n  <script type="application/ld+json">\n' + JSON.stringify(schemaObject, null, 2) + '\n  </script>'
+  );
 }
 
 function buildSemanticBody(tool, relPath) {
@@ -697,6 +806,10 @@ tools.forEach(function (tool) {
     ? 'https://katakana-converter.com/' + tool.path
     : 'https://katakana-converter.com/' + tool.path + '/';
   const faqSchema = JSON.stringify(buildFaqSchema(tool), null, 2);
+  const metaDescription = buildMetaDescription(tool.title);
+  const organizationSchema = buildOrganizationSchema();
+  const siteNavigationSchema = buildSiteNavigationSchema();
+  const breadcrumbSchema = buildBreadcrumbSchema(tool.title, fullUrl);
 
   let locHtml = rootHtml;
 
@@ -709,7 +822,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<meta name="description" content=".*?">/,
-    '<meta name="description" content="' + tool.desc + '">',
+    '<meta name="description" content="' + metaDescription + '">',
     'meta description'
   );
   locHtml = ensureReplaced(
@@ -721,7 +834,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<meta property="og:description" content=".*?">/,
-    '<meta property="og:description" content="' + tool.desc + '">',
+    '<meta property="og:description" content="' + metaDescription + '">',
     'og:description'
   );
   locHtml = ensureReplaced(
@@ -733,7 +846,7 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<meta name="twitter:description" content=".*?">/,
-    '<meta name="twitter:description" content="' + tool.desc + '">',
+    '<meta name="twitter:description" content="' + metaDescription + '">',
     'twitter:description'
   );
   locHtml = ensureReplaced(
@@ -751,13 +864,13 @@ tools.forEach(function (tool) {
   locHtml = ensureReplaced(
     locHtml,
     /<h1 id="hero-title">.*?<\/h1>/s,
-    '<h1 id="hero-title">' + tool.h1 + '</h1>',
+    '<h1 id="hero-title"><strong>' + tool.title + '</strong></h1>',
     'hero title'
   );
   locHtml = ensureReplaced(
     locHtml,
-    /<p>Transform any English word.*?<\/p>/s,
-    '<p>' + tool.desc + '</p>',
+    /(<h1 id="hero-title">.*?<\/h1>\s*)<p>.*?<\/p>/s,
+    '$1<p>' + buildHeroDescription(tool.title) + '</p>',
     'hero description'
   );
   locHtml = ensureReplaced(
@@ -778,13 +891,36 @@ tools.forEach(function (tool) {
     '<button class="btn-primary" id="convert-btn" type="button">' + tool.buttonLabel + '</button>',
     'convert button text'
   );
-  locHtml = ensureReplaced(
-    locHtml,
-    /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "FAQPage"[\s\S]*?<\/script>/,
-    '<script type="application/ld+json">\n' + faqSchema + '\n  </script>',
-    'FAQ schema'
-  );
-  locHtml = locHtml.replace(/"url": "https:\/\/katakana-converter\.com\/"/g, '"url": "' + fullUrl + '"');
+  locHtml = replaceJsonLdBlock(locHtml, 'JSON-LD: WebSite Schema', {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Katakana Converter',
+    url: fullUrl,
+    description: 'Free Katakana conversion tool for names, forms, and Japanese text formatting.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://katakana-converter.com/?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  });
+  locHtml = replaceJsonLdBlock(locHtml, 'JSON-LD: Organization Schema', organizationSchema);
+  locHtml = replaceJsonLdBlock(locHtml, 'JSON-LD: SiteNavigationElement Schema', siteNavigationSchema);
+  locHtml = replaceJsonLdBlock(locHtml, 'JSON-LD: BreadcrumbList Schema', breadcrumbSchema);
+  locHtml = replaceJsonLdBlock(locHtml, 'JSON-LD: WebApplication Schema', {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: tool.title,
+    url: fullUrl,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    },
+    description: metaDescription
+  });
+  locHtml = replaceJsonLdBlock(locHtml, 'JSON-LD: FAQPage Schema', buildFaqSchema(tool));
 
   const semanticStart = locHtml.indexOf('<section class="how-section" id="how-it-works"');
   const mainEnd = locHtml.lastIndexOf('</main>');

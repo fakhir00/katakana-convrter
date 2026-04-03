@@ -206,40 +206,10 @@
       '<button class="back-to-top" type="button" aria-label="Back to top">↑</button>';
   }
 
-  function injectOrganizationSchema() {
-    var schema = {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: SITE.name,
-      url: SITE.url,
-      legalName: SITE.name,
-      logo: { '@type': 'ImageObject', url: SITE.url + '/favicon.svg' },
-      description: SITE.description,
-      sameAs: Object.values(SITE.social).filter(Boolean)
-    };
-    var script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(schema);
-    document.head.appendChild(script);
-  }
-
-  function injectSiteNavSchema() {
-    var items = NAV_LINKS.map(function (l) {
-      return { '@type': 'SiteNavigationElement', name: l.label, url: SITE.url + l.href };
-    });
-    var schema = { '@context': 'https://schema.org', '@graph': items };
-    var script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(schema);
-    document.head.appendChild(script);
-  }
-
   function initLayout(activePage) {
     document.addEventListener('DOMContentLoaded', function () {
       renderHeader(activePage || '/');
       renderFooter();
-      injectOrganizationSchema();
-      injectSiteNavSchema();
 
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
