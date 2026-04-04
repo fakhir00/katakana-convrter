@@ -175,6 +175,14 @@ function generateArticle(langCode, slug) {
   if (!bodyMatch) { console.error(`Cannot parse body for ${slug}`); return ''; }
   let body = bodyMatch[1];
 
+  // Inject localized article body if it exists
+  const locBodyFile = path.join(BLOG_DIR, langCode, slug, 'body.html');
+  if (fs.existsSync(locBodyFile)) {
+    const locBodyHtml = fs.readFileSync(locBodyFile, 'utf8');
+    // Replace the innerHTML of the article
+    body = body.replace(/(<article class="article-body container" id="article-content"([^>]*)>)[\s\S]*?(<\/article>)/i, `$1\n${locBodyHtml}\n$3`);
+  }
+
   // Fix asset paths for deeper nesting (/blog/{lang}/{slug}/ → 3 levels deep)
   body = body.replace(/src="\.\.\/\.\.\//g, 'src="../../../');
   body = body.replace(/href="\.\.\/\.\.\//g, 'href="../../../');
