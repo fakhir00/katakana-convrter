@@ -21,8 +21,8 @@ const tools = [
     inputLabel: 'Type your English Name',
     placeholder: 'e.g. John Smith',
     buttonLabel: 'Convert Name to Katakana',
-    logic: "var out = ToolConverters.convertEnglishWithEngine(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Rule-based conversion'; if(sourceTag) sourceTag.textContent = 'English pronunciation engine';",
-    deps: '<script src="../js/engine.js"></script>',
+    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
+    deps: '<script src="../js/engine.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'Katakana Name Converter',
     sections: [
       {
@@ -66,8 +66,8 @@ const tools = [
     inputLabel: 'English Name',
     placeholder: 'Enter an English Name...',
     buttonLabel: 'Translate to Katakana',
-    logic: "var out = ToolConverters.convertEnglishWithEngine(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Rule-based conversion'; if(sourceTag) sourceTag.textContent = 'English pronunciation engine';",
-    deps: '<script src="../js/engine.js"></script>',
+    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
+    deps: '<script src="../js/engine.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'English Name to Katakana',
     sections: [
       {
@@ -292,8 +292,8 @@ const tools = [
     inputLabel: 'Japanese Name (Romaji)',
     placeholder: 'e.g. Suzuki Ichiro...',
     buttonLabel: 'Create Katakana',
-    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Romaji conversion';",
-    deps: '<script src="https://unpkg.com/wanakana"></script>',
+    logic: "ToolConverters.convertJapaneseName(val).then(function(out){ if(out.pending){ phEl.textContent = out.phonemes; return; } outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Japanese name conversion'; if(sourceTag) sourceTag.textContent = /[\\u3400-\\u9fff]/.test(val) ? 'Kanji reading conversion' : 'Kana and romaji conversion'; });",
+    deps: '<script src="https://unpkg.com/wanakana"></script><script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:\"https://unpkg.com/kuromoji@0.1.2/dict\"})).then(function(){window.kuroshiroInstance=k;console.log(\"Kuroshiro ready\");});});</script>',
     h1: 'Japanese Name to Katakana',
     sections: [
       {
@@ -931,6 +931,9 @@ tools.forEach(function (tool) {
 
   locHtml = locHtml.replace('<script src="js/engine.js"></script>', '');
   locHtml = locHtml.replace('<script src="../js/engine.js"></script>', '');
+  locHtml = locHtml.replace('<script src="https://unpkg.com/wanakana"></script>', '');
+  locHtml = locHtml.replace('<script src="js/tool-converters.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/tool-converters.js"></script>', '');
   locHtml = locHtml.replace('<script src="js/benchmark.js"></script>', '');
   locHtml = locHtml.replace('<script src="../js/benchmark.js"></script>', '');
   locHtml = locHtml.replace('<script src="js/app.js"></script>', '');

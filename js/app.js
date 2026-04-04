@@ -27,22 +27,12 @@
         return;
       }
       var rulesOnly = rulesOnlyToggle && rulesOnlyToggle.checked;
-      var result = KatakanaEngine.convert(text, { rulesOnly: rulesOnly });
+      var result = ToolConverters.convertLatinText(text, { separator: '・', rulesOnly: rulesOnly });
 
       katakanaOutput.textContent = result.katakana;
       katakanaOutput.classList.remove('placeholder-text');
-
-      var phonemes = result.details.map(function (d) {
-        return d.word + ' → [' + d.phonemes.join(' ') + ']';
-      }).join('\n');
-      phonemeOutput.textContent = phonemes;
-
-      var sources = result.details.map(function (d) { return d.source; });
-      var hasDict = sources.indexOf('dictionary') >= 0;
-      var hasRules = sources.indexOf('rules') >= 0;
-      if (hasDict && hasRules) sourceTag.textContent = '📖 Dictionary + 🔧 Rules';
-      else if (hasDict) sourceTag.textContent = '📖 Dictionary Match';
-      else sourceTag.textContent = '🔧 Rule-Based Conversion';
+      phonemeOutput.textContent = result.phonemes || 'Smart conversion';
+      sourceTag.textContent = 'English + romaji smart conversion';
 
       resultCard.classList.add('visible');
     }

@@ -36,19 +36,20 @@
   }
 
   function convertLatinText(text, options) {
+    options = options || {};
     var tokens = tokenizeWords(text);
     var converted = [];
     var notes = [];
 
     tokens.forEach(function (token) {
       if (hasKana(token)) {
-        converted.push(normalizeMixedKatakana(token, { IMEMode: !!(options && options.imeMode) }));
+        converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> kana');
         return;
       }
 
       if (looksLikeJapaneseRomajiToken(token)) {
-        converted.push(normalizeMixedKatakana(token, { IMEMode: !!(options && options.imeMode) }));
+        converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> romaji');
         return;
       }
@@ -59,9 +60,35 @@
     });
 
     return {
-      katakana: converted.join(' '),
+      katakana: converted.join(options.separator || ' '),
       phonemes: notes.join('\n')
     };
+  }
+
+  function convertJapaneseName(text) {
+    if (hasHan(text)) {
+      if (!global.kuroshiroInstance || typeof global.kuroshiroInstance.convert !== 'function') {
+        return Promise.resolve({
+          katakana: '',
+          phonemes: 'Japanese name parser is still loading.',
+          pending: true
+        });
+      }
+
+      return global.kuroshiroInstance.convert(text, { to: 'katakana' }).then(function (result) {
+        return {
+          katakana: result,
+          phonemes: 'Converted from kanji using Kuroshiro.',
+          pending: false
+        };
+      });
+    }
+
+    return Promise.resolve({
+      katakana: normalizeMixedKatakana(text, { IMEMode: true }),
+      phonemes: 'Converted from kana or romaji using WanaKana.',
+      pending: false
+    });
   }
 
   function pickInitial(syllable) {
@@ -225,6 +252,7 @@
   global.ToolConverters = {
     convertEnglishWithEngine: convertEnglishWithEngine,
     convertLatinText: convertLatinText,
+    convertJapaneseName: convertJapaneseName,
     convertChineseToKatakana: convertChineseToKatakana,
     normalizeMixedKatakana: normalizeMixedKatakana,
     looksLikeJapaneseRomajiToken: looksLikeJapaneseRomajiToken
