@@ -155,22 +155,24 @@ function generateListing(langCode) {
 // ─── GENERATE RELATED ARTICLES HTML ───
 function generateRelatedArticles(currentSlug, langCode) {
   const ui = UI[langCode];
-  const relatedSlugs = SLUGS.filter(s => s !== currentSlug).slice(0, 2);
+  // ── Silo Intralinking: Select only the next article in the chain ──
+  const currentIndex = SLUGS.indexOf(currentSlug);
+  const nextIndex = (currentIndex + 1) % SLUGS.length;
+  const nextSlug = SLUGS[nextIndex];
   
   let html = `<section class="related-articles">
       <div class="container">
-        <h2 class="section-title">${ui.related}</h2>
-        <div class="blog-grid">
+        <h2 class="section-title" style="text-align:center;margin-bottom:40px;">${ui.related}</h2>
+        <div class="blog-grid" style="display:flex;justify-content:center;">
 `;
 
-  relatedSlugs.forEach(slug => {
-    const card = ARTICLES.cards[slug][langCode];
-    const imgBase = slug === 'basic-katakana-chart' ? 'katakana-chart-hero' :
-                    slug === 'hiragana-vs-katakana' ? 'hiragana-vs-katakana-hero' :
-                    slug === 'katakana-quiz' ? 'katakana-quiz-hero' : 'common-words-hero';
-    
-    html += `          <a href="../${slug}/" class="blog-card">
-            <img src="../../${slug}/images/${imgBase}.png" alt="${card.h3}" class="blog-card-image" loading="lazy" width="680" height="220">
+  const card = ARTICLES.cards[nextSlug][langCode];
+  const imgBase = nextSlug === 'basic-katakana-chart' ? 'katakana-chart-hero' :
+                  nextSlug === 'hiragana-vs-katakana' ? 'hiragana-vs-katakana-hero' :
+                  nextSlug === 'katakana-quiz' ? 'katakana-quiz-hero' : 'common-words-hero';
+  
+  html += `          <a href="../${nextSlug}/" class="blog-card" style="max-width:680px;width:100%;">
+            <img src="../../${nextSlug}/images/${imgBase}.png" alt="${card.h3}" class="blog-card-image" loading="lazy" width="680" height="220">
             <div class="blog-card-body">
               <div class="blog-card-meta"><span class="blog-card-tag">${card.tag}</span><time datetime="2026-04-03">April 3, 2026</time></div>
               <h3>${card.h3}</h3>
@@ -179,13 +181,13 @@ function generateRelatedArticles(currentSlug, langCode) {
             </div>
           </a>
 `;
-  });
 
   html += `        </div>
       </div>
     </section>`;
   return html;
 }
+
 
 // ─── GENERATE ARTICLE WRAPPER ───
 // Reads the English article HTML, injects hreflang, toggle, and translates meta/structural content
