@@ -14,6 +14,51 @@ const rootHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
 
 const tools = [
   {
+    path: 'english-to-katakana',
+    isFile: false,
+    title: 'English to Katakana Converter',
+    desc: 'Convert English words and phrases into Japanese Katakana online.',
+    inputLabel: 'English Text',
+    placeholder: 'Type an English word or phrase...',
+    buttonLabel: 'Convert to Katakana',
+    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
+    deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
+    h1: 'English to Katakana Converter',
+    sections: [
+      {
+        heading: 'What Is English to Katakana Converter?',
+        body: 'English to Katakana Converter helps turn English words, names, and phrases into Japanese Katakana based on pronunciation. It is built for fast browser-based conversion when you need a practical Japanese phonetic rendering.'
+      },
+      {
+        heading: 'When to Use This English to Katakana Converter?',
+        body: 'Use this English to Katakana Converter for names, product wording, borrowed vocabulary, or localization drafts that need a Katakana version. It is especially helpful when you want a quick phonetic output without switching tools.'
+      },
+      {
+        heading: 'Why English to Katakana Converter Output Can Change By Word',
+        body: 'Japanese sound patterns reshape English consonants, vowels, and final syllables, so the best Katakana result depends on pronunciation rather than spelling alone. If your input is already standard Japanese romaji, the {{related}} is a better fit.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'What is English to Katakana Converter?',
+        answer: 'English to Katakana Converter changes English text into Japanese Katakana using pronunciation-aware logic. It aims for a natural phonetic result instead of a literal alphabet swap.'
+      },
+      {
+        question: 'When should I use this English to Katakana Converter?',
+        answer: 'Use this English to Katakana Converter when you need a Katakana version of an English name, phrase, label, or borrowed word. It works well for quick localization and form-prep workflows.'
+      },
+      {
+        question: 'Does this English to Katakana Converter require an API?',
+        answer: 'No. This English to Katakana Converter runs in the browser and does not need a conversion API for normal use.'
+      },
+      {
+        question: 'Can this English to Katakana Converter handle phrases?',
+        answer: 'Yes, it can convert phrases as well as single words, although rare names and unusual spellings may still need manual review.'
+      }
+    ],
+    relatedPath: 'romaji'
+  },
+  {
     path: 'name',
     isFile: false,
     title: 'Katakana Name Converter',
@@ -558,6 +603,7 @@ const tools = [
 ];
 
 const exploreCards = [
+  { path: 'english-to-katakana', isFile: false, icon: 'A->カ', title: 'English to Katakana', desc: 'Convert English words and phrases into Japanese Katakana.' },
   { path: 'name', isFile: false, icon: 'Name', title: 'Katakana Name', desc: 'Convert your English name into a Japanese Katakana reading.' },
   { path: 'english-name', isFile: false, icon: 'EN', title: 'English Name Converter', desc: 'See how English names are commonly adapted into Japanese.' },
   { path: 'full-width-katakana', isFile: false, icon: 'FW', title: 'Full-Width Katakana', desc: 'Normalize romaji or narrow input into full-width Katakana.' },
@@ -576,6 +622,7 @@ const siteNavItems = [
   { name: 'Home', url: 'https://www.katakanaconverter.com/' },
   { name: 'About', url: 'https://www.katakanaconverter.com/about-us/' },
   { name: 'Contact', url: 'https://www.katakanaconverter.com/contact-us/' },
+  { name: 'English to Katakana Converter', url: 'https://www.katakanaconverter.com/english-to-katakana/' },
   { name: 'Katakana Name Converter', url: 'https://www.katakanaconverter.com/name/' },
   { name: 'English Name to Katakana', url: 'https://www.katakanaconverter.com/english-name/' },
   { name: 'Full-Width Katakana Converter', url: 'https://www.katakanaconverter.com/full-width-katakana/' },
