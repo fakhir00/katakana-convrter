@@ -170,7 +170,7 @@ function generateRelatedArticles(currentSlug, langCode) {
                     slug === 'katakana-quiz' ? 'katakana-quiz-hero' : 'common-words-hero';
     
     html += `          <a href="../${slug}/" class="blog-card">
-            <img src="../${slug}/images/${imgBase}.png" alt="${card.h3}" class="blog-card-image" loading="lazy" width="680" height="220">
+            <img src="../../${slug}/images/${imgBase}.png" alt="${card.h3}" class="blog-card-image" loading="lazy" width="680" height="220">
             <div class="blog-card-body">
               <div class="blog-card-meta"><span class="blog-card-tag">${card.tag}</span><time datetime="2026-04-03">April 3, 2026</time></div>
               <h3>${card.h3}</h3>
