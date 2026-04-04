@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "katakanaconverter.com"
+        }
+      ],
+      "destination": "https://www.katakanaconverter.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/index.php",
       "has": [
         {
@@ -8,11 +19,6 @@
           "value": "www.katakanaconverter.com"
         }
       ],
-      "destination": "https://katakanaconverter.com/",
-      "permanent": true
-    },
-    {
-      "source": "/index.php",
       "destination": "/",
       "permanent": true
     }
