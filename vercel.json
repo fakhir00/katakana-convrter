@@ -1,6 +1,28 @@
 {
   "redirects": [
     {
+      "source": "/english-to-katakana",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.katakanaconverter.com"
+        }
+      ],
+      "destination": "https://www.katakanaconverter.com/",
+      "permanent": true
+    },
+    {
+      "source": "/english-to-katakana/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.katakanaconverter.com"
+        }
+      ],
+      "destination": "https://www.katakanaconverter.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
