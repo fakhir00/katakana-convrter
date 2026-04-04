@@ -279,9 +279,8 @@ function updateEnglishPages() {
   if (!listHtml.includes('hreflang')) {
     const hrefTags = hreflangTags('');
     listHtml = listHtml.replace('</head>', `${hrefTags}  <link rel="stylesheet" href="../css/blog-i18n.css">\n</head>`);
-    // Add toggle after the intro paragraph
+    // Add toggle after the intro paragraph (single injection only)
     const toggle = langToggle('en', '');
-    listHtml = listHtml.replace('</section>\n\n    <!-- ════', `  ${toggle}\n      </div>\n    </section>\n\n    <!-- ════`);
     listHtml = listHtml.replace(/(<p>In-depth guides[^<]*<\/p>)/, `$1\n        ${toggle}`);
     fs.writeFileSync(listFile, listHtml, 'utf8');
     console.log('  ✅ blog/index.html');
