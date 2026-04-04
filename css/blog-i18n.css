@@ -6,6 +6,8 @@
   display: flex;
   justify-content: center;
   margin-top: 14px;
+  position: relative;
+  z-index: 9999;
 }
 
 .lang-toggle {
