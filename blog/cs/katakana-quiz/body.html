@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>Obsah</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">Základní znaky</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">Dakuon + Handakuon</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">Kvízové ​​režimy</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">Cvičební kola</div></div>
+      </div>
+
+      <h2 id="why-quiz">Proč cvičit s kvízem Katakana?</h2>
+      <p>Rychlé a přesné čtení katakany je základní dovedností pro každého, kdo se učí japonsky. <strong>Kvíz Katakana</strong> využívá aktivní vzpomínání – nejúčinnější studijní techniku ​​podle kognitivních vědeckých výzkumů – k posílení rozpoznání vaší postavy mnohem rychleji než samotné pasivní hodnocení.</p>
+      <p>Aktivní vyvolání funguje tak, že nutí váš mozek získávat informace z paměti, místo aby je jen rozpoznával. Pokaždé, když si úspěšně vybavíte čtení postavy, nervová dráha se posílí, takže budoucí vybavování je rychlejší a automatičtější.</p>
+      <ul>
+        <li><strong>Okamžitá zpětná vazba</strong> pomáhá okamžitě identifikovat problémové postavy</li>
+        <li><strong>Náhodné řazení</strong> zabraňuje zapamatování sekvencí namísto jednotlivých znaků</li>
+        <li><strong>Sledování skóre</strong> poskytuje měřitelný pokrok během několika relací</li>
+        <li><strong>Gamifikace</strong> činí opakující se praktiky poutavější a udržitelnější</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>Chcete-li dosáhnout nejlepších výsledků, absolvujte kvíz v krátkých 5-10 minutových sezeních několikrát denně, nikoli v jednom dlouhém sezení. Výzkum s prostorovým opakováním ukazuje, že distribuovaná praxe produkuje výrazně lepší dlouhodobé udržení.</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">Základní katakanový kvíz (46 znaků)</h2>
+      <p>Otestujte si své znalosti všech 46 základních znaků Katakana. Každá otázka představuje postavu se čtyřmi možnými čteními romaji – vyberte tu správnou.</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 Základní kvíz Katakana</h3>
+        <p class="quiz-subtitle">Vyberte správné čtení romaji pro každý znak.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">Jaká je romaji pro tuto postavu?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">Daquon &amp; Co. Výzva Handakuon</h2>
+      <p>Jste připraveni na těžší výzvu? Tento kvíz se zaměřuje výhradně na vyjádřené (<strong>Dakuon</strong>) a polohlasé (<strong>Handakuon</strong>) postavy – upravenou katakanu, kterou mnozí studenti považují za záludnou.</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ Dakuon &amp; Handakuon kvíz</h3>
+        <p class="quiz-subtitle">Tyto upravené znaky jsou běžně zaměňovány. Otestujte svou přesnost.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">Jaká je romaji pro tuto postavu?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">Rychlostní kolo — měřená výzva</h2>
+      <p>Myslíte si, že znáte svou Katakana dobře? Vyzkoušejte <strong>rychlé kolo</strong> a uvidíte, kolik znaků dokážete správně identifikovat za 60 sekund. To testuje nejen přesnost, ale i rychlost čtení – klíčovou dovednost pro skutečné japonské čtení.</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ 60sekundová rychlostní výzva</h3>
+        <p class="quiz-subtitle">Kolik jich stihnete za minutu?</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>Mistrovství skupiny postav</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">Tipy, jak zlepšit skóre kvízu Katakana</h2>
+      <ol>
+        <li><strong>Učte se po řadě</strong> — Zvládněte jednu řadu souhlásek po druhé (samohlásky → K → S → T...), než je smícháte v kombinovaném kvízu.</li>
+        <li><strong>Zaměřte se na matoucí páry</strong> — Znaky jako シ/ツ (shi/tsu) a ソ/ン (so/n) vypadají podobně. Procvičte si jejich rozlišování.</li>
+        <li><strong>Pište při kvízu</strong> — Sledujte každý znak na papíře, když odpovídáte. Motorická paměť posiluje vizuální rozpoznávání.</li>
+        <li><strong>Zkontrolujte nesprávné odpovědi</strong> — Po každém kvízu se vraťte k postavám, které jste vynechali. Toto jsou vaše nejslabší články.</li>
+        <li><strong>Postupně zvyšujte rychlost</strong> — Jakmile budete schopni odpovídat přesně, zaměřte se na rychlejší odpovídání. Skutečné japonské čtení vyžaduje okamžité rozpoznání.</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Dejte si pozor na tyto často zaměňované dvojice Katakana: shi (shi) vs tsu (tsu), ソ (so) vs ん (n), su (su) vs nu (nu), う (u) vs wa (wa). Směr zdvihu je hlavním rozlišovacím znakem.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">Často kladené otázky</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>Každá otázka ukazuje postavu Katakana a čtyři možnosti romaji. Vyberte správné čtení, abyste získali bod. Získáte okamžitou zpětnou vazbu zobrazující správnou odpověď a vaše skóre je sledováno během relace.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>Ano. Použijte různé části kvízu výše a zaměřte se na Základní Katakana (46 znaků), Dakuon a Handakuon (znělé/poloznělé zvuky), nebo vyzkoušejte rychlostní kolo, které kombinuje všechny typy postav.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>Kvíz běží nepřetržitě s náhodnými otázkami, takže můžete cvičit, jak dlouho chcete. Každá relace sleduje míru přesnosti, aby vám pomohla identifikovat znaky, které potřebují více studia.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>Nejčastěji zaměňované dvojice jsou: し (shi) a ツ (tsu), ソ (so) a ん (n), す (su) a NU (nu). Tyto páry sdílejí podobné vzory tahů, ale liší se ve směru tahu.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Zdroje &amp; Reference</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>Japonská nadace — <em>Marugoto: Japonský jazyk a kultura</em>, oficiální materiály pro přípravu JLPT</li>
+          <li>JapaneseJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">Kvíz katakany: Procvičování japonských znaků katakany</a></li>
+          <li>Tofugu — <em>Learn Katakana: The Ultimate Guide</em>, metodologie učení katakany</li>
+          <li>Kognitivně psychologický výzkum aktivního vzpomínání a rozloženého opakování (Karpicke &amp; Blunt, 2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-decoration:none;">Tým převaděčů katakana</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">Vytváření bezplatných nástrojů pro výuku japonštiny. Náš tým se zaměřuje na přesnou konverzi katakany založenou na fonémech a vzdělávací zdroje pro studenty po celém světě.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Uplatněte své dovednosti Katakana</h3>
+        <p>Zkuste převést anglická slova na katakanu, abyste viděli tyto postavy v kontextu skutečného světa.</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    
