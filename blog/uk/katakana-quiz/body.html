@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>Зміст</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">Основні символи</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">Дакуон + Хандакуон</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">Режими вікторини</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">Практичні раунди</div></div>
+      </div>
+
+      <h2 id="why-quiz">Навіщо тренуватися з вікториною катакана?</h2>
+      <p>Швидке й точне читання катакани є важливою навичкою для кожного, хто вивчає японську мову. У <strong>вікторині катакани</strong> використовується активне запам’ятовування — найефективніша техніка вивчення згідно з когнітивними науковими дослідженнями — щоб покращити розпізнавання персонажа набагато швидше, ніж лише пасивне переглядання.</p>
+      <p>Активне пригадування працює, змушуючи ваш мозок отримувати інформацію з пам’яті, а не просто розпізнавати її. Кожного разу, коли ви успішно згадуєте прочитаний символ, нейронний шлях зміцнюється, роблячи майбутнє пригадування швидшим і більш автоматичним.</p>
+      <ul>
+        <li><strong>Миттєвий відгук</strong> допомагає негайно визначити проблемних персонажів</li>
+        <li><strong>Випадкове впорядкування</strong> запобігає запам’ятовуванню послідовностей замість окремих символів</li>
+        <li><strong>Відстеження результатів</strong> забезпечує вимірний прогрес протягом кількох сеансів</li>
+        <li><strong>Гейміфікація</strong> робить повторювану практику більш привабливою та стійкою</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>Щоб отримати найкращі результати, виконуйте тест короткими 5–10-хвилинними сеансами кілька разів на день, а не одним довгим сеансом. Дослідження розподіленого повторення показує, що розподілена практика забезпечує значно краще довготривале утримання.</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">Основна вікторина з катакани (46 символів)</h2>
+      <p>Перевірте свої знання всіх 46 основних символів катакани. Кожне запитання представляє символ із чотирма можливими способами прочитання ромадзі — виберіть правильний.</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 Основна вікторина з катакани</h3>
+        <p class="quiz-subtitle">Виберіть правильне читання ромадзі для кожного символу.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">Що таке ромадзі для цього персонажа?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">Daquon &amp; Handakuon Challenge</h2>
+      <p>Готові до складнішого виклику? Ця вікторина зосереджена виключно на голосових (<strong>Dakuon</strong>) і напівголосих (<strong>Handakuon</strong>) персонажах — модифікованій катакані, яку багато хто здається складною.</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ Dakuon &amp; Вікторина Handakuon</h3>
+        <p class="quiz-subtitle">Ці модифіковані символи зазвичай плутають. Перевір свою акуратність.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">Що таке ромадзі для цього персонажа?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">Speed ​​Round — Timed Challenge</h2>
+      <p>Думаєте, ви добре знаєте свою катакану? Спробуйте <strong>швидкісний раунд</strong> і подивіться, скільки символів ви можете правильно визначити за 60 секунд. Це перевіряє не лише точність, але й швидкість читання — важливу навичку для справжнього читання японською мовою.</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ 60-секундний виклик на швидкість</h3>
+        <p class="quiz-subtitle">Скільки ви можете отримати правильно за одну хвилину?</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>Майстерність групи персонажів</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">Поради щодо покращення результатів у вікторині катакана</h2>
+      <ol>
+        <li><strong>Вивчіть по рядках</strong> — вивчайте один ряд приголосних (голосні → K → S → T...), перш ніж змішувати їх у комбінованому тесті.</li>
+        <li><strong>Зосередьтеся на незрозумілих парах</strong> — такі символи, як シ/ツ (shi/tsu) і ソ/ン (so/n), виглядають схожими. Потренуйтеся розрізняти їх конкретно.</li>
+        <li><strong>Пишіть під час опитування</strong> — обводьте кожен символ на папері під час відповіді. Рухова пам'ять посилює візуальне розпізнавання.</li>
+        <li><strong>Перегляньте неправильні відповіді</strong> — після кожного сеансу вікторини перегляньте символи, які ви пропустили. Це ваші найслабші ланки.</li>
+        <li><strong>Поступово збільшуйте швидкість</strong> — коли ви зможете відповісти точно, зосередьтеся на тому, щоб відповідати швидше. Справжнє японське читання вимагає миттєвого розпізнавання.</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Слідкуйте за такими часто плутаними парами катакани: shi (shi) проти tsu (tsu), ソ (so) проти ん (n), su (su) проти nu (nu), う (u) проти wa (wa). Напрямок штриха є ключовою відмінністю.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">Часті запитання</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>Кожне запитання містить символ катакани та чотири варіанти ромадзі. Виберіть правильне значення, щоб отримати бал. Ви отримуєте миттєвий зворотний зв’язок із зазначенням правильної відповіді, а ваш рахунок відстежується протягом усього сеансу.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>так Використовуйте різні розділи вікторини вище, щоб зосередитися на базовій катакані (46 символів), Dakuon і Handakuon (голосні/напівголосні звуки), або спробуйте швидкісний раунд, у якому поєднуються всі типи символів.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>Тест триває безперервно з довільними запитаннями, тому ви можете тренуватися скільки завгодно. Кожен сеанс відстежує ваш рівень точності, щоб допомогти вам визначити персонажів, які потребують додаткового вивчення.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>Пари, які найчастіше плутають: し (shi) і ツ (tsu), ソ (so) і ん (n), す (su) і NU (nu). Ці пари мають схожий малюнок штриха, але відрізняються напрямком штриха.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Джерела &amp; Список літератури</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>The Japan Foundation — <em>Marugoto: Japanese Language and Culture</em>, Офіційні матеріали підготовки JLPT</li>
+          <li>JapaneseJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">Вікторина з катакани: вправляйтеся в японських ієрогліфах катакани</a></li>
+          <li>Тофугу — <em>Вивчіть катакану: найкращий посібник</em>, методологія вивчення катакани</li>
+          <li>Дослідження когнітивної психології щодо активного пригадування та інтервалного повторення (Karpicke &amp; Blunt, 2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-decoration:none;">Команда конвертера катакани</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">Створення безкоштовних інструментів для вивчення японської мови. Наша команда зосереджена на точному перетворенні катакани на основі фонем і освітніх ресурсах для учнів у всьому світі.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Застосовуйте свої навички катакани</h3>
+        <p>Спробуйте перетворити англійські слова на катакана, щоб побачити ці символи в реальному контексті.</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    
