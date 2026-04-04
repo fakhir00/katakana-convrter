@@ -8,7 +8,7 @@
   var SITE = {
     name: 'Katakana Converter',
     tagline: 'Free Katakana Conversion Tool',
-    url: 'https://katakana-convrter-4vwi.vercel.app',
+    url: 'https://www.katakanaconverter.com',
     description: 'Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate browser-based transliteration for names, scripts, and form-friendly Japanese text.',
     email: 'contact@katakanaconverter.com',
     phone: '+1 (555) 240-9087',
