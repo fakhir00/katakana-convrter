@@ -14,33 +14,35 @@ const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const SLUGS = ['basic-katakana-chart','hiragana-vs-katakana','katakana-quiz','common-katakana-words'];
 
 // ─── HREFLANG TAGS ───
-function hreflangTags(pagePath) {
-  let tags = `  <link rel="alternate" hreflang="en" href="${SITE}/blog/${pagePath}">\n`;
-  tags += `  <link rel="alternate" hreflang="x-default" href="${SITE}/blog/${pagePath}">\n`;
+// slugPath = '' for listing, 'basic-katakana-chart/' for articles
+function hreflangTags(slugPath) {
+  let tags = `  <link rel="alternate" hreflang="en" href="${SITE}/blog/${slugPath}">\n`;
+  tags += `  <link rel="alternate" hreflang="x-default" href="${SITE}/blog/${slugPath}">\n`;
   LANGS.forEach(l => {
-    tags += `  <link rel="alternate" hreflang="${l.locale}" href="${SITE}/blog/${l.code}/${pagePath}">\n`;
+    tags += `  <link rel="alternate" hreflang="${l.locale}" href="${SITE}/blog/${l.code}/${slugPath}">\n`;
   });
   return tags;
 }
 
 // ─── LANGUAGE TOGGLE HTML ───
-function langToggle(currentCode, pagePath) {
+// slugPath = '' for listing, 'basic-katakana-chart/' for articles
+function langToggle(currentCode, slugPath) {
   const currentLang = currentCode === 'en' ? { name: 'English', flag: '🇺🇸' } : LANGS.find(l => l.code === currentCode);
   let html = `<div class="lang-toggle-wrap"><div class="lang-toggle" onclick="this.classList.toggle('open')" id="lang-toggle">`;
   html += `<span class="lang-globe">🌐</span><span>${currentLang.flag} ${currentLang.name}</span><span class="lang-arrow">▾</span>`;
   html += `<div class="lang-dropdown">`;
   const enActive = currentCode === 'en' ? ' active' : '';
-  html += `<a href="${SITE}/blog/${pagePath}" class="lang-item${enActive}"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-code">EN</span></a>`;
+  html += `<a href="${SITE}/blog/${slugPath}" class="lang-item${enActive}"><span class="lang-flag">🇺🇸</span><span class="lang-name">English</span><span class="lang-code">EN</span></a>`;
   LANGS.forEach(l => {
     const active = l.code === currentCode ? ' active' : '';
-    html += `<a href="${SITE}/blog/${l.code}/${pagePath}" class="lang-item${active}"><span class="lang-flag">${l.flag}</span><span class="lang-name">${l.name}</span><span class="lang-code">${l.code.toUpperCase()}</span></a>`;
+    html += `<a href="${SITE}/blog/${l.code}/${slugPath}" class="lang-item${active}"><span class="lang-flag">${l.flag}</span><span class="lang-name">${l.name}</span><span class="lang-code">${l.code.toUpperCase()}</span></a>`;
   });
   html += `</div></div><div class="lang-overlay" onclick="document.getElementById('lang-toggle').classList.remove('open')"></div></div>`;
   return html;
 }
 
 // ─── COMMON HEAD ───
-function headBlock(lang, locale, dir, title, desc, canonUrl, pagePath, imgUrl) {
+function headBlock(lang, locale, dir, title, desc, canonUrl, slugPath, imgUrl) {
   return `<!DOCTYPE html>
 <html lang="${locale}" dir="${dir}">
 <head>
@@ -52,7 +54,7 @@ function headBlock(lang, locale, dir, title, desc, canonUrl, pagePath, imgUrl) {
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="${canonUrl}">
-${hreflangTags(pagePath)}
+${hreflangTags(slugPath)}
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%236366f1'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>カ</text></svg>" type="image/svg+xml">
 
   <meta property="og:title" content="${title}">
@@ -88,7 +90,7 @@ function generateListing(langCode) {
   const p = assetPaths(langCode);
   const canon = `${SITE}/blog/${langCode}/`;
 
-  let html = headBlock(langCode, l.locale, l.dir, a.title, a.desc, canon, `${langCode}/`, null);
+  let html = headBlock(langCode, l.locale, l.dir, a.title, a.desc, canon, '', null);
   html += `  <link rel="stylesheet" href="${p.listCss}style.css">
   <link rel="stylesheet" href="${p.listCss}blog.css">
   <link rel="stylesheet" href="${p.listCss}blog-i18n.css">
@@ -101,7 +103,7 @@ function generateListing(langCode) {
         <div class="hero-badge">${a.badge}</div>
         <h1 id="blog-title">${a.h1}</h1>
         <p>${a.intro}</p>
-        ${langToggle(langCode, `${langCode}/`)}
+        ${langToggle(langCode, '')}
       </div>
     </section>
     <section class="blog-listing-section">
@@ -184,7 +186,7 @@ function generateArticle(langCode, slug) {
   // Fix CSS links that might be in inline styles - these are fine
 
   // Inject language toggle after social share row or after article-meta
-  const toggleHtml = langToggle(langCode, `${langCode}/${slug}/`);
+  const toggleHtml = langToggle(langCode, `${slug}/`);
   if (body.includes('social-share-row')) {
     body = body.replace(/(social-share-row"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${toggleHtml}`);
   } else if (body.includes('article-meta')) {
@@ -212,7 +214,7 @@ function generateArticle(langCode, slug) {
 
   // Build new head
   const titleText = `${card.h3} | Katakana Converter`;
-  let html = headBlock(langCode, l.locale, l.dir, titleText, card.p, canon, `${langCode}/${slug}/`, imgUrl);
+  let html = headBlock(langCode, l.locale, l.dir, titleText, card.p, canon, `${slug}/`, imgUrl);
 
   // Schema
   html += `  <script type="application/ld+json">
