@@ -189,6 +189,41 @@ function generateRelatedArticles(currentSlug, langCode) {
 }
 
 
+// ─── INJECT MID-ARTICLE INTERNAL LINK ───
+function injectMidArticleLink(body, currentSlug, langCode) {
+  const ui = UI[langCode];
+  const currentIndex = SLUGS.indexOf(currentSlug);
+  // mid index is +2 in the silo (bottom is +1)
+  const midIndex = (currentIndex + 2) % SLUGS.length;
+  const nextSlug = SLUGS[midIndex];
+  const card = ARTICLES.cards[nextSlug][langCode];
+
+  const midLinkHtml = `
+      <div class="read-also-box">
+        <span class="read-also-tag">${ui.readAlso}</span>
+        <h4 class="read-also-title">
+          <a href="../${nextSlug}/">${card.h3} →</a>
+        </h4>
+      </div>\n`;
+
+  // Insert after the second </h2>
+  let h2Count = 0;
+  const newBody = body.replace(/<\/h2>/g, (match) => {
+    h2Count++;
+    if (h2Count === 2) {
+      return match + midLinkHtml;
+    }
+    return match;
+  });
+
+  if (h2Count < 2) {
+    // If only one H2, insert after the first one
+    return body.replace(/<\/h2>/, (match) => match + midLinkHtml);
+  }
+  return newBody;
+}
+
+
 // ─── GENERATE ARTICLE WRAPPER ───
 // Reads the English article HTML, injects hreflang, toggle, and translates meta/structural content
 function generateArticle(langCode, slug) {
@@ -246,6 +281,9 @@ function generateArticle(langCode, slug) {
   // Replace Related Articles section with localized version
   const relatedHtml = generateRelatedArticles(slug, langCode);
   body = body.replace(/<section class="related-articles">[\s\S]*?<\/section>/i, relatedHtml);
+
+  // ── INJECT MID-ARTICLE LINK ──
+  body = injectMidArticleLink(body, slug, langCode);
 
   // Translate key UI strings in interactive elements
   body = body.replace(/>Table of Contents</g, `>${ui.toc}<`);
