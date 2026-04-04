@@ -9,7 +9,7 @@ const path = require('path');
 const { LANGS, UI } = require('./i18n-languages');
 const { ARTICLES } = require('./i18n-articles');
 
-const SITE = 'https://katakana-convrter-4vwi.vercel.app';
+const SITE = 'https://www.katakanaconverter.com';
 const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const SLUGS = ['basic-katakana-chart','hiragana-vs-katakana','katakana-quiz','common-katakana-words'];
 
