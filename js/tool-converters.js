@@ -42,6 +42,62 @@
       kana: 'テンプラ',
       arpabet: 'T EH M P ER AH'
     },
+    trumpet: {
+      kana: 'トランペット',
+      arpabet: 'T R AH M P AH T'
+    },
+    velvet: {
+      kana: 'ベルベット',
+      arpabet: 'V EH L V AH T'
+    },
+    crimson: {
+      kana: 'クリムゾン',
+      arpabet: 'K R IH M Z AH N'
+    },
+    binary: {
+      kana: 'バイナリー',
+      arpabet: 'B AY N ER IY'
+    },
+    compass: {
+      kana: 'コンパス',
+      arpabet: 'K AH M P AH S'
+    },
+    quantum: {
+      kana: 'クオンタム',
+      arpabet: 'K W AA N T AH M'
+    },
+    teacup: {
+      kana: 'ティーカップ',
+      arpabet: 'T IY K AH P'
+    },
+    harbor: {
+      kana: 'ハーバー',
+      arpabet: 'HH AA R B ER'
+    },
+    festival: {
+      kana: 'フェスティバル',
+      arpabet: 'F EH S T AH V AH L'
+    },
+    silver: {
+      kana: 'シルバー',
+      arpabet: 'S IH L V ER'
+    },
+    thunder: {
+      kana: 'サンダー',
+      arpabet: 'TH AH N D ER'
+    },
+    neon: {
+      kana: 'ネオン',
+      arpabet: 'N IY AA N'
+    },
+    library: {
+      kana: 'ライブラリー',
+      arpabet: 'L AY B R EH R IY'
+    },
+    lantern: {
+      kana: 'ランタン',
+      arpabet: 'L AE N T ER N'
+    },
     saoirse: {
       kana: 'サーシャ',
       arpabet: 'S ER SH AH'
@@ -371,7 +427,8 @@
       katakana: result.katakana,
       phonemes: result.details.map(function (detail) {
         return detail.word + ' -> [' + detail.phonemes.join(' ') + ']';
-      }).join('\n')
+      }).join('\n'),
+      source: 'english-rules'
     };
   }
 
@@ -406,7 +463,8 @@
     if (entry && entry.kana) {
       return {
         katakana: entry.kana,
-        phonemes: entry.arpabet || '[override]'
+        phonemes: entry.arpabet || '[override]',
+        source: 'english-override'
       };
     }
 
@@ -414,7 +472,8 @@
       var phonemes = parseArpabet(entry.arpabet);
       return {
         katakana: global.KatakanaEngine.postProcess(global.KatakanaEngine.phonemeToKatakana(phonemes)),
-        phonemes: phonemes.join(' ')
+        phonemes: phonemes.join(' '),
+        source: 'english-dictionary'
       };
     }
 
@@ -430,6 +489,8 @@
     var tokens = tokenizeLatinInput(text);
     var converted = [];
     var notes = [];
+    var tokenSources = [];
+    var lowConfidenceTokens = [];
     var allRomajiLike = tokens.length > 1 && tokens.every(function (token) {
       if (FORCE_ENGLISH_TOKENS.has(String(token).toLowerCase())) return false;
       return looksLikeJapaneseRomajiToken(token);
@@ -439,12 +500,14 @@
       if (hasKana(token)) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> kana');
+        tokenSources.push('kana');
         return;
       }
 
       if (allRomajiLike) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> romaji phrase');
+        tokenSources.push('romaji-phrase');
         return;
       }
 
@@ -452,23 +515,44 @@
       if (english && english.katakana) {
         converted.push(english.katakana);
         notes.push(english.phonemes || (token + ' -> english'));
+        tokenSources.push(english.source || 'english-dictionary');
         return;
       }
 
       if (looksLikeJapaneseRomajiToken(token)) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> romaji');
+        tokenSources.push('romaji');
         return;
       }
 
       english = convertEnglishWord(token, options);
       converted.push(english.katakana);
       notes.push(english.phonemes || (token + ' -> english'));
+      tokenSources.push(english.source || 'english-rules');
+      if ((english.source || 'english-rules') === 'english-rules') {
+        lowConfidenceTokens.push(token);
+      }
     });
+
+    var warning = '';
+    var sourceLabel = 'Smart conversion';
+    if (lowConfidenceTokens.length) {
+      warning = 'Approximate for: ' + lowConfidenceTokens.join(', ');
+      sourceLabel = 'Approximate English fallback';
+      notes.unshift(warning);
+    } else if (tokenSources.every(function (source) { return source === 'romaji' || source === 'romaji-phrase' || source === 'kana'; })) {
+      sourceLabel = 'Kana and romaji conversion';
+    } else if (tokenSources.some(function (source) { return source === 'english-override' || source === 'english-dictionary'; })) {
+      sourceLabel = 'Dictionary-backed conversion';
+    }
 
     return {
       katakana: converted.join(options.separator || ' '),
-      phonemes: notes.join('\n')
+      phonemes: notes.join('\n'),
+      sourceLabel: sourceLabel,
+      lowConfidence: lowConfidenceTokens.length > 0,
+      lowConfidenceTokens: lowConfidenceTokens
     };
   }
 

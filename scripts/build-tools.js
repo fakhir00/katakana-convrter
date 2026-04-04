@@ -21,7 +21,7 @@ const tools = [
     inputLabel: 'Type your English Name',
     placeholder: 'e.g. John Smith',
     buttonLabel: 'Convert Name to Katakana',
-    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
+    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
     deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'Katakana Name Converter',
     sections: [
@@ -66,7 +66,7 @@ const tools = [
     inputLabel: 'English Name',
     placeholder: 'Enter an English Name...',
     buttonLabel: 'Translate to Katakana',
-    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
+    logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
     deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'English Name to Katakana',
     sections: [
@@ -156,7 +156,7 @@ const tools = [
     inputLabel: 'Your Romaji Name',
     placeholder: 'Type your mapped name for web form validation...',
     buttonLabel: 'Get Full-Width Katakana',
-    logic: "var out = ToolConverters.convertLatinText(val, { imeMode: true }); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
+    logic: "var out = ToolConverters.convertLatinText(val, { imeMode: true }); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
     deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full Width Katakana Name Converter',
     sections: [
@@ -382,7 +382,7 @@ const tools = [
     inputLabel: 'Latin Text Context',
     placeholder: 'Enter Latin mapping phonetes...',
     buttonLabel: 'Convert Latin to Katakana',
-    logic: "var out = ToolConverters.convertLatinText(val); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
+    logic: "var out = ToolConverters.convertLatinText(val); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
     deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Latin to Katakana Converter',
     sections: [

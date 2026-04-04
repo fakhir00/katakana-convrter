@@ -32,7 +32,7 @@
       katakanaOutput.textContent = result.katakana;
       katakanaOutput.classList.remove('placeholder-text');
       phonemeOutput.textContent = result.phonemes || 'Smart conversion';
-      sourceTag.textContent = 'English + romaji smart conversion';
+      sourceTag.textContent = result.sourceLabel || 'English + romaji smart conversion';
 
       resultCard.classList.add('visible');
     }
