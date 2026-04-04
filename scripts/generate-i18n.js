@@ -191,14 +191,16 @@ function generateArticle(langCode, slug) {
 
   // Fix layout.js path
   body = body.replace(/src="\.\.\/\.\.\/js\/layout\.js"/g, `src="${p.artJs}layout.js"`);
-  // Fix CSS links that might be in inline styles - these are fine
+
+  // Remove existing toggle from the body if it already exists from a previous run or template
+  body = body.replace(/<div class="lang-toggle-wrap">[\s\S]*?<div class="lang-overlay"[^>]*><\/div><\/div>/g, '');
 
   // Inject language toggle after social share row or after article-meta
   const toggleHtml = langToggle(langCode, `${slug}/`);
   if (body.includes('social-share-row')) {
-    body = body.replace(/(social-share-row"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${toggleHtml}`);
+    body = body.replace(/(class="social-share-row"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${toggleHtml}`);
   } else if (body.includes('article-meta')) {
-    body = body.replace(/(<\/div>\s*<\/div>\s*<div class="container">)/, `${toggleHtml}\n$1`);
+    body = body.replace(/(class="article-meta"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${toggleHtml}`);
   }
 
   // Translate key UI strings in interactive elements
@@ -284,29 +286,43 @@ function updateEnglishPages() {
   // Blog listing
   const listFile = path.join(BLOG_DIR, 'index.html');
   let listHtml = fs.readFileSync(listFile, 'utf8');
-  if (!listHtml.includes('hreflang')) {
-    const hrefTags = hreflangTags('');
-    listHtml = listHtml.replace('</head>', `${hrefTags}  <link rel="stylesheet" href="../css/blog-i18n.css">\n</head>`);
-    // Add toggle after the intro paragraph (single injection only)
-    const toggle = langToggle('en', '');
-    listHtml = listHtml.replace(/(<p>In-depth guides[^<]*<\/p>)/, `$1\n        ${toggle}`);
-    fs.writeFileSync(listFile, listHtml, 'utf8');
-    console.log('  ✅ blog/index.html');
-  }
+  
+  // Remove existing hreflang block to avoid duplicates
+  listHtml = listHtml.replace(/<link rel="alternate" hreflang=[^>]+>\n/g, '');
+  listHtml = listHtml.replace(/<link rel="stylesheet" href="\.\.\/css\/blog-i18n\.css">\n/g, '');
+  // Remove existing toggle
+  listHtml = listHtml.replace(/<div class="lang-toggle-wrap">[\s\S]*?<div class="lang-overlay"[^>]*><\/div><\/div>/g, '');
+
+  const hrefTags = hreflangTags('');
+  listHtml = listHtml.replace('</head>', `${hrefTags}  <link rel="stylesheet" href="../css/blog-i18n.css">\n</head>`);
+  
+  const toggle = langToggle('en', '');
+  listHtml = listHtml.replace(/(<p>In-depth guides[^<]*<\/p>)/, `$1\n        ${toggle}`);
+  fs.writeFileSync(listFile, listHtml, 'utf8');
+  console.log('  ✅ blog/index.html');
 
   // Article pages
   SLUGS.forEach(slug => {
     const artFile = path.join(BLOG_DIR, slug, 'index.html');
     let artHtml = fs.readFileSync(artFile, 'utf8');
-    if (!artHtml.includes('hreflang')) {
-      const hrefTags = hreflangTags(`${slug}/`);
-      artHtml = artHtml.replace('</head>', `${hrefTags}  <link rel="stylesheet" href="../../css/blog-i18n.css">\n</head>`);
-      // Add toggle after social share row
-      const toggle = langToggle('en', `${slug}/`);
-      artHtml = artHtml.replace(/(class="social-share-row"[^>]*>[\s\S]*?<\/div>\s*<\/div>)/, `$1\n        ${toggle}`);
-      fs.writeFileSync(artFile, artHtml, 'utf8');
-      console.log(`  ✅ blog/${slug}/index.html`);
+    
+    // Clean up
+    artHtml = artHtml.replace(/<link rel="alternate" hreflang=[^>]+>\n/g, '');
+    artHtml = artHtml.replace(/<link rel="stylesheet" href="\.\.\/\.\.\/css\/blog-i18n\.css">\n/g, '');
+    artHtml = artHtml.replace(/<div class="lang-toggle-wrap">[\s\S]*?<div class="lang-overlay"[^>]*><\/div><\/div>/g, '');
+
+    const tags = hreflangTags(`${slug}/`);
+    artHtml = artHtml.replace('</head>', `${tags}  <link rel="stylesheet" href="../../css/blog-i18n.css">\n</head>`);
+    
+    const artToggle = langToggle('en', `${slug}/`);
+    if (artHtml.includes('social-share-row')) {
+      artHtml = artHtml.replace(/(class="social-share-row"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${artToggle}`);
+    } else if (artHtml.includes('article-meta')) {
+      artHtml = artHtml.replace(/(class="article-meta"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${artToggle}`);
     }
+    
+    fs.writeFileSync(artFile, artHtml, 'utf8');
+    console.log(`  ✅ blog/${slug}/index.html`);
   });
 
   console.log('\n✨ All done!');

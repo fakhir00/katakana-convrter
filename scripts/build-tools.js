@@ -21,7 +21,7 @@ const tools = [
     inputLabel: 'Type your English Name',
     placeholder: 'e.g. John Smith',
     buttonLabel: 'Convert Name to Katakana',
-    logic: "var out = KatakanaEngine.convert(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes;",
+    logic: "var out = ToolConverters.convertEnglishWithEngine(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Rule-based conversion'; if(sourceTag) sourceTag.textContent = 'English pronunciation engine';",
     deps: '<script src="../js/engine.js"></script>',
     h1: 'Katakana Name Converter',
     sections: [
@@ -66,7 +66,7 @@ const tools = [
     inputLabel: 'English Name',
     placeholder: 'Enter an English Name...',
     buttonLabel: 'Translate to Katakana',
-    logic: "var out = KatakanaEngine.convert(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes;",
+    logic: "var out = ToolConverters.convertEnglishWithEngine(val, { rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Rule-based conversion'; if(sourceTag) sourceTag.textContent = 'English pronunciation engine';",
     deps: '<script src="../js/engine.js"></script>',
     h1: 'English Name to Katakana',
     sections: [
@@ -111,7 +111,7 @@ const tools = [
     inputLabel: 'Romaji or Half-Width Katakana',
     placeholder: 'Type half-width/romaji texts here...',
     buttonLabel: 'Convert to Full-Width',
-    logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full-Width Katakana Converter',
     sections: [
@@ -156,7 +156,7 @@ const tools = [
     inputLabel: 'Your Romaji Name',
     placeholder: 'Type your mapped name for web form validation...',
     buttonLabel: 'Get Full-Width Katakana',
-    logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var out = ToolConverters.convertLatinText(val, { imeMode: true }); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full Width Katakana Name Converter',
     sections: [
@@ -201,8 +201,9 @@ const tools = [
     inputLabel: 'Katakana Text',
     placeholder: 'Paste Katakana (e.g. カタカナ)...',
     buttonLabel: 'Convert to Hiragana',
-    logic: "var text = wanakana.toHiragana(val); outEl.textContent = text ? text : 'ひらがな'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var text = wanakana.toHiragana(val); outEl.textContent = text ? text : 'ひらがな'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
+    emptyOutput: 'ひらがな',
     h1: 'Katakana to Hiragana Converter',
     sections: [
       {
@@ -246,7 +247,7 @@ const tools = [
     inputLabel: 'Hiragana Text',
     placeholder: 'Paste Hiragana (e.g. ひらがな)...',
     buttonLabel: 'Convert to Katakana',
-    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Hiragana to Katakana Converter',
     sections: [
@@ -291,7 +292,7 @@ const tools = [
     inputLabel: 'Japanese Name (Romaji)',
     placeholder: 'e.g. Suzuki Ichiro...',
     buttonLabel: 'Create Katakana',
-    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Romaji conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Japanese Name to Katakana',
     sections: [
@@ -336,7 +337,7 @@ const tools = [
     inputLabel: 'Type Romaji',
     placeholder: 'Type Romaji blocks e.g. "konnichiwa"...',
     buttonLabel: 'Convert to Katakana',
-    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Romaji conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Romaji to Katakana Converter',
     sections: [
@@ -381,7 +382,7 @@ const tools = [
     inputLabel: 'Latin Text Context',
     placeholder: 'Enter Latin mapping phonetes...',
     buttonLabel: 'Convert Latin to Katakana',
-    logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js';",
+    logic: "var out = ToolConverters.convertLatinText(val); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
     deps: '<script src="https://unpkg.com/wanakana"></script>',
     h1: 'Latin to Katakana Converter',
     sections: [
@@ -471,8 +472,9 @@ const tools = [
     inputLabel: 'Paste Kanji Sentences',
     placeholder: 'Paste Kanji text here...',
     buttonLabel: 'Translate to Hiragana',
-    logic: "if(!window.kuroshiroInstance){phEl.textContent='Please wait, loading Kanji dictionary (20MB)...';return;}phEl.textContent='Converting...';window.kuroshiroInstance.convert(val,{to:'hiragana'}).then(function(result){outEl.textContent=result;phEl.textContent='Powered by Kuroshiro & Kuromoji';}).catch(function(err){console.error(err);phEl.textContent='Error parsing Kanji';});",
+    logic: "if(!window.kuroshiroInstance){phEl.textContent='Please wait, loading Kanji dictionary (20MB)...';return;}phEl.textContent='Converting...';window.kuroshiroInstance.convert(val,{to:'hiragana'}).then(function(result){outEl.textContent=result;phEl.textContent='Powered by Kuroshiro & Kuromoji'; if(sourceTag) sourceTag.textContent='Japanese reading parser';}).catch(function(err){console.error(err);phEl.textContent='Error parsing Kanji';});",
     deps: '<script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script>',
+    emptyOutput: 'ひらがな',
     h1: 'Kanji to Hiragana Converter',
     sections: [
       {
@@ -516,8 +518,8 @@ const tools = [
     inputLabel: 'Insert Chinese Hanzi',
     placeholder: 'Paste Traditional/Hanzi Characters...',
     buttonLabel: 'Retrieve Katakana',
-    logic: "if(!window.kuroshiroInstance){phEl.textContent='Please wait, loading Kanji dictionary (20MB)...';return;}phEl.textContent='Converting...';window.kuroshiroInstance.convert(val,{to:'katakana'}).then(function(result){outEl.textContent=result;phEl.textContent='Powered by Kuroshiro & Kuromoji';}).catch(function(err){console.error(err);phEl.textContent='Error parsing Chinese Characters';});",
-    deps: '<script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script>',
+    logic: "var out = ToolConverters.convertChineseToKatakana(val); outEl.textContent = out.katakana || 'カタカナ'; phEl.textContent = out.phonemes || 'Pinyin conversion'; if(sourceTag) sourceTag.textContent = 'Chinese pinyin conversion';",
+    deps: '<script src="https://unpkg.com/pinyin-pro@3.27.0/dist/index.umd.js"></script>',
     h1: 'Chinese to Katakana Converter',
     sections: [
       {
@@ -942,7 +944,9 @@ tools.forEach(function (tool) {
     locHtml = locHtml.replace(/SiteLayout\.init\('\/'\);/g, 'SiteLayout.init(\'/' + tool.path + '\');');
   }
 
-  const customScript = tool.deps + '<script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var sourceTag = document.getElementById("source-tag"); var charCount = document.getElementById("char-count"); function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; return; } outEl.classList.remove("placeholder-text"); ' + tool.logic + ' } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); input.addEventListener("keypress", function(e) { if(e.key === "Enter") process(); }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; charCount.textContent = "0"; }); });</script></body>';
+  const helperScript = tool.isFile ? '<script src="js/tool-converters.js"></script>' : '<script src="../js/tool-converters.js"></script>';
+  const emptyOutput = tool.emptyOutput || 'カタカナ';
+  const customScript = helperScript + tool.deps + '<script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var sourceTag = document.getElementById("source-tag"); var charCount = document.getElementById("char-count"); function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "' + emptyOutput + '"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; return; } outEl.classList.remove("placeholder-text"); ' + tool.logic + ' } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); input.addEventListener("keypress", function(e) { if(e.key === "Enter") process(); }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "' + emptyOutput + '"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; charCount.textContent = "0"; }); });</script></body>';
   locHtml = locHtml.replace(/<\/body>/, customScript);
 
   if (tool.isFile) {
