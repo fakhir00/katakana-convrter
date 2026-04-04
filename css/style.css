@@ -934,9 +934,10 @@ body::before {
   border: 1px solid rgba(142, 125, 255, 0.14);
   padding: 10px 0;
   list-style: none;
-  margin: 8px 0 0;
+  margin: 0;
 }
-.nav-dropdown:hover .dropdown-content { display: block; }
+.nav-dropdown:hover .dropdown-content,
+.nav-dropdown.open .dropdown-content { display: block; }
 .dropdown-content li { display: block; }
 .dropdown-content a {
   display: block;
@@ -958,6 +959,11 @@ body::before {
   text-align: center;
   position: relative;
   z-index: 100;
+}
+
+.page-hero > .container:first-child {
+  position: relative;
+  z-index: 10;
 }
 
 .page-hero h1 {

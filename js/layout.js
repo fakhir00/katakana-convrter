@@ -135,6 +135,26 @@
         });
       });
     }
+
+    // Desktop dropdown click to open
+    document.querySelectorAll('.nav-dropdown > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var parent = this.parentElement;
+        var isOpen = parent.classList.contains('open');
+        // Close all others
+        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+        if (!isOpen) parent.classList.add('open');
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+      }
+    });
+
   }
 
   function socialIcon(type) {

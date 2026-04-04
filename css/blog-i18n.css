@@ -59,8 +59,23 @@
   border: 1px solid rgba(122, 110, 214, 0.22);
   border-radius: 14px;
   padding: 8px 0;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
+  z-index: 10000;
+}
+
+.lang-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.lang-dropdown::-webkit-scrollbar-track {
+  background: rgba(18, 14, 40, 0.5);
+  border-radius: 4px;
+}
+.lang-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(122, 110, 214, 0.5);
+  border-radius: 4px;
+}
+.lang-dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(122, 110, 214, 0.8);
 }
 .lang-toggle.open .lang-dropdown {
   display: block;
