@@ -142,6 +142,13 @@
     'bailey': 'ベイリー', 'rivera': 'リベラ', 'cooper': 'クーパー',
     'richardson': 'リチャードソン', 'cox': 'コックス', 'ward': 'ウォード',
     'peterson': 'ピーターソン', 'gray': 'グレイ', 'ramirez': 'ラミレス',
+    'amazon': 'アマゾン', 'apple': 'アップル', 'google': 'グーグル',
+    'microsoft': 'マイクロソフト', 'facebook': 'フェイスブック',
+    'instagram': 'インスタグラム', 'twitter': 'ツイッター',
+    'youtube': 'ユーチューブ', 'netflix': 'ネットフリックス',
+    'spotify': 'スポティファイ', 'tesla': 'テスラ',
+    'toyota': 'トヨタ', 'honda': 'ホンダ', 'nissan': 'ニッサン',
+    'sony': 'ソニー', 'panasonic': 'パナソニック',
   };
 
   /* ========================================
@@ -491,13 +498,16 @@
     }
   }
 
-  function phonemeToKatakana(phonemes) {
+  function phonemeToKatakana(phonemes, options) {
+    options = options || {};
+    var stressMap = options.stressMap || [];
     var result = '';
     var i = 0;
     var len = phonemes.length;
 
     while (i < len) {
       var ph = phonemes[i];
+      var isStressed = stressMap[i] || false;
 
       // Gemination marker
       if (ph === 'Q') {
@@ -534,7 +544,13 @@
           var vi = vowelToIndex(vp);
           var kana = CV_TABLE[ph] ? CV_TABLE[ph][vi] : '';
           result += kana;
-          result += getVowelExtension(vp);
+          
+          // Stress-based expansion or specific phoneme expansion
+          var extension = getVowelExtension(vp);
+          if (stressMap[i + 1] && !extension) {
+            extension = 'ー';
+          }
+          result += extension;
           i += 2;
         } else {
           // Consonant alone → epenthetic vowel

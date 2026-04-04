@@ -465,9 +465,7 @@
   }
 
   function parseArpabet(arpabet) {
-    return String(arpabet || '').split(/\s+/).filter(Boolean).map(function (phoneme) {
-      return phoneme.replace(/[0-9]/g, '');
-    });
+    return String(arpabet || '').split(/\s+/).filter(Boolean);
   }
 
   function lookupEngineDictionaryWord(word) {
@@ -602,10 +600,17 @@
     }
 
     if (entry && entry.arpabet && global.KatakanaEngine) {
-      var phonemes = parseArpabet(entry.arpabet);
+      var fullPhonemes = parseArpabet(entry.arpabet);
+      // Strip stress for the engine match, but keep for vowel extension logic
+      var basePhonemes = fullPhonemes.map(function(p) { return p.replace(/[0-9]/g, ''); });
+      
+      // Determine which indices have primary stress
+      var stressMap = fullPhonemes.map(function(p) { return p.endsWith('1') || p.endsWith('2'); });
+
+      var katakana = global.KatakanaEngine.phonemeToKatakana(basePhonemes, { stressMap: stressMap });
       return {
-        katakana: global.KatakanaEngine.postProcess(global.KatakanaEngine.phonemeToKatakana(phonemes)),
-        phonemes: phonemes.join(' '),
+        katakana: global.KatakanaEngine.postProcess(katakana),
+        phonemes: fullPhonemes.join(' '),
         source: 'english-dictionary'
       };
     }

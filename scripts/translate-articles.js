@@ -8,7 +8,7 @@ const BLOG_DIR = path.join(__dirname, '..', 'blog');
 const ARTICLES = ['basic-katakana-chart', 'hiragana-vs-katakana', 'katakana-quiz', 'common-katakana-words'];
 
 // Elements we want to translate. We avoid translating script, style, code, pre, .jp-char
-const selector = 'p, h2, h3, h4, h5, h6, li:not(.toc-list li), th, .stat-label, .callout-content p';
+const selector = 'p, h2, h3, h4, h5, h6, li:not(.toc-list li), .toc-list li a, th, .stat-label, .callout-content p';
 
 async function translateChunk(htmlChunk, targetLang) {
   try {

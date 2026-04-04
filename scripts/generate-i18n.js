@@ -152,6 +152,41 @@ function generateListing(langCode) {
   return html;
 }
 
+// ─── GENERATE RELATED ARTICLES HTML ───
+function generateRelatedArticles(currentSlug, langCode) {
+  const ui = UI[langCode];
+  const relatedSlugs = SLUGS.filter(s => s !== currentSlug).slice(0, 2);
+  
+  let html = `<section class="related-articles">
+      <div class="container">
+        <h2 class="section-title">${ui.related}</h2>
+        <div class="blog-grid">
+`;
+
+  relatedSlugs.forEach(slug => {
+    const card = ARTICLES.cards[slug][langCode];
+    const imgBase = slug === 'basic-katakana-chart' ? 'katakana-chart-hero' :
+                    slug === 'hiragana-vs-katakana' ? 'hiragana-vs-katakana-hero' :
+                    slug === 'katakana-quiz' ? 'katakana-quiz-hero' : 'common-words-hero';
+    
+    html += `          <a href="../${slug}/" class="blog-card">
+            <img src="../${slug}/images/${imgBase}.png" alt="${card.h3}" class="blog-card-image" loading="lazy" width="680" height="220">
+            <div class="blog-card-body">
+              <div class="blog-card-meta"><span class="blog-card-tag">${card.tag}</span><time datetime="2026-04-03">April 3, 2026</time></div>
+              <h3>${card.h3}</h3>
+              <p>${card.p}</p>
+              <span class="blog-card-link">${ui.readArticle}</span>
+            </div>
+          </a>
+`;
+  });
+
+  html += `        </div>
+      </div>
+    </section>`;
+  return html;
+}
+
 // ─── GENERATE ARTICLE WRAPPER ───
 // Reads the English article HTML, injects hreflang, toggle, and translates meta/structural content
 function generateArticle(langCode, slug) {
@@ -202,6 +237,13 @@ function generateArticle(langCode, slug) {
   } else if (body.includes('article-meta')) {
     body = body.replace(/(class="article-meta"[^>]*>[\s\S]*?<\/div>)/, `$1\n        ${toggleHtml}`);
   }
+
+  // Replace Article Title (H1) with localized version
+  body = body.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, `<h1 id="article-title">${card.h3}</h1>`);
+
+  // Replace Related Articles section with localized version
+  const relatedHtml = generateRelatedArticles(slug, langCode);
+  body = body.replace(/<section class="related-articles">[\s\S]*?<\/section>/i, relatedHtml);
 
   // Translate key UI strings in interactive elements
   body = body.replace(/>Table of Contents</g, `>${ui.toc}<`);
