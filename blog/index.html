@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog | Katakana Converter — Learn Japanese Writing</title>
-  <meta name="description" content="Explore guides and articles on Japanese writing systems including Katakana charts, Hiragana vs Katakana comparisons, and tips for mastering Japanese characters.">
-  <meta name="keywords" content="katakana blog, japanese writing, katakana chart, hiragana vs katakana, learn japanese, japanese characters">
+  <meta name="description" content="Explore guides and articles on Japanese writing systems including Katakana charts, Hiragana vs Katakana comparisons, quizzes, and common Katakana vocabulary.">
+  <meta name="keywords" content="katakana blog, japanese writing, katakana chart, hiragana vs katakana, katakana quiz, common katakana words, learn japanese">
   <meta name="author" content="Katakana Converter">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="https://katakana-convrter-4vwi.vercel.app/blog/">
 
   <!-- Favicon -->
@@ -16,7 +17,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Blog | Katakana Converter — Learn Japanese Writing">
-  <meta property="og:description" content="Explore guides and articles on Japanese writing systems including Katakana charts, Hiragana vs Katakana comparisons, and tips for mastering Japanese characters.">
+  <meta property="og:description" content="Explore guides and articles on Japanese writing systems including Katakana charts, quizzes, and vocabulary.">
   <meta property="og:url" content="https://katakana-convrter-4vwi.vercel.app/blog/">
   <meta property="og:site_name" content="Katakana Converter">
   <meta property="og:locale" content="en_US">
@@ -25,7 +26,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Blog | Katakana Converter — Learn Japanese Writing">
-  <meta name="twitter:description" content="Explore guides and articles on Japanese writing systems including Katakana charts, Hiragana vs Katakana comparisons, and tips for mastering Japanese characters.">
+  <meta name="twitter:description" content="Guides, quizzes, and vocabulary for Japanese writing systems.">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="../css/style.css">
@@ -43,27 +44,21 @@
   }
   </script>
 
-  <!-- JSON-LD: CollectionPage -->
+  <!-- JSON-LD: CollectionPage + Blog -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Katakana Converter Blog",
-    "description": "Guides, tutorials, and articles on Japanese writing systems, Katakana charts, and more.",
+    "description": "Guides, tutorials, quizzes, and vocabulary on Japanese writing systems and Katakana.",
     "url": "https://katakana-convrter-4vwi.vercel.app/blog/",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "url": "https://katakana-convrter-4vwi.vercel.app/blog/basic-katakana-chart/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "url": "https://katakana-convrter-4vwi.vercel.app/blog/hiragana-vs-katakana/"
-        }
+        { "@type": "ListItem", "position": 1, "url": "https://katakana-convrter-4vwi.vercel.app/blog/basic-katakana-chart/" },
+        { "@type": "ListItem", "position": 2, "url": "https://katakana-convrter-4vwi.vercel.app/blog/hiragana-vs-katakana/" },
+        { "@type": "ListItem", "position": 3, "url": "https://katakana-convrter-4vwi.vercel.app/blog/katakana-quiz/" },
+        { "@type": "ListItem", "position": 4, "url": "https://katakana-convrter-4vwi.vercel.app/blog/common-katakana-words/" }
       ]
     }
   }
@@ -80,7 +75,7 @@
       <div class="container">
         <div class="hero-badge">Guides & Articles on Japanese Writing</div>
         <h1 id="blog-title">Katakana Converter Blog</h1>
-        <p>In-depth guides, interactive charts, and expert articles covering Japanese writing systems — from basic Katakana charts to advanced comparisons between Hiragana and Katakana.</p>
+        <p>In-depth guides, interactive charts, practice quizzes, and essential vocabulary covering Japanese writing systems — from basic Katakana charts to advanced comparisons between Hiragana and Katakana.</p>
       </div>
     </section>
 
@@ -94,13 +89,11 @@
           <a href="basic-katakana-chart/" class="blog-card" id="article-katakana-chart">
             <img src="basic-katakana-chart/images/katakana-chart-hero.png"
                  alt="Interactive Basic Katakana Chart showing all 46 Japanese Katakana characters"
-                 class="blog-card-image"
-                 loading="lazy"
-                 width="680" height="220">
+                 class="blog-card-image" loading="lazy" width="680" height="220">
             <div class="blog-card-body">
               <div class="blog-card-meta">
                 <span class="blog-card-tag">Guide</span>
-                <span>April 3, 2026</span>
+                <time datetime="2026-04-03">April 3, 2026</time>
                 <span>•</span>
                 <span>12 min read</span>
               </div>
@@ -114,18 +107,52 @@
           <a href="hiragana-vs-katakana/" class="blog-card" id="article-hiragana-vs-katakana">
             <img src="hiragana-vs-katakana/images/hiragana-vs-katakana-hero.png"
                  alt="Hiragana vs Katakana comparison showing the visual differences between both Japanese scripts"
-                 class="blog-card-image"
-                 loading="lazy"
-                 width="680" height="220">
+                 class="blog-card-image" loading="lazy" width="680" height="220">
             <div class="blog-card-body">
               <div class="blog-card-meta">
                 <span class="blog-card-tag">Comparison</span>
-                <span>April 3, 2026</span>
+                <time datetime="2026-04-03">April 3, 2026</time>
                 <span>•</span>
                 <span>14 min read</span>
               </div>
               <h3>Hiragana vs Katakana: Key Differences and Which to Learn First</h3>
               <p>Understand the fundamental differences between Hiragana and Katakana, their origins, when to use each, and expert tips for rapid memorization.</p>
+              <span class="blog-card-link">Read Article →</span>
+            </div>
+          </a>
+
+          <!-- Article 3: Katakana Quiz -->
+          <a href="katakana-quiz/" class="blog-card" id="article-katakana-quiz">
+            <img src="katakana-quiz/images/katakana-quiz-hero.png"
+                 alt="Interactive Katakana Quiz with gamified quiz interface and answer options"
+                 class="blog-card-image" loading="lazy" width="680" height="220">
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="blog-card-tag">Practice</span>
+                <time datetime="2026-04-03">April 3, 2026</time>
+                <span>•</span>
+                <span>10 min read</span>
+              </div>
+              <h3>Katakana Quiz: Free Interactive Practice Test for All Characters</h3>
+              <p>Test your Katakana reading skills with multiple quiz modes — basic characters, Dakuon challenge, and a 60-second speed round with instant feedback.</p>
+              <span class="blog-card-link">Read Article →</span>
+            </div>
+          </a>
+
+          <!-- Article 4: Common Katakana Words -->
+          <a href="common-katakana-words/" class="blog-card" id="article-common-katakana-words">
+            <img src="common-katakana-words/images/common-words-hero.png"
+                 alt="Common Katakana Words including コーヒー, テレビ, パソコン, レストラン"
+                 class="blog-card-image" loading="lazy" width="680" height="220">
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span class="blog-card-tag">Vocabulary</span>
+                <time datetime="2026-04-03">April 3, 2026</time>
+                <span>•</span>
+                <span>15 min read</span>
+              </div>
+              <h3>100+ Common Katakana Words Every Learner Should Know</h3>
+              <p>The essential Katakana vocabulary list organized by category — food, technology, fashion, travel, and more — with romaji and English meanings.</p>
               <span class="blog-card-link">Read Article →</span>
             </div>
           </a>
