@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>목차</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">기본 문자</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">다쿠온+한다쿠온</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">퀴즈 모드</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">연습 라운드</div></div>
+      </div>
+
+      <h2 id="why-quiz">왜 가타카나 퀴즈로 연습해야 하나요?</h2>
+      <p>가타카나를 빠르고 정확하게 읽는 것은 일본어를 배우는 사람에게 필수적인 기술입니다. <strong>가타카나 퀴즈</strong>는 인지 과학 연구에 따르면 가장 효과적인 학습 기법인 능동 회상을 사용하여 수동 복습만 할 때보다 훨씬 빠르게 문자 인식을 강화합니다.</p>
+      <p>능동 회상은 단순히 정보를 인식하는 것이 아니라 뇌가 기억에서 정보를 검색하도록 강제함으로써 작동합니다. 문자 읽기를 성공적으로 기억할 때마다 신경 경로가 강화되어 향후 기억이 더 빠르고 자동으로 이루어집니다.</p>
+      <ul>
+        <li><strong>즉각적인 피드백</strong>은 문제가 있는 캐릭터를 즉시 식별하는 데 도움이 됩니다.</li>
+        <li><strong>무작위 순서</strong>는 개별 문자 대신 순서를 기억하는 것을 방지합니다.</li>
+        <li><strong>점수 추적</strong>은 여러 세션에 걸쳐 측정 가능한 진행 상황을 제공합니다.</li>
+        <li><strong>게임화</strong>는 반복적인 연습을 더욱 흥미롭고 지속 가능하게 만듭니다.</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>최상의 결과를 얻으려면 한 번의 긴 세션보다는 하루에 여러 번 짧은 5~10분 세션으로 퀴즈를 풀어보세요. 간격 반복 연구에 따르면 분산 연습이 훨씬 더 나은 장기 기억력을 제공하는 것으로 나타났습니다.</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">기초 가타카나 퀴즈(46자)</h2>
+      <p>46개의 기본 가타카나 문자에 대한 지식을 테스트해 보세요. 각 질문에는 네 가지 로마자 읽기가 가능한 문자가 표시됩니다. 올바른 것을 선택하세요.</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 기본 가타카나 퀴즈</h3>
+        <p class="quiz-subtitle">각 문자에 대해 올바른 로마자 읽기를 선택하세요.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">이 캐릭터의 로마자는 무엇입니까?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">다쿠온 &amp; 한다쿠온 챌린지</h2>
+      <p>더 어려운 도전을 할 준비가 되셨나요? 이 퀴즈는 유성(<strong>다쿠온</strong>) 및 반성(<strong>한다쿠온</strong>) 문자, 즉 많은 학습자가 까다롭게 생각하는 수정된 가타카나에만 초점을 맞추고 있습니다.</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ 다쿠온 &amp; 한다쿠온 퀴즈</h3>
+        <p class="quiz-subtitle">이러한 수정된 문자는 일반적으로 혼동됩니다. 정확성을 테스트해보세요.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">이 캐릭터의 로마자는 무엇입니까?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">스피드 라운드 — 시간 제한이 있는 챌린지</h2>
+      <p>가타카나를 잘 알고 있다고 생각하시나요? <strong>스피드 라운드</strong>를 시도하여 60초 안에 얼마나 많은 문자를 정확하게 식별할 수 있는지 확인해 보세요. 이는 정확성뿐만 아니라 실제 일본어 읽기에 중요한 기술인 읽기 속도도 테스트합니다.</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ 60초 속도 챌린지</h3>
+        <p class="quiz-subtitle">1분 안에 몇 개나 맞힐 수 있나요?</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>캐릭터 그룹 마스터리</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">가타카나 퀴즈 점수를 향상시키는 팁</h2>
+      <ol>
+        <li><strong>행별 학습</strong> — 결합 퀴즈에서 혼합하기 전에 한 번에 하나의 자음 행(모음 → K → S → T...)을 익히세요.</li>
+        <li><strong>혼란스러운 쌍에 집중</strong> — 시브(shi/tsu) 및 ソ/ん(so/n)과 같은 문자는 비슷해 보입니다. 구체적으로 구별하는 연습을 해보세요.</li>
+        <li><strong>퀴즈하면서 쓰기</strong> — 대답하면서 종이에 각 문자를 따라 가세요. 운동 기억은 시각적 인식을 강화합니다.</li>
+        <li><strong>오답 검토</strong> — 퀴즈 세션이 끝날 때마다 놓친 문자를 다시 살펴보세요. 이것이 가장 약한 연결고리입니다.</li>
+        <li><strong>속도를 점진적으로 높이세요</strong> — 정확하게 답변할 수 있게 되면 더 빠르게 답변하는 데 집중하세요. 실제 일본어를 읽으려면 즉각적인 인식이 필요합니다.</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Watch out for these frequently confused Katakana pairs: 시 (shi) vs 투 (tsu), 소 (so) vs n (n), 수 (su) vs 누 (nu), 우 (u) vs 와 (wa). The stroke direction is the key differentiator.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">자주 묻는 질문</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>각 질문에는 가타카나 문자와 네 가지 로마자 옵션이 표시됩니다. 점수를 얻으려면 올바른 판독값을 선택하세요. 정답을 보여주는 즉각적인 피드백을 받을 수 있으며 세션 전반에 걸쳐 점수가 추적됩니다.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>예. 위의 다양한 퀴즈 섹션을 사용하여 기본 가타카나(46자), 다쿠온 및 한다쿠온(성우/반성음)에 집중하거나 모든 문자 유형을 혼합하는 시간 제한 속도 라운드를 시도해 보세요.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>퀴즈는 무작위 문제로 계속 진행되므로 원하는 만큼 연습할 수 있습니다. 각 세션은 정확도를 추적하여 더 많은 연구가 필요한 캐릭터를 식별하는 데 도움을 줍니다.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>The most commonly confused pairs are: シ (shi) and ツ (tsu), ソ (so) and n (n), 수 (su) and ヌ (nu). These pairs share similar stroke patterns but differ in stroke direction.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">소스 &amp; 참고자료</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>일본재단 — <em>마루고토: 일본의 언어와 문화</em>, 공식 JLPT 준비 자료</li>
+          <li>JapaneseJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">가타카나 퀴즈: 일본어 가타카나 문자 연습</a></li>
+          <li>두부 — <em>가타카나 배우기: 최고의 가이드</em>, 가타카나 학습 방법론</li>
+          <li>능동 회상과 간격 반복에 관한 인지 심리학 연구(Karpicke &amp; Blunt, 2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-꾸밈:none;">가타카나 변환기 팀</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">일본어 학습을 위한 무료 도구를 구축합니다. 우리 팀은 전 세계 학습자를 위한 정확한 음소 기반 가타카나 변환 및 교육 리소스에 중점을 두고 있습니다.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>가타카나 기술을 적용해보세요</h3>
+        <p>실제 상황에서 이러한 문자를 보려면 영어 단어를 가타카나로 변환해 보세요.</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    

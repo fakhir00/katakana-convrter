@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>目次</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">基本的なキャラクター</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">濁音+半濁音</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">クイズモード</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">練習ラウンド</div></div>
+      </div>
+
+      <h2 id="why-quiz">カタカナクイズで練習する理由</h2>
+      <p>カタカナを速く正確に読むことは、日本語を学習する人にとって不可欠なスキルです。 <strong>カタカナクイズ</strong>は、認知科学の研究によると最も効果的な学習テクニックである能動的想起を使用して、受動的復習のみよりもはるかに速く文字認識を強化します。</p>
+      <p>アクティブリコールは、単に情報を認識するのではなく、脳に記憶から情報を取得させることによって機能します。 文字の読みをうまく思い出すたびに、神経経路が強化され、今後の呼び出しがより速く、より自動的に行われるようになります。</p>
+      <ul>
+        <li><strong>即時フィードバック</strong>により、問題のある文字をすぐに特定できます</li>
+        <li><strong>ランダムな順序</strong>により、個々の文字ではなくシーケンスを記憶することができなくなります</li>
+        <li><strong>スコア追跡</strong>により、複数のセッションにわたって測定可能な進歩が得られます</li>
+        <li><strong>ゲーミフィケーション</strong>により、反復練習がより魅力的で持続可能になります</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>最良の結果を得るには、1 回の長いセッションではなく、5 ～ 10 分の短いセッションで 1 日に複数回クイズに答えてください。 間隔をあけて反復する調査では、分散型の実践により長期的な定着率が大幅に向上することが示されています。</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">基本カタカナクイズ (46文字)</h2>
+      <p>46 文字すべての基本的なカタカナ文字に関する知識をテストします。 各質問では、ローマ字の 4 つの読みが可能な文字が表示されます。正しいものを選択してください。</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 基本カタカナクイズ</h3>
+        <p class="quiz-subtitle">各文字の正しいローマ字読みを選択してください。</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">この文字のローマ字は何ですか?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">ダクオン&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;;ハンダクオンチャレンジ</h2>
+      <p>より困難な挑戦に挑戦する準備はできていますか? このクイズは、多くの学習者が難しいと感じる変形カタカナである、濁音 (<strong>濁音</strong>) と半濁音 (<strong>半濁音</strong>) の文字にのみ焦点を当てています。</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ ダクオン＆ダクオン半濁音クイズ</h3>
+        <p class="quiz-subtitle">これらの変更された文字はよく混同されます。 正確さをテストしてください。</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">この文字のローマ字は何ですか?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">スピードラウンド — 時間制限チャレンジ</h2>
+      <p>自分のカタカナをよく知っていると思いますか? <strong>スピード ラウンド</strong>に挑戦して、60 秒以内に何文字を正しく識別できるかを確認してください。 これは、正確さだけでなく、実際の日本語の読解にとって重要なスキルである読解速度もテストします。</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ 60秒スピードチャレンジ</h3>
+        <p class="quiz-subtitle">1分間に何問正解できるでしょうか？</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>キャラクターグループマスタリー</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">カタカナクイズのスコアを上げるためのヒント</h2>
+      <ol>
+        <li><strong>行ごとに学習</strong> — 組み合わせクイズで混合する前に、一度に 1 つの子音行 (母音 → K → S → T...) をマスターします。</li>
+        <li><strong>紛らわしいペアに注目する</strong> — シ/ツ (shi/tsu) やソ/ン (so/n) などの文字は似ています。 これらを具体的に区別する練習をしてください。</li>
+        <li><strong>クイズを出しながら書く</strong> — 答えながら紙上の各文字をなぞります。 The motor memory reinforces visual recognition.</li>
+        <li><strong>間違った答えを見直す</strong> — 各クイズ セッションの後に、見逃した文字をもう一度見直します。 これらは最も弱い部分です。</li>
+        <li><strong>徐々に速度を上げる</strong> — 正確に答えられるようになったら、より速く答えることに集中してください。 実際の日本語を読むには、即座に認識する必要があります。</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Watch out for these frequently confused Katakana pairs: シ (shi) vs ツ (tsu), ソ (so) vs ン (n), ス (su) vs ヌ (nu), ウ (u) vs ワ (wa). The stroke direction is the key differentiator.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">よくある質問</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>各質問にはカタカナ文字と 4 つのローマ字の選択肢が表示されます。 正しい読みを選択してポイントを獲得します。 正解を示すフィードバックが即座に得られ、セッション全体を通じてスコアが追跡されます。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>はい。 上記のさまざまなクイズ セクションを使用して、基本カタカナ (46 文字)、濁音、半濁音 (濁音/半濁音) に焦点を当てるか、すべての文字タイプを組み合わせた時間制限付きのスピード ラウンドに挑戦してください。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>クイズはランダムな質問で継続的に実行されるため、好きなだけ練習できます。 各セッションで正解率が追跡され、さらに学習が必要な文字を特定するのに役立ちます。</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>The most commonly confused pairs are: シ (shi) and ツ (tsu), ソ (so) and ン (n), ス (su) and ヌ (nu). These pairs share similar stroke patterns but differ in stroke direction.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">ソースとソース 参考文献</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>国際交流基金 — <em>まるごと: 日本の言語と文化</em>、公式 JLPT 準備資料</li>
+          <li>JapaneseJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">カタカナ クイズ: 日本語のカタカナ文字を練習する</a></li>
+          <li>Tofugu — <em>カタカナを学ぶ: 究極のガイド</em>、カタカナ学習方法論</li>
+          <li>能動的想起と間隔をあけた反復に関する認知心理学の研究 (Karpicke &amp; Blunt、2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-decoration:none;">カタカナ変換チーム</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">日本語学習用の無料ツールを構築します。 私たちのチームは、世界中の学習者のための正確な音素ベースのカタカナ変換と教育リソースに重点を置いています。</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>カタカナスキルを応用する</h3>
+        <p>現実世界の文脈でこれらの文字を確認するには、英語の単語をカタカナに変換してみてください。</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    

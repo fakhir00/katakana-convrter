@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>Índice</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">Personagens Básicos</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">Dakuon + Handakuon</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">Modos de teste</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">Rodadas de prática</div></div>
+      </div>
+
+      <h2 id="why-quiz">Por que praticar com um teste de Katakana?</h2>
+      <p>Ler Katakana com rapidez e precisão é uma habilidade essencial para quem está aprendendo japonês. Um <strong>teste Katakana</strong> usa a recordação ativa – a técnica de estudo mais eficaz de acordo com a pesquisa em ciências cognitivas – para fortalecer o reconhecimento do seu personagem muito mais rápido do que apenas a revisão passiva.</p>
+      <p>A recordação ativa funciona forçando seu cérebro a recuperar informações da memória, em vez de apenas reconhecê-las. Cada vez que você recorda com sucesso a leitura de um personagem, o caminho neural se fortalece, tornando a recordação futura mais rápida e automática.</p>
+      <ul>
+        <li><strong>Feedback instantâneo</strong> ajuda a identificar personagens problemáticos imediatamente</li>
+        <li>A <strong>ordenação aleatória</strong> evita a memorização de sequências em vez de caracteres individuais</li>
+        <li>O <strong>rastreamento de pontuação</strong> fornece progresso mensurável em diversas sessões</li>
+        <li>A <strong>gamificação</strong> torna a prática repetitiva mais envolvente e sustentável</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>Para obter melhores resultados, faça o teste em sessões curtas de 5 a 10 minutos, várias vezes por dia, em vez de uma sessão longa. Pesquisas sobre repetição espaçada mostram que a prática distribuída produz retenção significativamente melhor a longo prazo.</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">Questionário básico de Katakana (46 caracteres)</h2>
+      <p>Teste seu conhecimento de todos os 46 caracteres básicos do Katakana. Cada pergunta apresenta um personagem com quatro leituras possíveis de romaji – selecione a correta.</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 Teste básico de Katakana</h3>
+        <p class="quiz-subtitle">Selecione a leitura correta de romaji para cada personagem.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">Qual é o romaji desse personagem?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">Daquon &amp; Desafio Handakuon</h2>
+      <p>Pronto para um desafio mais difícil? Este questionário se concentra exclusivamente em personagens dublados (<strong>Dakuon</strong>) e meio-vozes (<strong>Handakuon</strong>) — os Katakana modificados que muitos alunos consideram complicados.</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ Dakuon &amp; Questionário Handakuon</h3>
+        <p class="quiz-subtitle">Esses caracteres modificados são comumente confundidos. Teste sua precisão.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">Qual é o romaji desse personagem?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">Rodada de Velocidade — Desafio Cronometrado</h2>
+      <p>Acha que conhece bem o seu Katakana? Experimente a <strong>rodada rápida</strong> e veja quantos caracteres você consegue identificar corretamente em 60 segundos. Isso testa não apenas a precisão, mas também a velocidade de leitura – uma habilidade crucial para a leitura japonesa no mundo real.</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ Desafio de velocidade de 60 segundos</h3>
+        <p class="quiz-subtitle">Quantos você consegue acertar em um minuto?</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>Domínio do grupo de personagens</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">Dicas para melhorar sua pontuação no questionário Katakana</h2>
+      <ol>
+        <li><strong>Aprenda por linha</strong> — Domine uma linha consonantal por vez (vogais → K → S → T...) antes de misturá-las em um teste combinado.</li>
+        <li><strong>Concentre-se em pares confusos</strong> — Caracteres como シ/ツ (shi/tsu) e ソ/ン (so/n) são parecidos. Pratique distingui-los especificamente.</li>
+        <li><strong>Escreva durante o teste</strong> — Trace cada caractere no papel enquanto responde. A memória motora reforça o reconhecimento visual.</li>
+        <li><strong>Revise as respostas erradas</strong> — Após cada sessão de teste, revisite os personagens que você perdeu. Esses são seus elos mais fracos.</li>
+        <li><strong>Aumente a velocidade gradualmente</strong> — Assim que conseguir responder com precisão, concentre-se em responder mais rápido. A verdadeira leitura japonesa requer reconhecimento instantâneo.</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Cuidado com esses pares Katakana frequentemente confusos: shi (shi) vs tsu (tsu), ソ (so) vs ん (n), su (su) vs nu (nu), う (u) vs wa (wa). A direção do curso é o principal diferencial.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">Perguntas frequentes</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>Cada pergunta mostra um personagem Katakana e quatro opções de romaji. Selecione a leitura correta para marcar um ponto. Você recebe feedback instantâneo mostrando a resposta correta e sua pontuação é monitorada durante toda a sessão.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>Sim. Use as diferentes seções do questionário acima para se concentrar em Katakana Básico (46 caracteres), Dakuon e Handakuon (sons sonoros/meia-vozes) ou experimente a rodada de velocidade cronometrada que mistura todos os tipos de personagens.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>O questionário é executado continuamente com perguntas aleatórias, para que você possa praticar o quanto quiser. Cada sessão monitora sua taxa de precisão para ajudá-lo a identificar personagens que precisam de mais estudo.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>Os pares mais comumente confundidos são: し (shi) e ツ (tsu), ソ (so) e ん (n), す (su) e NU (nu). Esses pares compartilham padrões de traçado semelhantes, mas diferem na direção do traçado.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Fontes e recursos Referências</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>The Japan Foundation — <em>Marugoto: Língua e Cultura Japonesa</em>, materiais oficiais de preparação para o JLPT</li>
+          <li>JapaneseJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">Quiz Katakana: pratique caracteres Katakana japoneses</a></li>
+          <li>Tofugu — <em>Aprenda Katakana: o guia definitivo</em>, metodologia de aprendizagem de katakana</li>
+          <li>Pesquisa em psicologia cognitiva sobre recordação ativa e repetição espaçada (Karpicke &amp; Blunt, 2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-decoration:none;">Equipe do conversor Katakana</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">Construindo ferramentas gratuitas para o aprendizado da língua japonesa. Nossa equipe se concentra na conversão precisa de Katakana baseada em fonemas e em recursos educacionais para alunos de todo o mundo.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Aplique suas habilidades de Katakana</h3>
+        <p>Tente converter palavras em inglês para Katakana para ver esses caracteres no contexto do mundo real.</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    

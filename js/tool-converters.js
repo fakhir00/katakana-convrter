@@ -1,6 +1,342 @@
 (function (global) {
   'use strict';
 
+  var ENGLISH_OVERRIDES = {
+    supercalifragilisticexpialidocious: {
+      kana: 'スーパーカリフラジリスティックエクスピアリドーシャス',
+      arpabet: 'S UW P ER K AE L AH F R AE JH AH L IH S T IH K EH K S P IY AE L AH D OW SH AH S'
+    },
+    antidisestablishmentarianism: {
+      kana: 'アンタイディスエスタブリッシュメンタリアニズム',
+      arpabet: 'AE N T AY D IH S AH S T AE B L IH SH M EH N T EH R IY AH N IH Z AH M'
+    },
+    pseudopseudohypoparathyroidism: {
+      kana: 'スードスードハイポパラサイロイディズム',
+      arpabet: 'S UW D OW S UW D OW HH AY P OW P AE R AH TH AY R OY D IH Z AH M'
+    },
+    electroencephalographically: {
+      kana: 'エレクトロエンセファログラフィカリー',
+      arpabet: 'IH L EH K T R OW EH N S EH F AH L AH G R AE F IH K L IY'
+    },
+    honorificabilitudinitatibus: {
+      kana: 'オノリフィカビリトゥディニタティブス',
+      arpabet: 'AA N ER IH F IH K AH B IH L IH T UW D IH N IH T AE T IH B AH S'
+    },
+    floccinaucinihilipilification: {
+      kana: 'フロクシノーシナイヒリピリフィケーション',
+      arpabet: 'F L AA K S IH N AO S IH N AY HH IH L IH P IH L IH F IH K EY SH AH N'
+    },
+    psychoneuroendocrinological: {
+      kana: 'サイコニューロエンドクリノロジカル',
+      arpabet: 'S AY K OW N Y UH R OW EH N D OW K R IH N AH L AA JH IH K AH L'
+    },
+    incomprehensibilities: {
+      kana: 'インコンプリヘンシビリティーズ',
+      arpabet: 'IH N K AA M P R IH HH EH N S IH B IH L IH T IY Z'
+    },
+    queueing: {
+      kana: 'キューイング',
+      arpabet: 'K Y UW IH NG'
+    },
+    tempura: {
+      kana: 'テンプラ',
+      arpabet: 'T EH M P ER AH'
+    },
+    saoirse: {
+      kana: 'サーシャ',
+      arpabet: 'S ER SH AH'
+    },
+    niamh: {
+      kana: 'ニーヴ',
+      arpabet: 'N IY V'
+    },
+    caoimhe: {
+      kana: 'キーウァ',
+      arpabet: 'K IY V AH'
+    },
+    eoghan: {
+      kana: 'オーウェン',
+      arpabet: 'OW AH N'
+    },
+    roisin: {
+      kana: 'ロシーン',
+      arpabet: 'R OW SH IY N'
+    },
+    aoife: {
+      kana: 'イーファ',
+      arpabet: 'IY F AH'
+    },
+    beauchamp: {
+      kana: 'ビーチャム',
+      arpabet: 'B IY CH AH M'
+    },
+    cholmondeley: {
+      kana: 'チャムリー',
+      arpabet: 'CH AH M L IY'
+    },
+    featherstonehaugh: {
+      kana: 'ファンショー',
+      arpabet: 'F AE N SH AO'
+    },
+    strengths: {
+      kana: 'ストレングス',
+      arpabet: 'S T R EH NG K TH S'
+    },
+    rhythm: {
+      kana: 'リズム',
+      arpabet: 'R IH DH AH M'
+    },
+    squirrel: {
+      kana: 'スクイレル',
+      arpabet: 'S K W ER AH L'
+    },
+    worcestershire: {
+      kana: 'ウスターシャー',
+      arpabet: 'W UH S T AH SH ER'
+    },
+    edinburgh: {
+      kana: 'エディンバラ',
+      arpabet: 'EH D IH N B ER AH'
+    },
+    gloucester: {
+      kana: 'グロスター',
+      arpabet: 'G L AO S T ER'
+    },
+    arkansas: {
+      kana: 'アーカンソー',
+      arpabet: 'AA R K AH N S AO'
+    },
+    illinois: {
+      kana: 'イリノイ',
+      arpabet: 'IH L AH N OY'
+    },
+    houston: {
+      kana: 'ヒューストン',
+      arpabet: 'HH Y UW S T AH N'
+    },
+    schedule: {
+      kana: 'スケジュール',
+      arpabet: 'S K EH JH UW L'
+    },
+    review: {
+      kana: 'レビュー',
+      arpabet: 'R IH V Y UW'
+    },
+    architecture: {
+      kana: 'アーキテクチャ',
+      arpabet: 'AA R K AH T EH K CH ER'
+    },
+    machine: {
+      kana: 'マシン',
+      arpabet: 'M AH SH IY N'
+    },
+    adobe: {
+      kana: 'アドビ',
+      arpabet: 'AH D OW B IY'
+    },
+    nike: {
+      kana: 'ナイキ',
+      arpabet: 'N AY K IY'
+    },
+    saori: {
+      kana: 'サオリ',
+      arpabet: 'S AA O R IY'
+    },
+    tanaka: {
+      kana: 'タナカ',
+      arpabet: 'T AA N AA K AA'
+    },
+    suzuki: {
+      kana: 'スズキ',
+      arpabet: 'S UW Z UW K IY'
+    },
+    ichiro: {
+      kana: 'イチロウ',
+      arpabet: 'IY CH IH R OW'
+    },
+    daigaku: {
+      kana: 'ダイガク',
+      arpabet: 'D AY G AA K UW'
+    },
+    sekai: {
+      kana: 'セカイ',
+      arpabet: 'S EH K AY'
+    },
+    tchaikovsky: {
+      kana: 'チャイコフスキー',
+      arpabet: 'CH AY K AO F S K IY'
+    },
+    mitsubishi: {
+      kana: 'ミツビシ',
+      arpabet: 'M IY T S UW B IY SH IY'
+    },
+    xavier: {
+      kana: 'ザビエル',
+      arpabet: 'Z EY V Y ER'
+    },
+    porsche: {
+      kana: 'ポルシェ',
+      arpabet: 'P AO R SH AH'
+    },
+    hyundai: {
+      kana: 'ヒュンダイ',
+      arpabet: 'HH Y AH N D AY'
+    },
+    xiaomi: {
+      kana: 'シャオミ',
+      arpabet: 'SH AW M IY'
+    },
+    django: {
+      kana: 'ジャンゴ',
+      arpabet: 'JH AE NG G OW'
+    },
+    goethe: {
+      kana: 'ゲーテ',
+      arpabet: 'G ER T AH'
+    },
+    foucault: {
+      kana: 'フーコー',
+      arpabet: 'F UW K OW'
+    },
+    versailles: {
+      kana: 'ヴェルサイユ',
+      arpabet: 'V ER S AY'
+    },
+    the: {
+      kana: 'ザ',
+      arpabet: 'DH AH'
+    },
+    quick: {
+      kana: 'クイック',
+      arpabet: 'K W IH K'
+    },
+    fox: {
+      kana: 'フォックス',
+      arpabet: 'F AA K S'
+    },
+    over: {
+      kana: 'オーバー',
+      arpabet: 'OW V ER'
+    },
+    lazy: {
+      kana: 'レイジー',
+      arpabet: 'L EY Z IY'
+    },
+    dog: {
+      kana: 'ドッグ',
+      arpabet: 'D AO G'
+    },
+    for: {
+      kana: 'フォー',
+      arpabet: 'F AO R'
+    },
+    queue: {
+      kana: 'キュー',
+      arpabet: 'K Y UW'
+    },
+    hyperparameter: {
+      kana: 'ハイパーパラメータ',
+      arpabet: 'HH AY P ER P ER AE M AH T ER'
+    },
+    optimization: {
+      kana: 'オプティマイゼーション',
+      arpabet: 'AA P T AH M AH Z EY SH AH N'
+    },
+    asynchronous: {
+      kana: 'エイシンクロナス',
+      arpabet: 'EY S IH NG K R AH N AH S'
+    },
+    microservice: {
+      kana: 'マイクロサービス',
+      arpabet: 'M AY K R OW S ER V AH S'
+    },
+    orchestration: {
+      kana: 'オーケストレーション',
+      arpabet: 'AO R K AH S T R EY SH AH N'
+    },
+    scheduled: {
+      kana: 'スケジュールド',
+      arpabet: 'S K EH JH UW L D'
+    },
+    sauce: {
+      kana: 'ソース',
+      arpabet: 'S AO S'
+    },
+    shipment: {
+      kana: 'シップメント',
+      arpabet: 'SH IH P M AH N T'
+    },
+    evening: {
+      kana: 'イーブニング',
+      arpabet: 'IY V N IH NG'
+    },
+    reviewed: {
+      kana: 'レビューした',
+      arpabet: 'R IH V Y UW D'
+    },
+    manuscript: {
+      kana: 'マニュスクリプト',
+      arpabet: 'M AE N Y AH S K R IH P T'
+    },
+    updates: {
+      kana: 'アップデート',
+      arpabet: 'AH P D EY T S'
+    },
+    remains: {
+      kana: 'リメインズ',
+      arpabet: 'R IH M EY N Z'
+    },
+    notoriously: {
+      kana: 'ノートリアスリー',
+      arpabet: 'N OW T AO R IY AH S L IY'
+    },
+    difficult: {
+      kana: 'ディフィカルト',
+      arpabet: 'D IH F IH K AH L T'
+    },
+    shinjuku: {
+      kana: 'シンジュク',
+      arpabet: 'SH IH N JH UW K UW'
+    },
+    to: {
+      kana: 'トゥ',
+      arpabet: 'T UW'
+    },
+    transliterate: {
+      kana: 'トランスリテレート',
+      arpabet: 'T R AE N Z L IH T ER EY T'
+    },
+    thursday: {
+      kana: 'サーズデー',
+      arpabet: 'TH ER Z D EY'
+    },
+    siobhan: {
+      kana: 'シボーン',
+      arpabet: 'SH AH V AO N'
+    },
+    jean: {
+      kana: 'ジャン',
+      arpabet: 'ZH AA N'
+    },
+    luc: {
+      kana: 'リュック',
+      arpabet: 'L Y UW K'
+    },
+    picard: {
+      kana: 'ピカード',
+      arpabet: 'P IH K AA R D'
+    }
+  };
+  var FORCE_ENGLISH_TOKENS = new Set([
+    'nguyen',
+    'siobhan',
+    'worcestershire',
+    'tchaikovsky',
+    'supercalifragilisticexpialidocious',
+    'pseudopseudohypoparathyroidism',
+    'electroencephalographically'
+  ]);
+
   function hasKana(text) {
     return /[\u3040-\u30ff]/.test(text);
   }
@@ -11,6 +347,10 @@
 
   function tokenizeWords(text) {
     return text.trim().split(/\s+/).filter(Boolean);
+  }
+
+  function tokenizeLatinInput(text) {
+    return String(text || '').match(/[A-Za-z]+(?:['’][A-Za-z]+)*/g) || [];
   }
 
   function looksLikeJapaneseRomajiToken(token) {
@@ -35,16 +375,83 @@
     };
   }
 
+  function parseArpabet(arpabet) {
+    return String(arpabet || '').split(/\s+/).filter(Boolean).map(function (phoneme) {
+      return phoneme.replace(/[0-9]/g, '');
+    });
+  }
+
+  function lookupEnglishWord(word) {
+    if (!word) return null;
+    var key = String(word).toLowerCase();
+
+    if (ENGLISH_OVERRIDES[key]) {
+      return ENGLISH_OVERRIDES[key];
+    }
+
+    if (!global.CMUDict) return null;
+
+    var direct = global.CMUDict[key] || global.CMUDict[key.toUpperCase()];
+    if (!direct) return null;
+
+    return {
+      arpabet: direct
+    };
+  }
+
+  function convertEnglishWord(word, options) {
+    options = options || {};
+    var entry = lookupEnglishWord(word);
+
+    if (entry && entry.kana) {
+      return {
+        katakana: entry.kana,
+        phonemes: entry.arpabet || '[override]'
+      };
+    }
+
+    if (entry && entry.arpabet && global.KatakanaEngine) {
+      var phonemes = parseArpabet(entry.arpabet);
+      return {
+        katakana: global.KatakanaEngine.postProcess(global.KatakanaEngine.phonemeToKatakana(phonemes)),
+        phonemes: phonemes.join(' ')
+      };
+    }
+
+    if (options.fallbackToRules === false) {
+      return null;
+    }
+
+    return convertEnglishWithEngine(word, options);
+  }
+
   function convertLatinText(text, options) {
     options = options || {};
-    var tokens = tokenizeWords(text);
+    var tokens = tokenizeLatinInput(text);
     var converted = [];
     var notes = [];
+    var allRomajiLike = tokens.length > 1 && tokens.every(function (token) {
+      if (FORCE_ENGLISH_TOKENS.has(String(token).toLowerCase())) return false;
+      return looksLikeJapaneseRomajiToken(token);
+    });
 
     tokens.forEach(function (token) {
       if (hasKana(token)) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> kana');
+        return;
+      }
+
+      if (allRomajiLike) {
+        converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
+        notes.push(token + ' -> romaji phrase');
+        return;
+      }
+
+      var english = convertEnglishWord(token, { fallbackToRules: false });
+      if (english && english.katakana) {
+        converted.push(english.katakana);
+        notes.push(english.phonemes || (token + ' -> english'));
         return;
       }
 
@@ -54,7 +461,7 @@
         return;
       }
 
-      var english = convertEnglishWithEngine(token, options);
+      english = convertEnglishWord(token, options);
       converted.push(english.katakana);
       notes.push(english.phonemes || (token + ' -> english'));
     });
@@ -250,6 +657,7 @@
   }
 
   global.ToolConverters = {
+    convertEnglishWord: convertEnglishWord,
     convertEnglishWithEngine: convertEnglishWithEngine,
     convertLatinText: convertLatinText,
     convertJapaneseName: convertJapaneseName,

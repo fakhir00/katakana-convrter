@@ -22,7 +22,7 @@ const tools = [
     placeholder: 'e.g. John Smith',
     buttonLabel: 'Convert Name to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
-    deps: '<script src="../js/engine.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
+    deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'Katakana Name Converter',
     sections: [
       {
@@ -67,7 +67,7 @@ const tools = [
     placeholder: 'Enter an English Name...',
     buttonLabel: 'Translate to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
-    deps: '<script src="../js/engine.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
+    deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'English Name to Katakana',
     sections: [
       {
@@ -112,7 +112,7 @@ const tools = [
     placeholder: 'Type half-width/romaji texts here...',
     buttonLabel: 'Convert to Full-Width',
     logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full-Width Katakana Converter',
     sections: [
       {
@@ -157,7 +157,7 @@ const tools = [
     placeholder: 'Type your mapped name for web form validation...',
     buttonLabel: 'Get Full-Width Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { imeMode: true }); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
-    deps: '<script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full Width Katakana Name Converter',
     sections: [
       {
@@ -202,7 +202,7 @@ const tools = [
     placeholder: 'Paste Katakana (e.g. カタカナ)...',
     buttonLabel: 'Convert to Hiragana',
     logic: "var text = wanakana.toHiragana(val); outEl.textContent = text ? text : 'ひらがな'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
     emptyOutput: 'ひらがな',
     h1: 'Katakana to Hiragana Converter',
     sections: [
@@ -383,7 +383,7 @@ const tools = [
     placeholder: 'Enter Latin mapping phonetes...',
     buttonLabel: 'Convert Latin to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Powered by smart converter'; if(sourceTag) sourceTag.textContent = 'English + romaji smart conversion';",
-    deps: '<script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Latin to Katakana Converter',
     sections: [
       {
@@ -931,6 +931,8 @@ tools.forEach(function (tool) {
 
   locHtml = locHtml.replace('<script src="js/engine.js"></script>', '');
   locHtml = locHtml.replace('<script src="../js/engine.js"></script>', '');
+  locHtml = locHtml.replace('<script src="js/cmudict-data.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/cmudict-data.js"></script>', '');
   locHtml = locHtml.replace('<script src="https://unpkg.com/wanakana"></script>', '');
   locHtml = locHtml.replace('<script src="js/tool-converters.js"></script>', '');
   locHtml = locHtml.replace('<script src="../js/tool-converters.js"></script>', '');

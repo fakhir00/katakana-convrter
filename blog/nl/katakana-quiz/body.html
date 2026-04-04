@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>Inhoudsopgave</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">Basiskarakters</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">Dakuon + Handakuon</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">Quizmodi</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">Oefenrondes</div></div>
+      </div>
+
+      <h2 id="why-quiz">Waarom oefenen met een Katakana-quiz?</h2>
+      <p>Snel en nauwkeurig Katakana lezen is een essentiële vaardigheid voor iedereen die Japans leert. Een <strong>Katakana-quiz</strong> maakt gebruik van actieve herinnering — de meest effectieve studietechniek volgens cognitief wetenschappelijk onderzoek — om uw karakterherkenning veel sneller te versterken dan alleen passieve beoordeling.</p>
+      <p>Actieve herinnering werkt door uw hersenen te dwingen informatie uit het geheugen op te halen in plaats van deze alleen maar te herkennen. Elke keer dat je met succes de lezing van een personage herinnert, wordt het neurale pad sterker, waardoor toekomstige herinneringen sneller en automatischer worden.</p>
+      <ul>
+        <li><strong>Directe feedback</strong> helpt probleemkarakters onmiddellijk te identificeren</li>
+        <li><strong>Willekeurige volgorde</strong> voorkomt dat reeksen worden onthouden in plaats van individuele tekens</li>
+        <li><strong>Het bijhouden van scores</strong> biedt meetbare voortgang over meerdere sessies</li>
+        <li><strong>Gamificatie</strong> maakt repetitieve oefeningen boeiender en duurzamer</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>Voor de beste resultaten doet u de quiz meerdere keren per dag in korte sessies van 5-10 minuten, in plaats van in één lange sessie. Uit onderzoek naar gespreide herhaling blijkt dat gedistribueerde praktijk aanzienlijk betere retentie op de lange termijn oplevert.</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">Basis Katakana-quiz (46 tekens)</h2>
+      <p>Test je kennis van alle 46 basis Katakana-personages. Bij elke vraag wordt een personage voorgesteld met vier mogelijke romaji-lezingen: selecteer de juiste.</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 Basis Katakana-quiz</h3>
+        <p class="quiz-subtitle">Selecteer de juiste Romaji-lezing voor elk personage.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">Wat is de romaji voor dit personage?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">Daquon &amp; Handakuon-uitdaging</h2>
+      <p>Klaar voor een hardere uitdaging? Deze quiz richt zich uitsluitend op karakters met stem (<strong>Dakuon</strong>) en halfstem (<strong>Handakuon</strong>) – de aangepaste Katakana die veel leerlingen lastig vinden.</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ Dakuon &amp; Handakuon-quiz</h3>
+        <p class="quiz-subtitle">Deze gewijzigde karakters worden vaak verward. Test uw nauwkeurigheid.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">Wat is de romaji voor dit personage?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">Snelheidsronde - Getimede uitdaging</h2>
+      <p>Denk je dat je je Katakana goed kent? Probeer de <strong>snelheidsronde</strong> en kijk hoeveel karakters je in 60 seconden correct kunt identificeren. Dit test niet alleen de nauwkeurigheid, maar ook de leessnelheid – een cruciale vaardigheid voor het lezen van Japans in de echte wereld.</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ Snelheidsuitdaging van 60 seconden</h3>
+        <p class="quiz-subtitle">Hoeveel kun jij er goed maken in één minuut?</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>Karaktergroepbeheersing</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">Tips om uw Katakana-quizscore te verbeteren</h2>
+      <ol>
+        <li><strong>Leer per rij</strong> — Beheers één medeklinkerrij tegelijk (klinkers → K → S → T...) voordat je ze mixt in een gecombineerde quiz.</li>
+        <li><strong>Focus op verwarrende paren</strong> — Tekens als シ/ツ (shi/tsu) en ソ/ン (so/n) lijken op elkaar. Oefen met het specifiek onderscheiden hiervan.</li>
+        <li><strong>Schrijf tijdens het quizzen</strong> — Trek elk personage over op papier terwijl je antwoordt. Het motorische geheugen versterkt de visuele herkenning.</li>
+        <li><strong>Bekijk de foute antwoorden</strong>: bekijk na elke quizsessie de personages die je hebt gemist opnieuw. Dit zijn je zwakste schakels.</li>
+        <li><strong>Verhoog de snelheid geleidelijk</strong>: zodra u nauwkeurig kunt antwoorden, kunt u zich richten op sneller antwoorden. Echt Japans lezen vereist onmiddellijke herkenning.</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Pas op voor deze vaak verwarde Katakana-paren: shi (shi) versus tsu (tsu), ソ (so) versus ん (n), su (su) versus nu (nu), う (u) versus wa (wa). De slagrichting is de belangrijkste onderscheidende factor.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">Veelgestelde vragen</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>Elke vraag toont een Katakana-personage en vier romaji-opties. Selecteer de juiste meting om een ​​punt te scoren. Je krijgt direct feedback met het juiste antwoord, en je score wordt gedurende de hele sessie bijgehouden.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>Ja. Gebruik de verschillende quizsecties hierboven om je te concentreren op Basic Katakana (46 karakters), Dakuon en Handakuon (stemhebbende/halfstemmige geluiden), of probeer de getimede snelheidsronde die alle karaktertypes combineert.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>De quiz loopt continu met gerandomiseerde vragen, zodat je zo lang kunt oefenen als je wilt. Elke sessie houdt uw nauwkeurigheid bij, zodat u karakters kunt identificeren die meer onderzoek nodig hebben.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>De meest verwarde paren zijn: し (shi) en ツ (tsu), ソ (zo) en ん (n), す (su) en NU (nu). Deze paren delen vergelijkbare slagpatronen, maar verschillen in slagrichting.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Bronnen &amp; Referenties</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>The Japan Foundation — <em>Marugoto: Japanse taal en cultuur</em>, officieel JLPT-voorbereidingsmateriaal</li>
+          <li>JapaneseJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">Katakana-quiz: oefen Japanse Katakana-karakters</a></li>
+          <li>Tofugu — <em>Leer Katakana: de ultieme gids</em>, katakana-leermethodologie</li>
+          <li>Cognitief psychologisch onderzoek naar actieve herinnering en gespreide herhaling (Karpicke &amp; Blunt, 2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-decoration:none;">Katakana Converter-team</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">Gratis tools bouwen voor het leren van de Japanse taal. Ons team richt zich op nauwkeurige, op foneem gebaseerde Katakana-conversie en educatieve hulpmiddelen voor leerlingen over de hele wereld.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Pas uw Katakana-vaardigheden toe</h3>
+        <p>Probeer Engelse woorden naar Katakana te converteren om deze karakters in de echte context te zien.</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    
