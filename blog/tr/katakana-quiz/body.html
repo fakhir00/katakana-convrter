@@ -1,0 +1,183 @@
+
+
+      <nav class="toc-box" aria-label="Table of Contents">
+        <h4>İçindekiler</h4>
+        <ol class="toc-list">
+          <li><a href="#why-quiz">Why Practice with a Katakana Quiz?</a></li>
+          <li><a href="#basic-quiz">Basic Katakana Quiz (46 Characters)</a></li>
+          <li><a href="#dakuon-quiz">Dakuon &amp; Handakuon Challenge</a></li>
+          <li><a href="#speed-round">Speed Round — Timed Challenge</a></li>
+          <li><a href="#tips">Tips to Improve Your Score</a></li>
+          <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-value">46</div><div class="stat-label">Temel Karakterler</div></div>
+        <div class="stat-box"><div class="stat-value">25</div><div class="stat-label">Dakuon + Handakuon</div></div>
+        <div class="stat-box"><div class="stat-value">4</div><div class="stat-label">Sınav Modları</div></div>
+        <div class="stat-box"><div class="stat-value">∞</div><div class="stat-label">Alıştırma Turları</div></div>
+      </div>
+
+      <h2 id="why-quiz">Neden Katakana Sınavıyla Pratik Yapmalısınız?</h2>
+      <p>Katakana'yı hızlı ve doğru bir şekilde okumak, Japonca öğrenen herkes için önemli bir beceridir. Bir <strong>Katakana sınavı</strong>, karakter tanıma yeteneğinizi tek başına pasif incelemeden çok daha hızlı güçlendirmek için aktif hatırlamayı (bilişsel bilim araştırmalarına göre en etkili çalışma tekniği) kullanır.</p>
+      <p>Aktif hatırlama, beyninizi bilgiyi sadece tanımak yerine hafızadan almaya zorlayarak çalışır. Bir karakterin okuduğunu başarılı bir şekilde hatırladığınız her seferde, sinir yolu güçlenir ve gelecekte hatırlamanın daha hızlı ve daha otomatik olmasını sağlar.</p>
+      <ul>
+        <li><strong>Anında geri bildirim</strong> sorunlu karakterlerin anında tespit edilmesine yardımcı olur</li>
+        <li><strong>Rastgele sıralama</strong>, tek tek karakterler yerine sıraların ezberlenmesini önler</li>
+        <li><strong>Puan izleme</strong> birden fazla oturumda ölçülebilir ilerleme sağlar</li>
+        <li><strong>Oyunlaştırma</strong> tekrarlanan uygulamaları daha ilgi çekici ve sürdürülebilir hale getirir</li>
+      </ul>
+
+      <div class="info-callout tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-content">
+          <strong>Study Strategy</strong>
+          <p>En iyi sonuçları elde etmek için testi tek bir uzun oturum yerine günde birkaç kez 5-10 dakikalık kısa oturumlar halinde yapın. Aralıklı tekrar araştırması, dağıtılmış uygulamanın uzun vadede önemli ölçüde daha iyi akılda kalıcılık sağladığını gösteriyor.</p>
+        </div>
+      </div>
+
+      <!-- MAIN QUIZ: Basic -->
+      <h2 id="basic-quiz">Temel Katakana Sınavı (46 Karakter)</h2>
+      <p>46 temel Katakana karakterinin tümüne ilişkin bilginizi sınayın. Her soruda dört olası romaji okunuşu olan bir karakter sunulur; doğru olanı seçin.</p>
+
+      <div class="quiz-container" id="basic-quiz-container">
+        <h3>🎯 Temel Katakana Sınavı</h3>
+        <p class="quiz-subtitle">Her karakter için doğru romaji okumasını seçin.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q1-char">ア</div>
+          <p class="quiz-prompt">Bu karakterin romajisi nedir?</p>
+        </div>
+        <div class="quiz-options" id="q1-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q1-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q1-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- QUIZ 2: Dakuon -->
+      <h2 id="dakuon-quiz">Daquon &amp; Handakun Mücadelesi</h2>
+      <p>Daha zorlu bir mücadeleye hazır mısınız? Bu sınav özellikle sesli (<strong>Dakuon</strong>) ve yarı sesli (<strong>Handakuon</strong>) karakterlere (birçok öğrencinin zor bulduğu değiştirilmiş Katakana) odaklanır.</p>
+
+      <div class="quiz-container" id="dakuon-quiz-container">
+        <h3>✓ Dakuon &amp; Handakun Sınavı</h3>
+        <p class="quiz-subtitle">Bu değiştirilmiş karakterler genellikle karıştırılır. Doğruluğunuzu test edin.</p>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="q2-char">ガ</div>
+          <p class="quiz-prompt">Bu karakterin romajisi nedir?</p>
+        </div>
+        <div class="quiz-options" id="q2-options"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Score</span>
+          <span class="quiz-score-value" id="q2-score">0 / 0</span>
+        </div>
+        <button class="quiz-next-btn" id="q2-next" style="display:none;">Next Character →</button>
+      </div>
+
+      <!-- SPEED ROUND -->
+      <h2 id="speed-round">Hız Turu — Zamanlı Mücadele</h2>
+      <p>Katakana'nızı iyi bildiğinizi mi düşünüyorsunuz? <strong>Hızlı turu</strong> deneyin ve 60 saniyede kaç karakteri doğru şekilde tanımlayabileceğinizi görün. Bu sadece doğruluğu değil aynı zamanda gerçek dünyadaki Japonca okuma için çok önemli bir beceri olan okuma hızını da test eder.</p>
+
+      <div class="quiz-container" id="speed-quiz-container">
+        <h3>⏱️ 60 Saniyelik Hız Yarışması</h3>
+        <p class="quiz-subtitle">Bir dakikada kaç tanesini doğru yapabilirsiniz?</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+          <div class="quiz-score" style="flex:1;">
+            <span class="quiz-score-label">Time</span>
+            <span class="quiz-score-value" id="speed-timer">60s</span>
+          </div>
+          <button class="quiz-next-btn" id="speed-start" style="max-width:200px;margin:0;">Start Challenge</button>
+        </div>
+        <div class="quiz-question">
+          <div class="quiz-kana" id="speed-char" style="opacity:0.3;">—</div>
+        </div>
+        <div class="quiz-options" id="speed-options" style="pointer-events:none;opacity:0.4;"></div>
+        <div class="quiz-score">
+          <span class="quiz-score-label">Correct</span>
+          <span class="quiz-score-value" id="speed-score">0</span>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <h3>Karakter Grubu Ustalığı</h3>
+      <div class="progress-container">
+        <div class="progress-label"><span>Vowels (ア–オ)</span><span id="prog-vowels">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-vowels-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>K-row (カ–コ)</span><span id="prog-k">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-k-bar"></div></div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-label"><span>S-row (サ–ソ)</span><span id="prog-s">—</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%" id="prog-s-bar"></div></div>
+      </div>
+
+      <!-- TIPS -->
+      <h2 id="tips">Katakana Sınav Puanınızı Artıracak İpuçları</h2>
+      <ol>
+        <li><strong>Satırlara göre öğrenin</strong> — Birleştirilmiş bir testte bunları karıştırmadan önce, her seferinde bir ünsüz satırda (ünlü harfler → K → S → T...) ustalaşın.</li>
+        <li><strong>Kafa karıştırıcı çiftlere odaklanın</strong> — シ/ツ (shi/tsu) ve ソ/ン (so/n) gibi karakterler benzer görünür. Bunları özellikle ayırt etmeye çalışın.</li>
+        <li><strong>Sınav yaparken yazın</strong> — Cevap verirken her karakterin izini kağıt üzerinde çizin. Motor hafızası görsel tanımayı güçlendirir.</li>
+        <li><strong>Yanlış cevapları inceleyin</strong> — Her sınav oturumundan sonra kaçırdığınız karakterleri tekrar ziyaret edin. Bunlar sizin en zayıf bağlantılarınızdır.</li>
+        <li><strong>Hızı kademeli olarak artırın</strong> — Doğru yanıt verdikten sonra daha hızlı yanıt vermeye odaklanın. Gerçek Japonca okumak anında tanınmayı gerektirir.</li>
+      </ol>
+
+      <div class="info-callout note">
+        <span class="callout-icon">📝</span>
+        <div class="callout-content">
+          <strong>Common Confusion Pairs</strong>
+          <p>Sıklıkla karıştırılan bu Katakana çiftlerine dikkat edin: shi (shi) vs tsu (tsu), ソ (so) vs ん (n), su (su) vs nu (nu), う (u) vs wa (wa). Vuruş yönü temel farklılaştırıcıdır.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <h2 id="faq">Sıkça Sorulan Sorular</h2>
+      <div class="faq-list" style="max-width:100%;">
+        <details class="faq-item" open="">
+          <summary class="faq-question">How does the Katakana Quiz work?</summary>
+          <div class="faq-answer"><p>Her soruda bir Katakana karakteri ve dört romaji seçeneği gösterilmektedir. Bir puan kazanmak için doğru okumayı seçin. Doğru cevabı gösteren anında geri bildirim alırsınız ve puanınız oturum boyunca takip edilir.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">Can I choose specific character sets to practice?</summary>
+          <div class="faq-answer"><p>Evet. Temel Katakana (46 karakter), Dakuon ve Handakuon'a (sesli/yarı sesli sesler) odaklanmak için yukarıdaki farklı test bölümlerini kullanın veya tüm karakter türlerini birleştiren zamanlı hız turunu deneyin.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">How many questions are in the quiz?</summary>
+          <div class="faq-answer"><p>Test rastgele sorularla sürekli olarak yürütülür, böylece istediğiniz kadar pratik yapabilirsiniz. Her oturum, daha fazla çalışmaya ihtiyaç duyan karakterleri belirlemenize yardımcı olmak için doğruluk oranınızı izler.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">What are the most commonly confused Katakana characters?</summary>
+          <div class="faq-answer"><p>En sık karıştırılan çiftler şunlardır: し (shi) ve ツ (tsu), ソ (so) ve ん (n), す (su) ve NU (nu). Bu çiftler benzer vuruş modellerini paylaşır ancak vuruş yönünde farklılık gösterir.</p></div>
+        </details>
+      </div>
+
+      <!-- SOURCES -->
+      <div class="article-sources" style="margin-top:40px;padding:24px;background:rgba(15,20,50,0.5);border:1px solid rgba(122,110,214,0.15);border-radius:14px;">
+        <h3 style="font-size:0.85rem;color:var(--accent-secondary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">Kaynaklar ve Referanslar</h3>
+        <ol style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;padding-left:20px;">
+          <li>Japonya Vakfı — <em>Marugoto: Japon Dili ve Kültürü</em>, Resmi JLPT hazırlık materyalleri</li>
+          <li>JapanJLPT.com — <a href="https://www.japanesejlpt.com/learn-japanese/katakana-quiz/" target="_blank" rel="noopener noreferrer">Katakana Sınavı: Japonca Katakana Karakterleriyle Alıştırma</a></li>
+          <li>Tofugu — <em>Kakakana Öğrenin: En İyi Kılavuz</em>, katakana öğrenme metodolojisi</li>
+          <li>Aktif hatırlama ve aralıklı tekrarlama üzerine bilişsel psikoloji araştırması (Karpicke ve Blunt, 2011)</li>
+        </ol>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="article-author" style="margin-top:32px;padding:24px;background:linear-gradient(180deg,rgba(31,24,56,0.9),rgba(20,17,39,0.95));border:1px solid rgba(122,110,214,0.18);border-radius:16px;display:flex;gap:18px;align-items:center;">
+        <div class="author-avatar" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">カ</div>
+        <div>
+          <h4 style="font-size:0.95rem;margin-bottom:4px;"><a href="/about-us/" style="color:var(--text-primary);text-decoration:none;">Katakana Dönüştürücü Ekibi</a></h4>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.6;">Japonca dil öğrenimi için ücretsiz araçlar oluşturma. Ekibimiz dünya çapındaki öğrenciler için doğru fonem tabanlı Katakana dönüştürme ve eğitim kaynaklarına odaklanmaktadır.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Katakana Becerilerinizi Uygulayın</h3>
+        <p>Bu karakterleri gerçek dünya bağlamında görmek için İngilizce kelimeleri Katakana'ya dönüştürmeyi deneyin.</p>
+        <a href="/" class="btn-primary">Convert to Katakana →</a>
+      </div>
+
+    

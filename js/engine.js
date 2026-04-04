@@ -513,9 +513,15 @@
         continue;
       }
 
-      // M before B, P, or at end → ン
-      if (ph === 'M' && (i + 1 >= len || (isConsonantPhoneme(phonemes[i + 1]) && phonemes[i + 1] !== 'Q'))) {
+      // M before B or P assimilates to ン, but word-final M is usually rendered as ム.
+      if (ph === 'M' && i + 1 < len && isConsonantPhoneme(phonemes[i + 1]) && phonemes[i + 1] !== 'Q') {
         result += 'ン';
+        i++;
+        continue;
+      }
+
+      if (ph === 'M' && i + 1 >= len) {
+        result += 'ム';
         i++;
         continue;
       }

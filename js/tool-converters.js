@@ -46,6 +46,14 @@
       kana: 'トランペット',
       arpabet: 'T R AH M P AH T'
     },
+    sam: {
+      kana: 'サム',
+      arpabet: 'S AE M'
+    },
+    macbook: {
+      kana: 'マックブック',
+      arpabet: 'M AE K B UH K'
+    },
     velvet: {
       kana: 'ベルベット',
       arpabet: 'V EH L V AH T'
@@ -370,6 +378,10 @@
       kana: 'シボーン',
       arpabet: 'SH AH V AO N'
     },
+    nguyen: {
+      kana: 'ヌーイェン',
+      arpabet: 'N UW Y EH N'
+    },
     jean: {
       kana: 'ジャン',
       arpabet: 'ZH AA N'
@@ -382,6 +394,26 @@
       kana: 'ピカード',
       arpabet: 'P IH K AA R D'
     }
+  };
+  var ENGLISH_PARTS = {
+    mac: 'マック',
+    book: 'ブック',
+    note: 'ノート',
+    pad: 'パッド',
+    phone: 'フォン',
+    smart: 'スマート',
+    soft: 'ソフト',
+    ware: 'ウェア',
+    tech: 'テック',
+    board: 'ボード',
+    card: 'カード',
+    cast: 'キャスト',
+    cloud: 'クラウド',
+    stream: 'ストリーム',
+    drive: 'ドライブ',
+    mail: 'メール',
+    line: 'ライン',
+    link: 'リンク'
   };
   var FORCE_ENGLISH_TOKENS = new Set([
     'nguyen',
@@ -438,6 +470,28 @@
     });
   }
 
+  function lookupEngineDictionaryWord(word) {
+    if (!global.KatakanaEngine || !global.KatakanaEngine._dict) return null;
+    var key = String(word || '').toLowerCase();
+    if (!key) return null;
+    if (!global.KatakanaEngine._dict[key]) return null;
+    return {
+      kana: global.KatakanaEngine._dict[key],
+      arpabet: '[engine-dictionary]'
+    };
+  }
+
+  function lookupCMUWord(word) {
+    if (!global.CMUDict) return null;
+    var key = String(word || '').toLowerCase();
+    if (!key) return null;
+    var direct = global.CMUDict[key] || global.CMUDict[key.toUpperCase()];
+    if (!direct) return null;
+    return {
+      arpabet: direct
+    };
+  }
+
   function lookupEnglishWord(word) {
     if (!word) return null;
     var key = String(word).toLowerCase();
@@ -446,13 +500,87 @@
       return ENGLISH_OVERRIDES[key];
     }
 
-    if (!global.CMUDict) return null;
+    var engineWord = lookupEngineDictionaryWord(key);
+    if (engineWord) return engineWord;
 
-    var direct = global.CMUDict[key] || global.CMUDict[key.toUpperCase()];
-    if (!direct) return null;
+    return lookupCMUWord(key);
+  }
+
+  function lookupCompoundSegment(word) {
+    var key = String(word || '').toLowerCase();
+    if (!key || key.length < 3) return null;
+
+    if (ENGLISH_PARTS[key]) {
+      return {
+        kana: ENGLISH_PARTS[key],
+        source: 'english-part'
+      };
+    }
+
+    var direct = lookupEnglishWord(key);
+    if (direct && direct.kana) {
+      return {
+        kana: direct.kana,
+        source: direct.arpabet === '[engine-dictionary]' ? 'english-engine-dictionary' : 'english-compound-override'
+      };
+    }
+
+    return null;
+  }
+
+  function segmentCompoundWord(word) {
+    var value = String(word || '').toLowerCase();
+    if (!/^[a-z]+$/.test(value) || value.length < 6) return null;
+
+    var memo = {};
+
+    function solve(index) {
+      if (index === value.length) {
+        return { score: 0, parts: [] };
+      }
+
+      if (memo.hasOwnProperty(index)) return memo[index];
+
+      var best = null;
+      for (var end = index + 3; end <= Math.min(value.length, index + 10); end++) {
+        var piece = value.slice(index, end);
+        var segment = lookupCompoundSegment(piece);
+        if (!segment) continue;
+
+        var tail = solve(end);
+        if (!tail) continue;
+
+        var score = piece.length * piece.length;
+        if (segment.source === 'english-part') score += 2;
+        if (tail.parts.length === 0 && end !== value.length) continue;
+
+        var candidate = {
+          score: score + tail.score,
+          parts: [{ text: piece, kana: segment.kana, source: segment.source }].concat(tail.parts)
+        };
+
+        if (!best || candidate.score > best.score) {
+          best = candidate;
+        }
+      }
+
+      memo[index] = best;
+      return best;
+    }
+
+    var result = solve(0);
+    if (!result || result.parts.length < 2) return null;
+    return result.parts;
+  }
+
+  function convertCompoundWord(word) {
+    var parts = segmentCompoundWord(word);
+    if (!parts) return null;
 
     return {
-      arpabet: direct
+      katakana: parts.map(function (part) { return part.kana; }).join(''),
+      phonemes: parts.map(function (part) { return part.text + ' -> ' + part.kana; }).join('\n'),
+      source: 'english-compound'
     };
   }
 
@@ -466,6 +594,11 @@
         phonemes: entry.arpabet || '[override]',
         source: 'english-override'
       };
+    }
+
+    var compound = convertCompoundWord(word);
+    if (compound) {
+      return compound;
     }
 
     if (entry && entry.arpabet && global.KatakanaEngine) {
