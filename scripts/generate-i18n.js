@@ -256,10 +256,14 @@ function generateArticle(langCode, slug) {
   }
 
   // Fix asset paths for deeper nesting (/blog/{lang}/{slug}/ → 3 levels deep)
+  // First, resolve any relative "images/" references to the specific article folder
+  body = body.replace(/src="images\//g, `src="../../../blog/${slug}/images/`);
+  // Then, resolve any cross-article "blog/slug/images/" references
+  body = body.replace(/src="(?:(?:\.\.\/)+)?(?:blog\/)?([^"]+)\/images\//g, `src="../../../blog/$1/images/`);
+  
+  // Fix global asset paths (CSS/JS)
   body = body.replace(/src="\.\.\/\.\.\//g, 'src="../../../');
   body = body.replace(/href="\.\.\/\.\.\//g, 'href="../../../');
-  body = body.replace(/src="images\//g, `src="../../../blog/${slug}/images/`);
-  body = body.replace(/src="\.\.\/([^"]+)\/images\//g, `src="../../../blog/$1/images/`);
 
   // Fix layout.js path
   body = body.replace(/src="\.\.\/\.\.\/js\/layout\.js"/g, `src="${p.artJs}layout.js"`);
