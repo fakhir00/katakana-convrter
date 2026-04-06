@@ -22,7 +22,7 @@ Disallow: *&p=*
 Disallow: *&preview=*
 
 # Sitemap Link 1
-Sitemap: https://katakana-convrter-4vwi.vercel.app/sitemap.xml
+Sitemap: https://www.katakanaconverter.com/sitemap.xml
 
 # Block Ahrefs Crawler
 User-agent: AhrefsBot
