@@ -688,6 +688,13 @@
     return {
       katakana: converted.join(options.separator || ' '),
       phonemes: notes.join('\n'),
+      details: tokenSources.map(function(source, idx) {
+        return {
+          word: tokens[idx],
+          source: source,
+          phonemes: notes[idx + (warning ? 1 : 0)].split(' -> ')[1] || ''
+        };
+      }),
       sourceLabel: sourceLabel,
       lowConfidence: lowConfidenceTokens.length > 0,
       lowConfidenceTokens: lowConfidenceTokens

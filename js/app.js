@@ -17,6 +17,56 @@
     var charCount = document.getElementById('char-count');
     var copyBtn = document.getElementById('copy-btn');
 
+    /* ── Render Structured Phonemes ── */
+    function renderPhonemes(phData) {
+      if (!phonemeOutput) return;
+      phonemeOutput.innerHTML = '';
+      if (!phData || (Array.isArray(phData) && phData.length === 0)) {
+        phonemeOutput.textContent = 'Your phoneme breakdown will appear here after conversion.';
+        return;
+      }
+      
+      // Handle legacy string output or simple notes
+      if (typeof phData === 'string') {
+        phonemeOutput.textContent = phData;
+        return;
+      }
+
+      phData.forEach(function(item) {
+        var group = document.createElement('div');
+        group.className = 'phoneme-group';
+
+        var wordLabel = document.createElement('span');
+        wordLabel.className = 'phoneme-word-text';
+        wordLabel.textContent = item.word;
+        group.appendChild(wordLabel);
+
+        var tokenList = document.createElement('div');
+        tokenList.className = 'phoneme-tokens';
+
+        var pText = (item.phonemes || '').replace(/[\[\]]/g, '').trim();
+        if (!pText || pText === 'romaji' || pText === 'romaji phrase' || pText === 'kana' || pText === '[dictionary]') {
+          var note = document.createElement('span');
+          note.style.fontSize = '0.86rem';
+          note.style.color = 'var(--text-muted)';
+          note.style.fontWeight = '500';
+          note.textContent = item.source === 'kana' ? 'Direct kana map' : (item.source === 'dictionary' ? 'Dictionary match' : 'Direct romaji map');
+          tokenList.appendChild(note);
+        } else {
+          var tokens = pText.split(/\s+/);
+          tokens.forEach(function(token) {
+            var badge = document.createElement('span');
+            badge.className = 'phoneme-token';
+            badge.textContent = token;
+            tokenList.appendChild(badge);
+          });
+        }
+
+        group.appendChild(tokenList);
+        phonemeOutput.appendChild(group);
+      });
+    }
+
     /* ── Convert Action ── */
     function doConvert() {
       var text = inputField.value.trim();
@@ -32,7 +82,7 @@
 
       katakanaOutput.textContent = result.katakana;
       katakanaOutput.classList.remove('placeholder-text');
-      phonemeOutput.textContent = result.phonemes || 'Smart conversion';
+      renderPhonemes(result.details);
       sourceTag.textContent = result.sourceLabel || 'English + romaji smart conversion';
 
 
@@ -48,7 +98,7 @@
       inputField.value = '';
       katakanaOutput.textContent = 'カタカナ';
       katakanaOutput.classList.add('placeholder-text');
-      phonemeOutput.textContent = 'Your phoneme breakdown will appear here after conversion.';
+      renderPhonemes([]);
       sourceTag.textContent = 'Ready to convert';
       if (charCount) charCount.textContent = '0';
       inputField.focus();
