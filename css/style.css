@@ -1454,6 +1454,63 @@ body::before {
   text-align: justify;
 }
 
+.content-block h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.3;
+  margin: 26px 0 14px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.content-block ul,
+.content-block ol {
+  margin: 0 0 20px 22px;
+  padding: 0;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+.content-block li {
+  margin-bottom: 8px;
+}
+
+.content-block hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 30px 0 6px;
+}
+
+.content-block .table-wrap {
+  margin: 18px 0 24px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.content-block table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.content-block th,
+.content-block td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.content-block th {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.content-block td {
+  color: var(--text-secondary);
+}
+
 .content-block a,
 .content-intro a {
   color: #f5c96d;
