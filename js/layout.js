@@ -23,9 +23,6 @@
 
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
-    { label: 'Blog', href: '/blog/' },
-    { label: 'About', href: '/about-us/' },
-    { label: 'Contact', href: '/contact-us/' },
     { 
       label: 'Our Tools ▼', 
       isDropdown: true,
@@ -44,7 +41,10 @@
         { label: 'Kanji to Hiragana', href: '/kanji-to-hiragana/' },
         { label: 'Chinese to Katakana', href: '/chinese-to-katakana/' }
       ]
-    }
+    },
+    { label: 'Blog', href: '/blog/' },
+    { label: 'About', href: '/about-us/' },
+    { label: 'Contact', href: '/contact-us/' }
   ];
 
   var FOOTER_LINKS = [
