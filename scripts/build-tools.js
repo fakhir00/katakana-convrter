@@ -14,7 +14,7 @@ const rootHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
 
 const tools = [
   {
-    path: 'name',
+    path: 'name-to-katakana',
     isFile: false,
     title: 'Katakana Name Converter',
     desc: 'Convert any English name into Japanese Katakana instantly.',
@@ -194,7 +194,7 @@ const tools = [
     relatedPath: 'full-width-katakana'
   },
   {
-    path: 'to-hiragana',
+    path: 'katakana-to-hiragana',
     isFile: false,
     title: 'Katakana to Hiragana Converter',
     desc: 'Instantly swap angular Katakana text to smooth, curvy Hiragana characters.',
@@ -240,7 +240,7 @@ const tools = [
     relatedPath: 'hiragana-to'
   },
   {
-    path: 'hiragana-to',
+    path: 'hiragana-to-katakana',
     isFile: false,
     title: 'Hiragana to Katakana Converter',
     desc: 'Instantly convert native Japanese Hiragana syllabaries into Katakana.',
@@ -330,7 +330,7 @@ const tools = [
     relatedPath: 'kanji'
   },
   {
-    path: 'romaji',
+    path: 'romaji-to-katakana',
     isFile: false,
     title: 'Romaji to Katakana Converter',
     desc: 'The best tool for typing Japanese Katakana using your standard English keyboard.',
@@ -375,7 +375,7 @@ const tools = [
     relatedPath: 'hiragana-to'
   },
   {
-    path: 'latin',
+    path: 'latin-to-katakana',
     isFile: false,
     title: 'Latin to Katakana Converter',
     desc: 'Map standard Latin alphabet characters to Katakana representations natively.',
@@ -420,7 +420,7 @@ const tools = [
     relatedPath: 'romaji'
   },
   {
-    path: 'kanji',
+    path: 'kanji-to-katakana',
     isFile: false,
     title: 'Kanji to Katakana Converter',
     desc: 'Use morphology to read complex Japanese Kanji characters and extract their Katakana pronunciation.',
@@ -511,7 +511,7 @@ const tools = [
     relatedPath: 'kanji'
   },
   {
-    path: 'chinese',
+    path: 'chinese-to-katakana',
     isFile: false,
     title: 'Chinese to Katakana Converter',
     desc: 'Convert Chinese Hanzi characters into Japanese Katakana readings for localization.',
@@ -558,18 +558,18 @@ const tools = [
 ];
 
 const exploreCards = [
-  { path: 'name', isFile: false, icon: 'Name', title: 'Katakana Name', desc: 'Convert your English name into a Japanese Katakana reading.' },
+  { path: 'name-to-katakana', isFile: false, icon: 'Name', title: 'Katakana Name', desc: 'Convert your English name into a Japanese Katakana reading.' },
   { path: 'english-name', isFile: false, icon: 'EN', title: 'English Name Converter', desc: 'See how English names are commonly adapted into Japanese.' },
   { path: 'full-width-katakana', isFile: false, icon: 'FW', title: 'Full-Width Katakana', desc: 'Normalize romaji or narrow input into full-width Katakana.' },
   { path: 'full-width-name', isFile: false, icon: 'Form', title: 'Full-Width Name', desc: 'Prepare your name for Japanese web forms and signups.' },
-  { path: 'to-hiragana', isFile: false, icon: 'K->H', title: 'Katakana to Hiragana', desc: 'Rewrite Katakana into the matching Hiragana script.' },
-  { path: 'hiragana-to', isFile: false, icon: 'H->K', title: 'Hiragana to Katakana', desc: 'Convert Hiragana text into a Katakana presentation.' },
+  { path: 'katakana-to-hiragana', isFile: false, icon: 'K->H', title: 'Katakana to Hiragana', desc: 'Rewrite Katakana into the matching Hiragana script.' },
+  { path: 'hiragana-to-katakana', isFile: false, icon: 'H->K', title: 'Hiragana to Katakana', desc: 'Convert Hiragana text into a Katakana presentation.' },
   { path: 'japanese-name', isFile: false, icon: 'JP', title: 'Japanese Name to Katakana', desc: 'Create Katakana readings for Japanese-style name input.' },
-  { path: 'romaji', isFile: false, icon: 'Roma', title: 'Romaji to Katakana', desc: 'Type Japanese sounds from a standard Latin keyboard.' },
-  { path: 'latin', isFile: false, icon: 'ABC', title: 'Latin to Katakana', desc: 'Map Latin-letter phonetic input into Katakana quickly.' },
-  { path: 'kanji', isFile: false, icon: 'Kanji', title: 'Kanji to Katakana', desc: 'Extract a Katakana reading from Japanese kanji text.' },
+  { path: 'romaji-to-katakana', isFile: false, icon: 'Roma', title: 'Romaji to Katakana', desc: 'Type Japanese sounds from a standard Latin keyboard.' },
+  { path: 'latin-to-katakana', isFile: false, icon: 'ABC', title: 'Latin to Katakana', desc: 'Map Latin-letter phonetic input into Katakana quickly.' },
+  { path: 'kanji-to-katakana', isFile: false, icon: 'Kanji', title: 'Kanji to Katakana', desc: 'Extract a Katakana reading from Japanese kanji text.' },
   { path: 'kanji-to-hiragana', isFile: false, icon: 'Read', title: 'Kanji to Hiragana', desc: 'Turn kanji-heavy text into a Hiragana reading aid.' },
-  { path: 'chinese', isFile: false, icon: 'CN', title: 'Chinese to Katakana', desc: 'Generate rough Japanese Katakana readings from Hanzi.' }
+  { path: 'chinese-to-katakana', isFile: false, icon: 'CN', title: 'Chinese to Katakana', desc: 'Generate rough Japanese Katakana readings from Hanzi.' }
 ];
 
 const siteNavItems = [
