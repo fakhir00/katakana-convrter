@@ -15,6 +15,7 @@
     var resultCard = document.getElementById('result-card');
     var rulesOnlyToggle = document.getElementById('rules-only-toggle');
     var charCount = document.getElementById('char-count');
+    var copyBtn = document.getElementById('copy-btn');
 
     /* ── Convert Action ── */
     function doConvert() {
@@ -54,6 +55,22 @@
       if (charCount) charCount.textContent = '0';
       inputField.focus();
     });
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        var textToCopy = katakanaOutput.textContent;
+        if (textToCopy === 'カタカナ') return;
+        navigator.clipboard.writeText(textToCopy).then(function() {
+          var originalHTML = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyBtn.classList.add('copied');
+          setTimeout(function() {
+            copyBtn.innerHTML = originalHTML;
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    }
 
   });
 })();

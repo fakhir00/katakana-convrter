@@ -221,7 +221,12 @@
               <span id="source-tag">Ready to convert</span>
             </div>
             <div class="result-overline">Katakana Preview</div>
-            <div id="katakana-output" class="placeholder-text" aria-live="polite">カタカナ</div>
+            <div class="output-wrapper" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px;">
+              <div id="katakana-output" class="placeholder-text" aria-live="polite">カタカナ</div>
+              <button id="copy-btn" class="btn-copy" type="button" aria-label="Copy to clipboard" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
             <p class="result-support">Your converted text appears here with a clean phonetic breakdown below, making it easier to review before you copy it into forms, profiles, or localization drafts.</p>
             <div class="phoneme-section">
               <div class="phoneme-label">Phoneme Breakdown</div>
