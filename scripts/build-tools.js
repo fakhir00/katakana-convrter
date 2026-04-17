@@ -576,18 +576,18 @@ const siteNavItems = [
   { name: 'Home', url: 'https://www.katakanaconverter.com/' },
   { name: 'About', url: 'https://www.katakanaconverter.com/about-us/' },
   { name: 'Contact', url: 'https://www.katakanaconverter.com/contact-us/' },
-  { name: 'Katakana Name Converter', url: 'https://www.katakanaconverter.com/name/' },
+  { name: 'Katakana Name Converter', url: 'https://www.katakanaconverter.com/name-to-katakana/' },
   { name: 'English Name to Katakana', url: 'https://www.katakanaconverter.com/english-name/' },
   { name: 'Full-Width Katakana Converter', url: 'https://www.katakanaconverter.com/full-width-katakana/' },
   { name: 'Full Width Katakana Name Converter', url: 'https://www.katakanaconverter.com/full-width-name/' },
-  { name: 'Katakana to Hiragana Converter', url: 'https://www.katakanaconverter.com/to-hiragana/' },
-  { name: 'Hiragana to Katakana Converter', url: 'https://www.katakanaconverter.com/hiragana-to/' },
+  { name: 'Katakana to Hiragana Converter', url: 'https://www.katakanaconverter.com/katakana-to-hiragana/' },
+  { name: 'Hiragana to Katakana Converter', url: 'https://www.katakanaconverter.com/hiragana-to-katakana/' },
   { name: 'Japanese Name to Katakana', url: 'https://www.katakanaconverter.com/japanese-name/' },
-  { name: 'Romaji to Katakana Converter', url: 'https://www.katakanaconverter.com/romaji/' },
-  { name: 'Latin to Katakana Converter', url: 'https://www.katakanaconverter.com/latin/' },
-  { name: 'Kanji to Katakana Converter', url: 'https://www.katakanaconverter.com/kanji/' },
+  { name: 'Romaji to Katakana Converter', url: 'https://www.katakanaconverter.com/romaji-to-katakana/' },
+  { name: 'Latin to Katakana Converter', url: 'https://www.katakanaconverter.com/latin-to-katakana/' },
+  { name: 'Kanji to Katakana Converter', url: 'https://www.katakanaconverter.com/kanji-to-katakana/' },
   { name: 'Kanji to Hiragana Converter', url: 'https://www.katakanaconverter.com/kanji-to-hiragana/' },
-  { name: 'Chinese to Katakana Converter', url: 'https://www.katakanaconverter.com/chinese/' }
+  { name: 'Chinese to Katakana Converter', url: 'https://www.katakanaconverter.com/chinese-to-katakana/' }
 ];
 
 function buildMetaDescription(keyword) {

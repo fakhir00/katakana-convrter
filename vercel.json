@@ -1,6 +1,76 @@
 {
   "redirects": [
     {
+      "source": "/name",
+      "destination": "/name-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/name/",
+      "destination": "/name-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/to-hiragana",
+      "destination": "/katakana-to-hiragana/",
+      "permanent": true
+    },
+    {
+      "source": "/to-hiragana/",
+      "destination": "/katakana-to-hiragana/",
+      "permanent": true
+    },
+    {
+      "source": "/hiragana-to",
+      "destination": "/hiragana-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/hiragana-to/",
+      "destination": "/hiragana-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/romaji",
+      "destination": "/romaji-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/romaji/",
+      "destination": "/romaji-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/latin",
+      "destination": "/latin-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/latin/",
+      "destination": "/latin-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/kanji",
+      "destination": "/kanji-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/kanji/",
+      "destination": "/kanji-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/chinese",
+      "destination": "/chinese-to-katakana/",
+      "permanent": true
+    },
+    {
+      "source": "/chinese/",
+      "destination": "/chinese-to-katakana/",
+      "permanent": true
+    },
+    {
       "source": "/english-to-katakana",
       "has": [
         {
