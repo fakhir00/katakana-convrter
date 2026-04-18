@@ -114,5 +114,16 @@
       "destination": "/",
       "permanent": true
     }
+  ],
+  "functions": {
+    "api/convert.py": {
+      "runtime": "vercel-python@0.6.1"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/convert",
+      "destination": "/api/convert.py"
+    }
   ]
 }

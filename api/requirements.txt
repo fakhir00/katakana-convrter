@@ -1,0 +1,4 @@
+flask
+flask-cors
+numpy
+git+https://github.com/Patchethium/e2k.git

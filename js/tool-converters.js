@@ -700,11 +700,11 @@
     return w;
   }
 
-  function convertEnglishWord(word, options) {
+  async function convertEnglishWord(word, options) {
     options = options || {};
     var lowercaseWord = String(word).toLowerCase();
 
-    // Accuracy Booster: Static Dictionary
+    // 1. Accuracy Booster: Static Dictionary (Highest Priority, Instant)
     if (STATIC_ACCURACY_DICT[lowercaseWord]) {
       return {
         katakana: STATIC_ACCURACY_DICT[lowercaseWord],
@@ -713,8 +713,8 @@
       };
     }
 
+    // 2. Manual Overrides / Common Mappings
     var entry = lookupEnglishWord(word);
-
     if (entry && entry.kana) {
       return {
         katakana: entry.kana,
@@ -723,17 +723,35 @@
       };
     }
 
+    // 3. AI Translation (e2k) - Try API if not rules-only
+    if (!options.rulesOnly) {
+      try {
+        var response = await fetch('/api/convert?text=' + encodeURIComponent(lowercaseWord));
+        if (response.ok) {
+          var data = await response.json();
+          if (data.katakana) {
+            return {
+              katakana: data.katakana,
+              phonemes: '[neural engine translation]',
+              source: 'english-e2k'
+            };
+          }
+        }
+      } catch (e) {
+        console.warn('e2k API failed, falling back to local engine:', e);
+      }
+    }
+
+    // 4. Compound Word Analysis
     var compound = convertCompoundWord(word);
     if (compound) {
       return compound;
     }
 
+    // 5. CMU Dict + Rule Engine
     if (entry && entry.arpabet && global.KatakanaEngine) {
       var fullPhonemes = parseArpabet(entry.arpabet);
-      // Strip stress for the engine match, but keep for vowel extension logic
       var basePhonemes = fullPhonemes.map(function(p) { return p.replace(/[0-9]/g, ''); });
-      
-      // Determine which indices have primary stress
       var stressMap = fullPhonemes.map(function(p) { return p.endsWith('1') || p.endsWith('2'); });
 
       var katakana = global.KatakanaEngine.phonemeToKatakana(basePhonemes, { stressMap: stressMap });
@@ -748,7 +766,7 @@
       return null;
     }
 
-    // High-Performance G2P Fallback (Phonetic prioritized over Engine Literal)
+    // 6. High-Performance G2P Fallback (Phonetic Rules)
     var fallbackKana = fallbackG2P(word);
     if (fallbackKana) {
       return {
@@ -761,7 +779,7 @@
     return convertEnglishWithEngine(word, options);
   }
 
-  function convertLatinText(text, options) {
+  async function convertLatinText(text, options) {
     options = options || {};
     var tokens = tokenizeLatinInput(text);
     var converted = [];
@@ -773,44 +791,45 @@
       return looksLikeJapaneseRomajiToken(token);
     });
 
-    tokens.forEach(function (token) {
+    for (let i = 0; i < tokens.length; i++) {
+        var token = tokens[i];
       if (hasKana(token)) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> kana');
         tokenSources.push('kana');
-        return;
+        continue;
       }
 
       if (allRomajiLike) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> romaji phrase');
         tokenSources.push('romaji-phrase');
-        return;
+        continue;
       }
 
-      var english = convertEnglishWord(token, { fallbackToRules: false });
+      var english = await convertEnglishWord(token, { fallbackToRules: false, rulesOnly: !!options.rulesOnly });
       if (english && english.katakana) {
         converted.push(english.katakana);
         notes.push(english.phonemes || (token + ' -> english'));
         tokenSources.push(english.source || 'english-dictionary');
-        return;
+        continue;
       }
 
       if (looksLikeJapaneseRomajiToken(token)) {
         converted.push(normalizeMixedKatakana(token, { IMEMode: !!options.imeMode }));
         notes.push(token + ' -> romaji');
         tokenSources.push('romaji');
-        return;
+        continue;
       }
 
-      english = convertEnglishWord(token, options);
+      english = await convertEnglishWord(token, options);
       converted.push(english.katakana);
       notes.push(english.phonemes || (token + ' -> english'));
       tokenSources.push(english.source || 'english-rules');
       if ((english.source || 'english-rules') === 'english-rules') {
         lowConfidenceTokens.push(token);
       }
-    });
+    }
 
     var warning = '';
     var sourceLabel = 'Smart conversion';
@@ -820,7 +839,7 @@
       notes.unshift(warning);
     } else if (tokenSources.every(function (source) { return source === 'romaji' || source === 'romaji-phrase' || source === 'kana'; })) {
       sourceLabel = 'Kana and romaji conversion';
-    } else if (tokenSources.some(function (source) { return source === 'english-override' || source === 'english-dictionary'; })) {
+    } else if (tokenSources.some(function (source) { return source === 'english-override' || source === 'english-dictionary' || source === 'english-e2k'; })) {
       sourceLabel = 'Dictionary-backed conversion';
     }
 

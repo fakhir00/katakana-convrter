@@ -68,7 +68,7 @@
     }
 
     /* ── Convert Action ── */
-    function doConvert() {
+    async function doConvert() {
       var text = inputField.value.trim();
       if (!text) {
         katakanaOutput.textContent = 'カタカナ';
@@ -77,15 +77,24 @@
         sourceTag.textContent = 'Ready to convert';
         return;
       }
+      
+      // Visual feedback for long translations
+      katakanaOutput.textContent = 'Translating...';
+      katakanaOutput.classList.add('placeholder-text');
+
       var rulesOnly = rulesOnlyToggle && rulesOnlyToggle.checked;
-      var result = ToolConverters.convertLatinText(text, { separator: '・', rulesOnly: rulesOnly });
+      try {
+        var result = await ToolConverters.convertLatinText(text, { separator: '・', rulesOnly: rulesOnly });
 
-      katakanaOutput.textContent = result.katakana;
-      katakanaOutput.classList.remove('placeholder-text');
-      renderPhonemes(result.details);
-      sourceTag.textContent = result.sourceLabel || 'English + romaji smart conversion';
-
-
+        katakanaOutput.textContent = result.katakana;
+        katakanaOutput.classList.remove('placeholder-text');
+        renderPhonemes(result.details);
+        sourceTag.textContent = result.sourceLabel || 'English + romaji smart conversion';
+      } catch (err) {
+        console.error('Conversion error:', err);
+        katakanaOutput.textContent = 'Error';
+        sourceTag.textContent = 'Something went wrong';
+      }
     }
 
 
