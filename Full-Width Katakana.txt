@@ -1,0 +1,271 @@
+## What Is Full-Width Katakana? 📏
+
+Japanese text uses two character width standards: **full-width (全角 - zenkaku)** and **half-width (半角 - hankaku)**. Full-width Katakana characters are the standard form used in modern Japanese documents, web forms, and official applications. Converting to full-width Katakana ensures your text displays correctly and passes validation on Japanese websites. For technical details on character encoding, see <a href="https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms" rel="nofollow">Wikipedia's guide to half-width and full-width forms</a>.
+
+### Understanding Character Width in Japanese 📐
+
+| Width Type | Japanese Term | Character Size | Usage |
+|------------|---------------|----------------|-------|
+| **Full-width** | 全角 | Double width | Standard Japanese text, forms, documents |
+| **Half-width** | 半角 | Single width | Legacy systems, some databases, Latin characters |
+
+**Visual comparison:**
+
+| Full-Width | Half-Width | Both Together |
+|------------|------------|---------------|
+| カタカナ | ｶﾀｶﾅ | カタカナ vs ｶﾀｶﾅ |
+
+The full-width characters appear **twice as wide** as half-width characters when displayed in monospace fonts or form fields.
+
+### Why Character Width Matters ⚠️
+
+Japanese web forms and official systems often **strictly require full-width characters**. Submitting half-width Katakana can cause:
+
+| Problem | Result |
+|----------|--------|
+| **Form validation errors** | Submission rejected |
+| **Database incompatibility** | Data not stored correctly |
+| **Display issues** | Text appears misaligned |
+| **OCR problems** | Document scanning fails |
+| **Bank processing errors** | Payment rejected |
+
+Our **full-width Katakana converter** ensures your text meets these requirements automatically.
+
+---
+
+## Full-Width vs Half-Width Katakana Chart 📊
+
+### Basic Characters Comparison
+
+| Full-Width | Half-Width | Romaji | Sound |
+|------------|------------|--------|-------|
+| ア | ｱ | a | ah |
+| イ | ｲ | i | ee |
+| ウ | ｳ | u | oo |
+| エ | ｴ | e | eh |
+| オ | ｵ | o | oh |
+
+### K-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| カ | ｶ | ka |
+| キ | ｷ | ki |
+| ク | ｸ | ku |
+| ケ | ｹ | ke |
+| コ | ｺ | ko |
+
+### S-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| サ | ｻ | sa |
+| シ | ｼ | shi |
+| ス | ｽ | su |
+| セ | ｾ | se |
+| ソ | ｿ | so |
+
+### T-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| タ | ﾀ | ta |
+| チ | ﾁ | chi |
+| ツ | ﾂ | tsu |
+| テ | ﾃ | te |
+| ト | ﾄ | to |
+
+### N-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ナ | ﾅ | na |
+| ニ | ﾆ | ni |
+| ヌ | ﾇ | nu |
+| ネ | ﾈ | ne |
+| ノ | ﾉ | no |
+
+### H-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ハ | ﾊ | ha |
+| ヒ | ﾋ | hi |
+| フ | ﾌ | fu |
+| ヘ | ﾍ | he |
+| ホ | ﾎ | ho |
+
+### M-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| マ | ﾏ | ma |
+| ミ | ﾐ | mi |
+| ム | ﾑ | mu |
+| メ | ﾒ | me |
+| モ | ﾓ | mo |
+
+### Y-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ヤ | ﾔ | ya |
+| ユ | ﾕ | yu |
+| ヨ | ﾖ | yo |
+
+### R-Row
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ラ | ﾗ | ra |
+| リ | ﾘ | ri |
+| ル | ﾙ | ru |
+| レ | ﾚ | re |
+| ロ | ﾛ | ro |
+
+### W-Row and N
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ワ | ﾜ | wa |
+| ヲ | ｦ | wo |
+| ン | ﾝ | n |
+
+For complete Unicode character mappings, <a href="https://www.unicode.org/charts/" rel="nofollow">Unicode.org</a> provides official character charts.
+
+---
+
+## Dakuten and Handakuten (Voiced Characters) 🗣️
+
+Half-width voiced characters use **separate character codes** rather than combining marks:
+
+### G-Row (Voiced K)
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ガ | ｶﾞ | ga |
+| ギ | ｷﾞ | gi |
+| グ | ｸﾞ | gu |
+| ゲ | ｹﾞ | ge |
+| ゴ | ｺﾞ | go |
+
+### Z-Row (Voiced S)
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ザ | ｻﾞ | za |
+| ジ | ｼﾞ | ji |
+| ズ | ｽﾞ | zu |
+| ゼ | ｾﾞ | ze |
+| ゾ | ｿﾞ | zo |
+
+### D-Row (Voiced T)
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| ダ | ﾀﾞ | da |
+| ヂ | ﾁﾞ | ji |
+| ヅ | ﾂﾞ | zu |
+| デ | ﾃﾞ | de |
+| ド | ﾄﾞ | do |
+
+### B-Row (Voiced H)
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| バ | ﾊﾞ | ba |
+| ビ | ﾋﾞ | bi |
+| ブ | ﾌﾞ | bu |
+| ベ | ﾍﾞ | be |
+| ボ | ﾎﾞ | bo |
+
+### P-Row (Handakuten)
+
+| Full-Width | Half-Width | Romaji |
+|------------|------------|--------|
+| パ | ﾊﾟ | pa |
+| ピ | ﾋﾟ | pi |
+| プ | ﾌﾟ | pu |
+| ペ | ﾍﾟ | pe |
+| ポ | ﾎﾟ | po |
+
+**Important difference:** Half-width voiced characters are created by combining the base character with a half-width dakuten mark (ﾞ or ﾟ), while full-width characters are typically single Unicode code points.
+
+---
+
+## Who Needs a Full-Width Katakana Converter? 👥
+
+### People Registering on Japanese Websites 🌐
+
+Japanese online services frequently require full-width input:
+
+| Service Type | Width Requirement |
+|--------------|-------------------|
+| **E-commerce** (Amazon Japan, Rakuten) | Full-width Katakana for names |
+| **Banking apps** | Strict full-width validation |
+| **Government portals** | Official forms require zenkaku |
+| **Mobile carriers** | Contract applications |
+| **Utility companies** | Account registration |
+| **Hotel bookings** | Guest name input |
+
+### Expats and Foreign Residents 🏠
+
+Foreign residents in Japan need full-width Katakana for:
+
+- **Residence card applications** — Name in Katakana format
+- **Bank account opening** — Forms require full-width
+- **Apartment rental contracts** — Legal documents
+- **Phone contracts** — Carrier registration
+- **Health insurance** — Enrollment forms
+- **Driver's license** — Application documents
+
+<a href="https://www.moj.go.jp/isa/english.html" rel="nofollow">The Japanese Immigration Services Agency</a> provides information on required documentation formats for foreign residents.
+
+### Business Professionals 💼
+
+Corporate users need full-width conversion for:
+
+- **Company registration** — Business documentation
+- **Invoice processing** — Accounting systems
+- **Employee records** — HR databases
+- **Contract signatures** — Legal documents
+- **Customer databases** — CRM systems
+
+### Students and Educational Use 📚
+
+Students encounter width requirements in:
+
+- **University applications** — Admission forms
+- **Scholarship applications** — Document submission
+- **JLPT registration** — Test signup forms
+- **Student housing** — Dormitory applications
+
+### Developers and IT Professionals 💻
+
+Technical users need full-width conversion for:
+
+- **Database normalization** — Standardizing character encoding
+- **Data migration** — Converting legacy half-width data
+- **Form validation testing** — QA processes
+- **API integration** — Japanese system compatibility
+
+---
+
+## Why Japanese Forms Require Full-Width Characters 🔒
+
+### Historical Context: Legacy Computing 🖥️
+
+The half-width vs. full-width distinction originated in early computing:
+
+| Era | Standard | Width Usage |
+|-----|----------|------------|
+| **1970s-1980s** | JIS X 0201 | Half-width for compatibility |
+| **1980s onward** | JIS X 0208 | Full-width as standard |
+| **Modern** | Unicode | Both supported, full-width preferred |
+
+Early Japanese computer systems used half-width characters to save memory and display space. Modern systems standardized on full-width, but legacy half-width characters persist in some databases and systems.
+
+### Form Validation Logic ✅
+
+Japanese web forms commonly validate character width:
+
