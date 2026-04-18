@@ -5,9 +5,39 @@ async function run() {
   
   let raw = fs.readFileSync('Katakana Converter copy.txt', 'utf8');
   
-  // Fix Katakana "fake" tables: add blank line before, separator row after, and a dummy body row
-  raw = raw.replace(/\n(\| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \|)\n(?!\s*\|[-\s:|]+\|)/g, '\n\n$1\n|---|---|---|---|---|\n|   |   |   |   |   |\n');
-  raw = raw.replace(/\n(\| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \|)\n(?!\s*\|[-\s:|]+\|)/g, '\n\n$1\n|---|---|---|\n|   |   |   |\n');
+  // Custom fix for chart tables that lack separators
+  const charts = [
+      'ア (a) | イ (i) | ウ (u) | エ (e) | オ (o)',
+      'カ (ka) | キ (ki) | ク (ku) | ケ (ke) | コ (ko)',
+      'サ (sa) | シ (shi) | ス (su) | セ (se) | ソ (so)',
+      'タ (ta) | チ (chi) | ツ (tsu) | テ (te) | ト (to)',
+      'ナ (na) | ニ (ni) | ヌ (nu) | ネ (ne) | ノ (no)',
+      'ハ (ha) | ヒ (hi) | フ (fu) | ヘ (he) | ホ (ho)',
+      'マ (ma) | ミ (mi) | ム (mu) | メ (me) | モ (mo)',
+      'ヤ (ya) | ユ (yu) | ヨ (yo)',
+      'ラ (ra) | リ (ri) | ル (ru) | レ (re) | ロ (ro)',
+      'ワ (wa) | ヲ (wo) | ン (n)',
+      'ガ (ga) | ギ (gi) | グ (gu) | ゲ (ge) | ゴ (go)',
+      'ザ (za) | ジ (ji) | ズ (zu) | ゼ (ze) | ゾ (zo)',
+      'ダ (da) | ヂ (ji) | ヅ (zu) | デ (de) | ド (do)',
+      'バ (ba) | ビ (bi) | ブ (bu) | ベ (be) | ボ (bo)',
+      'パ (pa) | ピ (pi) | プ (pu) | ペ (pe) | ポ (po)'
+  ];
+
+  for(const chart of charts) {
+      const escaped = chart.replace(/[()]/g, '\\$&');
+      const regex = new RegExp('\\| ' + escaped + ' \\|', 'g');
+      const cols = chart.split('|').length;
+      const sep = '|' + '---|'.repeat(cols);
+      // Ensure we add the separator line directly after
+      raw = raw.replace(regex, `| ${chart} |\n${sep}`);
+  }
+
+  // Ensure ALL table blocks have blank lines before and after
+  // A table block is one or more lines starting and ending with |
+  raw = raw.replace(/(^|\n)((\|.*\|(?:\n|$))+)/g, (match, before, table) => {
+      return before + '\n' + table.trim() + '\n\n';
+  });
 
   // Fix URLs
   raw = raw.replace(/\]\(#english-to-katakana\)/g, '](https://www.katakanaconverter.com/english-name/)');
@@ -24,16 +54,10 @@ async function run() {
   
   renderer.table = function(token) {
     if (token.header) {
-      // Check if it's a "fake" chart table (has spaces in the body rows we added)
-      const isChart = token.rows.length === 1 && token.rows[0].every(cell => cell.text.trim() === '');
-      if (isChart) {
-          const head = token.header.map(cell => `<th>${marked.marked.parseInline(cell.text)}</th>`).join('');
-          return `<div class="table-wrap">\n<table>\n<thead>\n<tr>${head}</tr>\n</thead>\n</table>\n</div>\n`;
-      }
-      
       const head = token.header.map(cell => `<th>${marked.marked.parseInline(cell.text)}</th>`).join('');
-      const rows = token.rows.map(row => `<tr>${row.map(cell => `<td>${marked.marked.parseInline(cell.text)}</td>`).join('')}</tr>`).join('\n');
-      return `<div class="table-wrap">\n<table>\n<thead>\n<tr>${head}</tr>\n</thead>\n<tbody>\n${rows}\n</tbody>\n</table>\n</div>\n`;
+      const rows = token.rows ? token.rows.map(row => `<tr>${row.map(cell => `<td>${marked.marked.parseInline(cell.text)}</td>`).join('')}</tr>`).join('\n') : '';
+      const body = rows ? `<tbody>\n${rows}\n</tbody>\n` : '';
+      return `<div class="table-wrap">\n<table>\n<thead>\n<tr>${head}</tr>\n</thead>\n${body}</table>\n</div>\n`;
     }
   };
   
@@ -47,7 +71,7 @@ async function run() {
   html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary class="faq-question">$1</summary>');
   html = html.replace(/<\/summary>([\s\S]*?)(?=<\/details>)/g, '</summary>\n<div class="faq-answer">\n$1\n</div>\n');
 
-  // Split into articles and FAQ
+  // Split into sections
   let parts = html.split('<h2');
   let articles = '';
   let faqSection = '';
@@ -55,15 +79,15 @@ async function run() {
   for(let i=1; i<parts.length; i++) {
     let section = '<h2' + parts[i];
     if (section.includes('Common Katakana Conversion Questions')) {
-      // Find the end of this section (next h2 or end of string)
       let endIdx = section.indexOf('<h2', 10);
       let faqContent = endIdx !== -1 ? section.substring(0, endIdx) : section;
       
-      // Parse FAQ content
       let titleMatch = faqContent.match(/<h2.*?>(.*?)<\/h2>/);
       let title = titleMatch ? titleMatch[1] : 'Common Katakana Conversion Questions';
       let faqBody = faqContent.substring(faqContent.indexOf('</h2>') + 5);
       
+      faqBody = faqBody.replace(/<hr>/g, '').trim();
+
       let headerText = faqBody.substring(0, faqBody.indexOf('<details'));
       let faqs = faqBody.substring(faqBody.indexOf('<details'));
 
@@ -80,16 +104,14 @@ async function run() {
       </div>
     </section>`;
       
-      // If there was something after the FAQ in this part, add it to articles
       if (endIdx !== -1) {
-          articles += section.substring(endIdx);
+          articles += section.substring(endIdx).split('<h2').slice(1).map(s => '\n<article class="content-block">\n<h2' + s.trim() + '\n</article>\n').join('');
       }
     } else {
       articles += '\n<article class="content-block">\n' + section.trim() + '\n</article>\n';
     }
   }
   
-  // Final assembly
   const finalHtml = `
     <section class="seo-content-section" id="about" aria-labelledby="about-title">
       <div class="container">
