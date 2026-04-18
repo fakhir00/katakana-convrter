@@ -35,7 +35,12 @@
   <meta name="twitter:description" content="English to Katakana Converter for fast browser-based Japanese text conversion, phonetic checks, and Japan-ready formatting. Try it now online.">
   <meta name="twitter:image" content="https://www.katakanaconverter.com/og-image.png">
 
+  <!-- Performance Optimizations -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+
   <!-- Stylesheet -->
+  <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
 
   <!-- JSON-LD: WebSite Schema -->
@@ -544,13 +549,17 @@
   <!-- ════════════ FOOTER (rendered by layout.js) ════════════ -->
   <footer class="site-footer" role="contentinfo"></footer>
 
-  <!-- Scripts -->
-  <script src="js/layout.js"></script>
-  <script src="js/engine.js"></script>
-  <script src="js/cmudict-data.js"></script>
-  <script src="https://unpkg.com/wanakana"></script>
-  <script src="js/tool-converters.js"></script>
-  <script src="js/app.js"></script>
-  <script>SiteLayout.init('/');</script>
+  <!-- Scripts (Deferred for Performance) -->
+  <script src="js/layout.js" defer></script>
+  <script src="js/engine.js" defer></script>
+  <script src="js/cmudict-data.js" defer></script>
+  <script src="https://unpkg.com/wanakana" defer></script>
+  <script src="js/tool-converters.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      SiteLayout.init('/');
+    });
+  </script>
 </body>
 </html>

@@ -119,7 +119,11 @@
     </section>
   </main>
   <footer class="site-footer" role="contentinfo"></footer>
-  <script src="../../js/layout.js"></script>
-  <script>SiteLayout.init('/blog/');</script>
+  <script src="../../js/layout.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      SiteLayout.init('/blog/');
+    });
+  </script>
 </body>
 </html>
