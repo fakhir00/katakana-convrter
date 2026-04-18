@@ -5,7 +5,7 @@ async function run() {
   
   let raw = fs.readFileSync('Katakana Converter copy.txt', 'utf8');
   
-  // Custom fix for chart tables that lack separators
+  // Custom fix for chart tables: replace them with direct HTML to bypass marked's finicky table detection
   const charts = [
       'ア (a) | イ (i) | ウ (u) | エ (e) | オ (o)',
       'カ (ka) | キ (ki) | ク (ku) | ケ (ke) | コ (ko)',
@@ -26,17 +26,11 @@ async function run() {
 
   for(const chart of charts) {
       const escaped = chart.replace(/[()]/g, '\\$&');
-      // Search for the exact line in the source
       const regex = new RegExp('\\| ' + escaped + ' \\|', 'g');
-      const cols = chart.split('|').length;
-      const sep = '|' + '---|'.repeat(cols);
-      // Replace with padded table
-      raw = raw.replace(regex, `\n\n| ${chart} |\n${sep}\n\n`);
+      const cells = chart.split('|').map(c => `<td>${c.trim()}</td>`).join('');
+      const htmlTable = `\n<div class="table-wrap"><table><tbody><tr>${cells}</tr></tbody></table></div>\n`;
+      raw = raw.replace(regex, htmlTable);
   }
-
-  // General table padding (for ones that have separators but maybe no blank lines)
-  // We look for a line starting with | that follows a line that doesn't
-  raw = raw.replace(/([^\n])\n\|/g, '$1\n\n|');
 
   // Fix URLs
   raw = raw.replace(/\]\(#english-to-katakana\)/g, '](https://www.katakanaconverter.com/english-name/)');
@@ -68,6 +62,7 @@ async function run() {
   // Fix details and summaries
   html = html.replace(/<details>/g, '<details class="faq-item">');
   html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary class="faq-question">$1</summary>');
+  // Move details content into answer div
   html = html.replace(/<\/summary>([\s\S]*?)(?=<\/details>)/g, (match, content) => {
       return `</summary>\n<div class="faq-answer">\n${content.trim()}\n</div>\n`;
   });
