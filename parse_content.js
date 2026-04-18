@@ -26,18 +26,17 @@ async function run() {
 
   for(const chart of charts) {
       const escaped = chart.replace(/[()]/g, '\\$&');
+      // Search for the exact line in the source
       const regex = new RegExp('\\| ' + escaped + ' \\|', 'g');
       const cols = chart.split('|').length;
       const sep = '|' + '---|'.repeat(cols);
-      // Ensure we add the separator line directly after
-      raw = raw.replace(regex, `| ${chart} |\n${sep}`);
+      // Replace with padded table
+      raw = raw.replace(regex, `\n\n| ${chart} |\n${sep}\n\n`);
   }
 
-  // Ensure ALL table blocks have blank lines before and after
-  // A table block is one or more lines starting and ending with |
-  raw = raw.replace(/(^|\n)((\|.*\|(?:\n|$))+)/g, (match, before, table) => {
-      return before + '\n' + table.trim() + '\n\n';
-  });
+  // General table padding (for ones that have separators but maybe no blank lines)
+  // We look for a line starting with | that follows a line that doesn't
+  raw = raw.replace(/([^\n])\n\|/g, '$1\n\n|');
 
   // Fix URLs
   raw = raw.replace(/\]\(#english-to-katakana\)/g, '](https://www.katakanaconverter.com/english-name/)');
@@ -69,7 +68,9 @@ async function run() {
   // Fix details and summaries
   html = html.replace(/<details>/g, '<details class="faq-item">');
   html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary class="faq-question">$1</summary>');
-  html = html.replace(/<\/summary>([\s\S]*?)(?=<\/details>)/g, '</summary>\n<div class="faq-answer">\n$1\n</div>\n');
+  html = html.replace(/<\/summary>([\s\S]*?)(?=<\/details>)/g, (match, content) => {
+      return `</summary>\n<div class="faq-answer">\n${content.trim()}\n</div>\n`;
+  });
 
   // Split into sections
   let parts = html.split('<h2');
