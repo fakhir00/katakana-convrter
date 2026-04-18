@@ -21,6 +21,7 @@
   "dependencies": {
     "cmu-pronouncing-dictionary": "^3.0.0",
     "google-translate-api-x": "^10.7.2",
-    "jsdom": "^29.0.1"
+    "jsdom": "^29.0.1",
+    "marked": "^18.0.2"
   }
 }
