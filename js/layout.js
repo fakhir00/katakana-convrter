@@ -24,22 +24,43 @@
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
     { 
-      label: 'Our Tools ▼', 
+      label: 'Name Converters ▼', 
       isDropdown: true,
       href: '#',
       items: [
         { label: 'Katakana Name Converter', href: '/name-to-katakana/' },
-        { label: 'English Name to Katakana', href: '/english-name/' },
-        { label: 'Full-Width Katakana', href: '/full-width-katakana/' },
-        { label: 'Full-Width Katakana Name', href: '/full-width-name/' },
-        { label: 'Katakana to Hiragana', href: '/katakana-to-hiragana/' },
-        { label: 'Hiragana to Katakana', href: '/hiragana-to-katakana/' },
-        { label: 'Japanese Name Katakana', href: '/japanese-name/' },
-        { label: 'Romaji to Katakana', href: '/romaji-to-katakana/' },
-        { label: 'Latin to Katakana', href: '/latin-to-katakana/' },
-        { label: 'Kanji to Katakana', href: '/kanji-to-katakana/' },
-        { label: 'Kanji to Hiragana', href: '/kanji-to-hiragana/' },
-        { label: 'Chinese to Katakana', href: '/chinese-to-katakana/' }
+        { label: 'English Name → Katakana', href: '/english-name/' },
+        { label: 'Japanese Name → Katakana', href: '/japanese-name/' },
+        { label: 'Full-Width Katakana Name', href: '/full-width-name/' }
+      ]
+    },
+    { 
+      label: 'Script Conversion ▼', 
+      isDropdown: true,
+      href: '#',
+      items: [
+        { label: 'Hiragana → Katakana', href: '/hiragana-to-katakana/' },
+        { label: 'Katakana → Hiragana', href: '/katakana-to-hiragana/' },
+        { label: 'Romaji → Katakana', href: '/romaji-to-katakana/' },
+        { label: 'Full-Width Katakana Converter', href: '/full-width-katakana/' }
+      ]
+    },
+    { 
+      label: '🈶 Kanji Tools ▼', 
+      isDropdown: true,
+      href: '#',
+      items: [
+        { label: 'Kanji → Katakana', href: '/kanji-to-katakana/' },
+        { label: 'Kanji → Hiragana', href: '/kanji-to-hiragana/' }
+      ]
+    },
+    { 
+      label: '🌏 Other Conversions ▼', 
+      isDropdown: true,
+      href: '#',
+      items: [
+        { label: 'Chinese → Katakana', href: '/chinese-to-katakana/' },
+        { label: 'Latin → Katakana', href: '/latin-to-katakana/' }
       ]
     },
     { label: 'Blog', href: '/blog/' },
@@ -103,12 +124,17 @@
         '</button>' +
       '</div>' +
       '<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile Navigation">' +
-        NAV_LINKS.map(function (l) {
-          if (l.isDropdown) {
-            return l.items.map(function(sub) { return '<a href="' + sub.href + '" style="padding-left:30px; font-size:0.9rem;">' + sub.label + '</a>'; }).join('');
-          }
-          return '<a href="' + l.href + '">' + l.label + '</a>';
-        }).join('') +
+      NAV_LINKS.map(function (l) {
+        if (l.isDropdown) {
+          var label = l.label.replace(' ▼', '');
+          var header = '<div class="mobile-group-header">' + label + '</div>';
+          var links = l.items.map(function(sub) {
+            return '<a href="' + sub.href + '" class="mobile-sub-link">' + sub.label + '</a>';
+          }).join('');
+          return header + links;
+        }
+        return '<a href="' + l.href + '">' + l.label + '</a>';
+      }).join('') +
       '</nav>';
 
     // Mobile toggle
