@@ -5,9 +5,9 @@ async function run() {
   
   let raw = fs.readFileSync('Katakana Converter copy.txt', 'utf8');
   
-  // Fix Katakana "fake" tables by adding separator rows
-  raw = raw.replace(/(\| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \|)\n(?!\s*\|[-\s:|]+\|)/g, '$1\n|---|---|---|---|---|\n');
-  raw = raw.replace(/(\| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \|)\n(?!\s*\|[-\s:|]+\|)/g, '$1\n|---|---|---|\n');
+  // Fix Katakana "fake" tables: add blank line before, separator row after, and a dummy body row
+  raw = raw.replace(/\n(\| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \|)\n(?!\s*\|[-\s:|]+\|)/g, '\n\n$1\n|---|---|---|---|---|\n|   |   |   |   |   |\n');
+  raw = raw.replace(/\n(\| [^|\n]+ \| [^|\n]+ \| [^|\n]+ \|)\n(?!\s*\|[-\s:|]+\|)/g, '\n\n$1\n|---|---|---|\n|   |   |   |\n');
 
   // Fix URLs as requested
   raw = raw.replace(/\]\(#english-to-katakana\)/g, '](https://www.katakanaconverter.com/english-name/)');
