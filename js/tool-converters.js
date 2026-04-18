@@ -425,6 +425,64 @@
     'electroencephalographically'
   ]);
 
+  var STATIC_ACCURACY_DICT = {
+    "michael": "マイケル", "sarah": "サラ", "david": "デイビッド", "emma": "エマ", 
+    "john": "ジョン", "james": "ジェームズ", "mary": "メアリー", "robert": "ロバート",
+    "william": "ウィリアム", "richard": "リチャード", "joseph": "ジョセフ", "thomas": "トーマス",
+    "charles": "チャールズ", "christopher": "クリストファー", "daniel": "ダニエル", "matthew": "マシュー",
+    "anthony": "アンソニー", "mark": "マーク", "donald": "ドナルド", "steven": "スティーブン",
+    "paul": "ポール", "andrew": "アンドリュー", "joshua": "ジョシュア", "kenneth": "ケネス",
+    "kevin": "ケビン", "brian": "ブライアン", "george": "ジョージ", "edward": "エドワード",
+    "ronald": "ロナルド", "timothy": "ティモシー", "jason": "ジェイソン", "jeffrey": "ジェフリー",
+    "ryan": "ライアン", "jacob": "ジェイコブ", "gary": "ゲイリー", "nicholas": "ニコラス",
+    "eric": "エリック", "jonathan": "ジョナサン", "stephen": "スティーブン", "larry": "ラリー",
+    "justin": "ジャスティン", "scott": "スコット", "brandon": "ブランドン", "benjamin": "ベンジャミン",
+    "samuel": "サミュエル", "gregory": "グレゴリー", "frank": "フランク", "alexander": "アレクサンダー",
+    "raymond": "レイモンド", "patrick": "パトリック", "jack": "ジャック", "dennis": "デニス",
+    "jerry": "ジェリー", "tyler": "タイラー", "aaron": "アーロン", "jose": "ホセ",
+    "adam": "アダム", "henry": "ヘンリー", "nathan": "ネイサン", "douglas": "ダグラス",
+    "zachary": "ザッカリー", "peter": "ピーター", "kyle": "カイル", "walter": "ウォルター",
+    "ethan": "イーサン", "jeremy": "ジェレミ", "christian": "クリスチャン", "keith": "キース",
+    "roger": "ロジャー", "terry": "テリー", "geoffrey": "ジェフリー", "jesse": "ジェシー",
+    "sean": "ショーン", "luke": "ルーク", "austin": "オースティン", "dylan": "ディラン",
+    "connor": "コナー", "owen": "オーウェン", "liam": "リアム", "olivia": "オリビア",
+    "ava": "アヴァ", "isabella": "イザベラ", "sophia": "ソフィア", "mia": "ミア",
+    "charlotte": "シャーロット", "amelia": "アメリア", "harper": "ハーパー", "evelyn": "エヴリン",
+    "abigail": "アビゲイル", "emily": "エミリー", "elizabeth": "エリザベス", "mila": "ミラ",
+    "ella": "エラ", "avery": "エイブリー", "sofia": "ソフィア", "camila": "カミラ",
+    "aria": "アリア", "scarlett": "スカーレット", "victoria": "ビクトリア", "madison": "マディソン",
+    "luna": "ルナ", "grace": "グレース", "chloe": "クロエ", "penelope": "ペネロペ",
+    "layla": "レイラ", "riley": "ライリー", "zoey": "ゾーイ", "nora": "ノラ",
+    "lily": "リリー", "eleanor": "エレノア", "hannah": "ハンナ", "lillian": "リリアン",
+    "addison": "アディソン", "aubrey": "オーブリー", "ellie": "エリー", "stella": "ステラ",
+    "natalie": "ナタリー", "zoe": "ゾーイ", "leah": "レア", "hazel": "ヘイゼル",
+    "violet": "バイオレット", "aurora": "オーロラ", "savannah": "サバンナ", "audrey": "オードリー",
+    "brooklyn": "ブルックリン", "bella": "ベラ", "claire": "クレア", "skylar": "スカイラー",
+    "lucy": "ルーシー", "paisley": "ペイズリー", "everly": "エヴァリー", "anna": "アンナ",
+    "caroline": "キャロライン", "nova": "ノヴァ", "genesis": "ジェネシス", "emilia": "エミリア",
+    "kennedy": "ケネディ", "samantha": "サマンサ", "maya": "マヤ", "willow": "ウィロー",
+    "kinsley": "キンズリー", "naomi": "ナオミ", "aaliyah": "アリーヤ", "elena": "エレナ",
+    "ariana": "アリアナ", "allison": "アリソン", "gabriella": "ガブリエラ",
+    "alice": "アリス", "madelyn": "マデリン", "cora": "コラ", "ruby": "ルビー",
+    "eva": "エヴァ", "serenity": "セレニティ", "autumn": "オータム", "adeline": "アデライン",
+    "hailey": "ヘイリー", "gianna": "ジアナ", "valentina": "ヴァレンティナ", "isla": "アイラ",
+    "computer": "コンピューター", "network": "ネットワーク", "system": "システム", "internet": "インターネット",
+    "smartphone": "スマートフォン", "software": "ソフトウェア", "hardware": "ハードウェア", "database": "データベース",
+    "server": "サーバー", "client": "クライアント", "digital": "デジタル", "analog": "アナログ",
+    "programming": "プログラミング", "algorithm": "アルゴリズム", "cloud": "クラウド", "security": "セキュリティ",
+    "manager": "マネージャー", "leader": "リーダー", "meeting": "ミーティング", "business": "ビジネス",
+    "marketing": "マーケティング", "design": "デザイン", "project": "プロジェクト", "service": "サービス",
+    "support": "サポート", "guide": "ガイド", "model": "モデル", "camera": "カメラ",
+    "video": "ビデオ", "audio": "オーディオ", "music": "ミュージック", "player": "プレイヤー",
+    "coffee": "コーヒー", "restaurant": "レストラン", "hotel": "ホテル", "menu": "メニュー",
+    "table": "テーブル", "chair": "チェア", "window": "ウィンドウ", "door": "ドア",
+    "light": "ライト", "color": "カラー", "black": "ブラック", "white": "ホワイト",
+    "red": "レッド", "blue": "ブルー", "green": "グリーン", "yellow": "イエロー",
+    "orange": "オレンジ", "pink": "ピンク", "purple": "パープル", "brown": "ブラウン",
+    "cat": "キャット", "dog": "ドッグ", "bird": "バード", "fish": "フィッシュ"
+  };
+
+
   function hasKana(text) {
     return /[\u3040-\u30ff]/.test(text);
   }
@@ -582,8 +640,79 @@
     };
   }
 
+  function fallbackG2P(word) {
+    if (!word) return null;
+    var w = String(word).toLowerCase().replace(/[^a-z]/g, '');
+    if (!w) return null;
+
+    // 2. Vowel Digraphs (Regex for 'ee', 'oo', 'ea', 'ai' -> long Katakana vowels)
+    w = w.replace(/ee/g, 'ii-')
+         .replace(/oo/g, 'uu-')
+         .replace(/ea/g, 'ii-')
+         .replace(/ai/g, 'ei-')
+         .replace(/oa/g, 'ou-')
+         .replace(/au/g, 'oo-');
+
+    // 3. The 'R' Rule: Converts 'vowel + r' patterns to long vowel marks
+    w = w.replace(/ar/g, 'aa-')
+         .replace(/er/g, 'aa-')
+         .replace(/ir/g, 'aa-')
+         .replace(/ur/g, 'aa-')
+         .replace(/or/g, 'oo-');
+
+    // 4. Consonant Clusters (Corrects 'st', 'tr', 'pl' into phonetic equivalents)
+    w = w.replace(/st/g, 'suto')
+         .replace(/tr/g, 'tora')
+         .replace(/pl/g, 'pura')
+         .replace(/pr/g, 'pura')
+         .replace(/dr/g, 'dora')
+         .replace(/br/g, 'bura')
+         .replace(/cr/g, 'kura')
+         .replace(/gr/g, 'gura')
+         .replace(/fl/g, 'fura')
+         .replace(/sp/g, 'supa')
+         .replace(/sk/g, 'suka')
+         .replace(/sl/g, 'sura');
+
+    // Silent E removal at end
+    w = w.replace(/([bcdfghjklmnpqrstvwxyz])e$/g, '$1');
+
+    // General Consonant mapping for Katakana compatibility
+    w = w.replace(/c(?=[iey])/g, 's')
+         .replace(/c/g, 'k')
+         .replace(/ph/g, 'f')
+         .replace(/th/g, 's')
+         .replace(/x/g, 'kusu')
+         .replace(/q/g, 'ku')
+         .replace(/v/g, 'b');
+
+    // 1. Handles Epenthetic Vowels on terminal consonants ('d' -> 'do', 't' -> 'to', others -> 'u')
+    w = w.replace(/d$/g, 'do')
+         .replace(/t$/g, 'to')
+         .replace(/([bcfghkjlmpqsvz])$/g, '$1u');
+
+    // Clean up double hyphens
+    w = w.replace(/-+/g, '-');
+
+    if (global.wanakana) {
+      return global.wanakana.toKatakana(w);
+    }
+    return w;
+  }
+
   function convertEnglishWord(word, options) {
     options = options || {};
+    var lowercaseWord = String(word).toLowerCase();
+
+    // Accuracy Booster: Static Dictionary
+    if (STATIC_ACCURACY_DICT[lowercaseWord]) {
+      return {
+        katakana: STATIC_ACCURACY_DICT[lowercaseWord],
+        phonemes: '[static dictionary match]',
+        source: 'english-dictionary-static'
+      };
+    }
+
     var entry = lookupEnglishWord(word);
 
     if (entry && entry.kana) {
@@ -617,6 +746,16 @@
 
     if (options.fallbackToRules === false) {
       return null;
+    }
+
+    // High-Performance G2P Fallback (Phonetic prioritized over Engine Literal)
+    var fallbackKana = fallbackG2P(word);
+    if (fallbackKana) {
+      return {
+        katakana: fallbackKana,
+        phonemes: '[G2P Rules Fallback]',
+        source: 'english-rules'
+      };
     }
 
     return convertEnglishWithEngine(word, options);
