@@ -986,10 +986,13 @@ body::before {
 .nav-dropdown:hover .dropdown-content,
 .nav-dropdown.open .dropdown-content { display: block; }
 
+.nav-dropdown:hover .mega-dropdown,
+.nav-dropdown.open .mega-dropdown { display: flex; }
+
 /* Mega Menu Structure */
 .mega-dropdown {
+  display: none;
   padding: 24px 20px;
-  display: flex;
   flex-direction: column;
   gap: 20px;
 }
