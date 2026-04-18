@@ -274,7 +274,7 @@
   }
 
   function initLayout(activePage) {
-    document.addEventListener('DOMContentLoaded', function () {
+    var doInit = function () {
       renderHeader(activePage || '/');
       renderFooter();
 
@@ -298,7 +298,13 @@
         syncBackToTop();
         window.addEventListener('scroll', syncBackToTop, { passive: true });
       }
-    });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', doInit);
+    } else {
+      doInit();
+    }
   }
 
   global.SiteLayout = { init: initLayout, SITE: SITE, NAV_LINKS: NAV_LINKS, FOOTER_LINKS: FOOTER_LINKS };
