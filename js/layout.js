@@ -24,7 +24,7 @@
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
     { 
-      label: '🔤 Name Converters ▼', 
+      label: '🔤 Name Converters', 
       isDropdown: true,
       href: '#',
       items: [
@@ -35,7 +35,7 @@
       ]
     },
     { 
-      label: '🔁 Script Conversion ▼', 
+      label: '🔁 Script Conversion', 
       isDropdown: true,
       href: '#',
       items: [
@@ -46,7 +46,7 @@
       ]
     },
     { 
-      label: '🈶 Kanji Tools ▼', 
+      label: '🈶 Kanji Tools', 
       isDropdown: true,
       href: '#',
       items: [
@@ -55,7 +55,7 @@
       ]
     },
     { 
-      label: '🌏 Other Conversions ▼', 
+      label: '🌏 Other Conversions', 
       isDropdown: true,
       href: '#',
       items: [
@@ -126,8 +126,7 @@
       '<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile Navigation">' +
       NAV_LINKS.map(function (l) {
         if (l.isDropdown) {
-          var label = l.label.replace(' ▼', '');
-          var header = '<div class="mobile-group-header">' + label + '</div>';
+          var header = '<div class="mobile-group-header">' + l.label + '</div>';
           var links = l.items.map(function(sub) {
             return '<a href="' + sub.href + '" class="mobile-sub-link">' + sub.label + '</a>';
           }).join('');
