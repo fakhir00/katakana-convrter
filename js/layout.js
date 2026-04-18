@@ -21,43 +21,46 @@
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
     {
-      label: '🔤 Name Converters',
+      label: 'Our Tools ▼',
       isDropdown: true,
       href: '#',
-      items: [
-        { label: 'Katakana Name Converter', href: '/name-to-katakana/' },
-        { label: 'English Name → Katakana', href: '/english-name/' },
-        { label: 'Japanese Name → Katakana', href: '/japanese-name/' },
-        { label: 'Full-Width Katakana Name', href: '/full-width-name/' }
-      ]
-    },
-    {
-      label: '🔁 Script Conversion',
-      isDropdown: true,
-      href: '#',
-      items: [
-        { label: 'Hiragana → Katakana', href: '/hiragana-to-katakana/' },
-        { label: 'Katakana → Hiragana', href: '/katakana-to-hiragana/' },
-        { label: 'Romaji → Katakana', href: '/romaji-to-katakana/' },
-        { label: 'Full-Width Katakana Converter', href: '/full-width-katakana/' }
-      ]
-    },
-    {
-      label: '🈶 Kanji Tools',
-      isDropdown: true,
-      href: '#',
-      items: [
-        { label: 'Kanji → Katakana', href: '/kanji-to-katakana/' },
-        { label: 'Kanji → Hiragana', href: '/kanji-to-hiragana/' }
-      ]
-    },
-    {
-      label: '🌏 Other Conversions',
-      isDropdown: true,
-      href: '#',
-      items: [
-        { label: 'Chinese → Katakana', href: '/chinese-to-katakana/' },
-        { label: 'Latin → Katakana', href: '/latin-to-katakana/' }
+      groups: [
+        {
+          title: 'NAME TOOLS',
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+          items: [
+            { label: 'Katakana Name Converter', href: '/name-to-katakana/' },
+            { label: 'English Name → Katakana', href: '/english-name/' },
+            { label: 'Japanese Name → Katakana', href: '/japanese-name/' },
+            { label: 'Full-Width Katakana Name', href: '/full-width-name/' }
+          ]
+        },
+        {
+          title: 'SCRIPT CONVERSION',
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg>',
+          items: [
+            { label: 'Hiragana → Katakana', href: '/hiragana-to-katakana/' },
+            { label: 'Katakana → Hiragana', href: '/katakana-to-hiragana/' },
+            { label: 'Romaji → Katakana', href: '/romaji-to-katakana/' },
+            { label: 'Latin → Katakana', href: '/latin-to-katakana/' },
+            { label: 'Full-Width Katakana Converter', href: '/full-width-katakana/' }
+          ]
+        },
+        {
+          title: 'KANJI TOOLS',
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M5 8h14"></path><path d="M15 15H9"></path></svg>',
+          items: [
+            { label: 'Kanji → Katakana', href: '/kanji-to-katakana/' },
+            { label: 'Kanji → Hiragana', href: '/kanji-to-hiragana/' }
+          ]
+        },
+        {
+          title: 'OTHER',
+          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+          items: [
+            { label: 'Chinese → Katakana', href: '/chinese-to-katakana/' }
+          ]
+        }
       ]
     },
     { label: 'Blog', href: '/blog/' },
@@ -92,12 +95,30 @@
     if (!header) return;
 
     var navHTML = NAV_LINKS.map(function (link) {
-      if (link.isDropdown) {
-        var dropItems = link.items.map(function (sub) {
-          var cls = activePage === sub.href ? ' class="active"' : '';
-          return '<li><a href="' + sub.href + '"' + cls + '>' + sub.label + '</a></li>';
+      if (link.isDropdown && link.groups) {
+        var groupsHTML = link.groups.map(function(group) {
+          var itemsHTML = group.items.map(function(sub) {
+            var cls = activePage === sub.href ? ' class="active"' : '';
+            return '<li>' +
+                     '<a href="' + sub.href + '"' + cls + '>' +
+                       '<span class="dropdown-bullet"></span>' + sub.label +
+                     '</a>' +
+                   '</li>';
+          }).join('');
+          
+          return '<div class="dropdown-group">' +
+                   '<div class="group-header">' +
+                     '<span class="group-icon">' + group.icon + '</span>' +
+                     '<span class="group-title">' + group.title + '</span>' +
+                   '</div>' +
+                   '<ul class="group-items">' + itemsHTML + '</ul>' +
+                 '</div>';
         }).join('');
-        return '<li class="nav-dropdown"><a href="#" aria-haspopup="true">' + link.label + '</a><ul class="dropdown-content">' + dropItems + '</ul></li>';
+        
+        return '<li class="nav-dropdown mega-menu">' +
+                 '<a href="#" aria-haspopup="true">' + link.label + '</a>' +
+                 '<div class="dropdown-content mega-dropdown">' + groupsHTML + '</div>' +
+               '</li>';
       } else {
         var cls = activePage === link.href ? ' class="active"' : '';
         return '<li><a href="' + link.href + '"' + cls + '>' + link.label + '</a></li>';
@@ -122,12 +143,14 @@
       '</div>' +
       '<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile Navigation">' +
       NAV_LINKS.map(function (l) {
-        if (l.isDropdown) {
-          var header = '<div class="mobile-group-header">' + l.label + '</div>';
-          var links = l.items.map(function (sub) {
-            return '<a href="' + sub.href + '" class="mobile-sub-link">' + sub.label + '</a>';
+        if (l.isDropdown && l.groups) {
+          return l.groups.map(function(g) {
+            var header = '<div class="mobile-group-header">' + g.title + '</div>';
+            var links = g.items.map(function (sub) {
+              return '<a href="' + sub.href + '" class="mobile-sub-link">' + sub.label + '</a>';
+            }).join('');
+            return header + links;
           }).join('');
-          return header + links;
         }
         return '<a href="' + l.href + '">' + l.label + '</a>';
       }).join('') +
