@@ -116,11 +116,7 @@
       "permanent": true
     }
   ],
-  "functions": {
-    "api/convert.py": {
-      "runtime": "@vercel/python@latest"
-    }
-  },
+
   "rewrites": [
     {
       "source": "/api/convert",
