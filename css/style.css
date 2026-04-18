@@ -1183,7 +1183,47 @@ body::before {
 }
 
 .faq-answer p {
-  margin: 0;
+  margin: 0 0 12px;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer ul,
+.faq-answer ol {
+  margin: 0 0 12px 20px;
+  padding: 0;
+}
+
+.faq-answer li {
+  margin-bottom: 6px;
+}
+
+.faq-answer .table-wrap {
+  margin: 8px 0 12px;
+}
+
+.faq-answer table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+.faq-answer th,
+.faq-answer td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq-answer th {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* ── Sitemap Page ── */
