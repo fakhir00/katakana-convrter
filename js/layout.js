@@ -24,7 +24,7 @@
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
     { 
-      label: 'Name Converters ▼', 
+      label: '🔤 Name Converters ▼', 
       isDropdown: true,
       href: '#',
       items: [
@@ -35,7 +35,7 @@
       ]
     },
     { 
-      label: 'Script Conversion ▼', 
+      label: '🔁 Script Conversion ▼', 
       isDropdown: true,
       href: '#',
       items: [
