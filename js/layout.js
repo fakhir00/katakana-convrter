@@ -21,12 +21,12 @@
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
     {
-      label: 'Our Tools ▼',
+      label: 'Our Tools',
       isDropdown: true,
       href: '#',
       groups: [
         {
-          title: '🔤 NAME TOOLS',
+          title: 'Name Converters',
           icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
           items: [
             { label: 'Katakana Name Converter', href: '/name-to-katakana/' },
@@ -36,17 +36,17 @@
           ]
         },
         {
-          title: 'SCRIPT CONVERSION',
+          title: 'Script Conversion',
           icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg>',
           items: [
             { label: 'Hiragana → Katakana', href: '/hiragana-to-katakana/' },
             { label: 'Katakana → Hiragana', href: '/katakana-to-hiragana/' },
             { label: 'Romaji → Katakana', href: '/romaji-to-katakana/' },
-            { label: 'Full-Width Katakana Converter', href: '/full-width-katakana/' }
+            { label: 'Full-Width Katakana', href: '/full-width-katakana/' }
           ]
         },
         {
-          title: '🈶 KANJI TOOLS',
+          title: 'Kanji Tools',
           icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M5 8h14"></path><path d="M15 15H9"></path></svg>',
           items: [
             { label: 'Kanji → Katakana', href: '/kanji-to-katakana/' },
@@ -54,7 +54,7 @@
           ]
         },
         {
-          title: '🌏 OTHER CONVERSIONS',
+          title: 'Other Conversions',
           icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
           items: [
             { label: 'Chinese → Katakana', href: '/chinese-to-katakana/' },

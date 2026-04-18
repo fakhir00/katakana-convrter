@@ -972,6 +972,8 @@ body::before {
   left: 0;
   background: linear-gradient(180deg, rgba(16, 12, 34, 0.99) 0%, rgba(10, 8, 24, 0.99) 100%);
   min-width: 320px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
   z-index: 1000;
   border-radius: 20px;
@@ -981,7 +983,6 @@ body::before {
   margin: 0;
 }
 
-.nav-dropdown:hover .dropdown-content,
 .nav-dropdown.open .dropdown-content { display: block; }
 
 /* Mega Menu Structure */
@@ -989,7 +990,7 @@ body::before {
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
 }
 
 .dropdown-group {
