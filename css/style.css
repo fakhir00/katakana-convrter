@@ -983,6 +983,7 @@ body::before {
   margin: 0;
 }
 
+.nav-dropdown:hover .dropdown-content,
 .nav-dropdown.open .dropdown-content { display: block; }
 
 /* Mega Menu Structure */
