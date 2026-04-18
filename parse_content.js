@@ -5,7 +5,7 @@ async function run() {
   
   let raw = fs.readFileSync('Katakana Converter copy.txt', 'utf8');
   
-  // Custom fix for chart tables: replace them with direct HTML to bypass marked's finicky table detection
+  // Custom fix for chart tables: use direct HTML and anchor to start/end of lines
   const charts = [
       'ア (a) | イ (i) | ウ (u) | エ (e) | オ (o)',
       'カ (ka) | キ (ki) | ク (ku) | ケ (ke) | コ (ko)',
@@ -25,10 +25,10 @@ async function run() {
   ];
 
   for(const chart of charts) {
-      const escaped = chart.replace(/[()]/g, '\\$&');
-      const regex = new RegExp('\\| ' + escaped + ' \\|', 'g');
+      const escaped = chart.replace(/[()+|]/g, '\\$&');
+      const regex = new RegExp('^\\| ' + escaped + ' \\|$', 'gm');
       const cells = chart.split('|').map(c => `<td>${c.trim()}</td>`).join('');
-      const htmlTable = `\n<div class="table-wrap"><table><tbody><tr>${cells}</tr></tbody></table></div>\n`;
+      const htmlTable = `<div class="table-wrap"><table><tbody><tr>${cells}</tr></tbody></table></div>`;
       raw = raw.replace(regex, htmlTable);
   }
 
@@ -62,7 +62,6 @@ async function run() {
   // Fix details and summaries
   html = html.replace(/<details>/g, '<details class="faq-item">');
   html = html.replace(/<summary>(.*?)<\/summary>/g, '<summary class="faq-question">$1</summary>');
-  // Move details content into answer div
   html = html.replace(/<\/summary>([\s\S]*?)(?=<\/details>)/g, (match, content) => {
       return `</summary>\n<div class="faq-answer">\n${content.trim()}\n</div>\n`;
   });
