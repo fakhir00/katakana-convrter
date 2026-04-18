@@ -1,7 +1,4 @@
-/**
- * Shared Layout — Consistent header, footer, and schema injection
- * for all pages of Katakana Converter
- */
+
 (function (global) {
   'use strict';
 
@@ -23,8 +20,8 @@
 
   var NAV_LINKS = [
     { label: 'Home', href: '/' },
-    { 
-      label: '🔤 Name Converters', 
+    {
+      label: '🔤 Name Converters',
       isDropdown: true,
       href: '#',
       items: [
@@ -34,8 +31,8 @@
         { label: 'Full-Width Katakana Name', href: '/full-width-name/' }
       ]
     },
-    { 
-      label: '🔁 Script Conversion', 
+    {
+      label: '🔁 Script Conversion',
       isDropdown: true,
       href: '#',
       items: [
@@ -45,8 +42,8 @@
         { label: 'Full-Width Katakana Converter', href: '/full-width-katakana/' }
       ]
     },
-    { 
-      label: '🈶 Kanji Tools', 
+    {
+      label: '🈶 Kanji Tools',
       isDropdown: true,
       href: '#',
       items: [
@@ -54,8 +51,8 @@
         { label: 'Kanji → Hiragana', href: '/kanji-to-hiragana/' }
       ]
     },
-    { 
-      label: '🌏 Other Conversions', 
+    {
+      label: '🌏 Other Conversions',
       isDropdown: true,
       href: '#',
       items: [
@@ -96,7 +93,7 @@
 
     var navHTML = NAV_LINKS.map(function (link) {
       if (link.isDropdown) {
-        var dropItems = link.items.map(function(sub) {
+        var dropItems = link.items.map(function (sub) {
           var cls = activePage === sub.href ? ' class="active"' : '';
           return '<li><a href="' + sub.href + '"' + cls + '>' + sub.label + '</a></li>';
         }).join('');
@@ -109,25 +106,25 @@
 
     header.innerHTML =
       '<div class="container header-inner">' +
-        '<a href="/" class="logo" aria-label="Katakana Converter Home">' +
-          '<span class="logo-icon" aria-hidden="true">カ</span>' +
-          '<span class="logo-text">' +
-            '<span class="logo-title">Katakana Converter</span>' +
-            '<span class="logo-tagline">' + SITE.tagline + '</span>' +
-          '</span>' +
-        '</a>' +
-        '<nav class="header-nav-shell" aria-label="Main Navigation">' +
-          '<ul class="desktop-nav">' + navHTML + '</ul>' +
-        '</nav>' +
-        '<button id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">' +
-          '<span class="hamburger-icon">☰</span><span class="close-icon" style="display:none">✕</span>' +
-        '</button>' +
+      '<a href="/" class="logo" aria-label="Katakana Converter Home">' +
+      '<span class="logo-icon" aria-hidden="true">カ</span>' +
+      '<span class="logo-text">' +
+      '<span class="logo-title">Katakana Converter</span>' +
+      '<span class="logo-tagline">' + SITE.tagline + '</span>' +
+      '</span>' +
+      '</a>' +
+      '<nav class="header-nav-shell" aria-label="Main Navigation">' +
+      '<ul class="desktop-nav">' + navHTML + '</ul>' +
+      '</nav>' +
+      '<button id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">' +
+      '<span class="hamburger-icon">☰</span><span class="close-icon" style="display:none">✕</span>' +
+      '</button>' +
       '</div>' +
       '<nav id="mobile-menu" aria-hidden="true" aria-label="Mobile Navigation">' +
       NAV_LINKS.map(function (l) {
         if (l.isDropdown) {
           var header = '<div class="mobile-group-header">' + l.label + '</div>';
-          var links = l.items.map(function(sub) {
+          var links = l.items.map(function (sub) {
             return '<a href="' + sub.href + '" class="mobile-sub-link">' + sub.label + '</a>';
           }).join('');
           return header + links;
@@ -168,7 +165,7 @@
         var parent = this.parentElement;
         var isOpen = parent.classList.contains('open');
         // Close all others
-        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+        document.querySelectorAll('.nav-dropdown').forEach(function (d) { d.classList.remove('open'); });
         if (!isOpen) parent.classList.add('open');
       });
     });
@@ -176,7 +173,7 @@
     // Close dropdown when clicking outside
     document.addEventListener('click', function (e) {
       if (!e.target.closest('.nav-dropdown')) {
-        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+        document.querySelectorAll('.nav-dropdown').forEach(function (d) { d.classList.remove('open'); });
       }
     });
 
@@ -214,41 +211,41 @@
 
     var contactHTML =
       '<div class="footer-contact-list">' +
-        '<a href="tel:+15552409087" class="footer-contact-item">' +
-          '<span class="footer-contact-label">Phone</span>' +
-          '<span>' + SITE.phone + '</span>' +
-        '</a>' +
-        '<a href="mailto:' + SITE.email + '" class="footer-contact-item">' +
-          '<span class="footer-contact-label">Email</span>' +
-          '<span>' + SITE.email + '</span>' +
-        '</a>' +
+      '<a href="tel:+15552409087" class="footer-contact-item">' +
+      '<span class="footer-contact-label">Phone</span>' +
+      '<span>' + SITE.phone + '</span>' +
+      '</a>' +
+      '<a href="mailto:' + SITE.email + '" class="footer-contact-item">' +
+      '<span class="footer-contact-label">Email</span>' +
+      '<span>' + SITE.email + '</span>' +
+      '</a>' +
       '</div>';
 
     footer.innerHTML =
       '<div class="container footer-inner">' +
-        '<div class="footer-brand">' +
-          '<a href="/" class="logo" aria-label="Home">' +
-            '<span class="logo-icon" aria-hidden="true">カ</span>' +
-            '<span>Katakana Converter</span>' +
-          '</a>' +
-          '<p class="footer-desc">' + SITE.description + '</p>' +
-        '</div>' +
-        '<div class="footer-nav-col">' +
-          '<h3>Navigation</h3>' +
-          '<ul class="footer-links">' + linksHTML + '</ul>' +
-        '</div>' +
-        '<div class="footer-nav-col">' +
-          '<h3>Our Tools</h3>' +
-          '<ul class="footer-links" style="font-size:0.8rem;">' + toolsHTML + '</ul>' +
-        '</div>' +
-        '<div class="footer-social-col">' +
-          '<h3>Connect</h3>' +
-          contactHTML +
-          '<div class="social-icons">' + socialHTML + '</div>' +
-        '</div>' +
+      '<div class="footer-brand">' +
+      '<a href="/" class="logo" aria-label="Home">' +
+      '<span class="logo-icon" aria-hidden="true">カ</span>' +
+      '<span>Katakana Converter</span>' +
+      '</a>' +
+      '<p class="footer-desc">' + SITE.description + '</p>' +
+      '</div>' +
+      '<div class="footer-nav-col">' +
+      '<h3>Navigation</h3>' +
+      '<ul class="footer-links">' + linksHTML + '</ul>' +
+      '</div>' +
+      '<div class="footer-nav-col">' +
+      '<h3>Our Tools</h3>' +
+      '<ul class="footer-links" style="font-size:0.8rem;">' + toolsHTML + '</ul>' +
+      '</div>' +
+      '<div class="footer-social-col">' +
+      '<h3>Connect</h3>' +
+      contactHTML +
+      '<div class="social-icons">' + socialHTML + '</div>' +
+      '</div>' +
       '</div>' +
       '<div class="container footer-bottom">' +
-        '<p>&copy; ' + new Date().getFullYear() + ' ' + SITE.name + '. All rights reserved.</p>' +
+      '<p>&copy; ' + new Date().getFullYear() + ' ' + SITE.name + '. All rights reserved.</p>' +
       '</div>' +
       '<button class="back-to-top" type="button" aria-label="Back to top">↑</button>';
   }
