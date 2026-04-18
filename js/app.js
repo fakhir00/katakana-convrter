@@ -12,7 +12,7 @@
     var katakanaOutput = document.getElementById('katakana-output');
     var phonemeOutput = document.getElementById('phoneme-output');
     var sourceTag = document.getElementById('source-tag');
-    var resultCard = document.getElementById('result-card');
+
     var rulesOnlyToggle = document.getElementById('rules-only-toggle');
     var charCount = document.getElementById('char-count');
     var copyBtn = document.getElementById('copy-btn');
@@ -35,13 +35,11 @@
       phonemeOutput.textContent = result.phonemes || 'Smart conversion';
       sourceTag.textContent = result.sourceLabel || 'English + romaji smart conversion';
 
-      resultCard.classList.add('visible');
+
     }
 
+
     convertBtn.addEventListener('click', doConvert);
-    inputField.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); doConvert(); }
-    });
     inputField.addEventListener('input', function () {
       if (charCount) charCount.textContent = inputField.value.length;
     });

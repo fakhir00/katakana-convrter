@@ -260,48 +260,49 @@
     <section class="converter-section" id="converter" aria-labelledby="converter-title">
       <div class="container">
         <div class="converter-card glass-card">
-          <div class="input-group">
-            <label for="english-input">Japanese Name (Romaji)</label>
-            <input type="text"
-                   id="english-input"
-                   placeholder="e.g. Suzuki Ichiro..."
-                   autocomplete="off"
-                   spellcheck="false"
-                   aria-describedby="input-help">
-            <div class="input-meta">
-              <span id="input-help">Press Enter or click Convert</span>
-              <span><span id="char-count">0</span> characters</span>
+          <div class="converter-rows">
+            <div class="converter-row">
+              <label for="english-input" class="row-label">Japanese Name (Romaji)</label>
+              <div class="row-content">
+                <textarea id="english-input" 
+                          placeholder="e.g. Suzuki Ichiro..."
+                          autocomplete="off"
+                          spellcheck="false"
+                          rows="3"></textarea>
+                <div class="input-meta">
+                  <span id="char-count">0</span> characters
+                </div>
+              </div>
+            </div>
+
+            <div class="converter-row">
+              <span class="row-label">Katakana</span>
+              <div class="row-content result-area">
+                <div id="katakana-output" class="placeholder-text" aria-live="polite">カタカナ</div>
+                <button id="copy-btn" class="btn-copy" type="button" aria-label="Copy to clipboard" title="Copy to clipboard">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
             </div>
           </div>
 
-          <div class="input-meta" style="margin-bottom: 16px;">
-            <div class="toggle-row">
-              <label class="toggle-switch" title="Rules-only mode bypasses the dictionary">
+          <div class="converter-footer">
+            <div class="btn-row">
+              <button class="btn-primary" id="convert-btn" type="button">Create Katakana</button>
+              <button class="btn-secondary" id="clear-btn" type="button">Reset</button>
+            </div>
+            
+            <div class="options-row">
+              <label class="toggle-row" title="Rules-only mode bypasses the dictionary">
                 <input type="checkbox" id="rules-only-toggle">
                 <span class="toggle-slider"></span>
+                <span class="toggle-label">Rules-only mode</span>
               </label>
-              <span>Rules-only mode</span>
+              <span id="source-tag" class="tag-badge">Ready to convert</span>
             </div>
           </div>
 
-          <div class="btn-row">
-            <button class="btn-primary" id="convert-btn" type="button">Create Katakana</button>
-            <button class="btn-secondary" id="clear-btn" type="button">Clear</button>
-          </div>
 
-          <div id="result-card" class="visible">
-            <div class="result-header">
-              <span class="result-label">Live Output Screen</span>
-              <span id="source-tag">Ready to convert</span>
-            </div>
-            <div class="result-overline">Katakana Preview</div>
-            <div class="output-wrapper" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px;">
-              <div id="katakana-output" class="placeholder-text" aria-live="polite">カタカナ</div>
-              <button id="copy-btn" class="btn-copy" type="button" aria-label="Copy to clipboard" title="Copy to clipboard">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              </button>
-            </div>
-            <p class="result-support">Your converted text appears here with a clean phonetic breakdown below, making it easier to review before you copy it into forms, profiles, or localization drafts.</p>
             <div class="phoneme-section">
               <div class="phoneme-label">Phoneme Breakdown</div>
               <div id="phoneme-output" aria-live="polite"></div>
@@ -331,5 +332,5 @@
   
   
   <script>SiteLayout.init('/japanese-name/');</script>
-<script src="../js/tool-converters.js"></script><script src="https://unpkg.com/wanakana"></script><script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script><script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var sourceTag = document.getElementById("source-tag"); var charCount = document.getElementById("char-count"); var copyBtn = document.getElementById("copy-btn"); function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; return; } outEl.classList.remove("placeholder-text"); ToolConverters.convertJapaneseName(val).then(function(out){ if(out.pending){ phEl.textContent = out.phonemes; return; } outEl.textContent = out.katakana ? out.katakana.replace(/\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Japanese name conversion'; if(sourceTag) sourceTag.textContent = /[\u3400-\u9fff]/.test(val) ? 'Kanji reading conversion' : 'Kana and romaji conversion'; }); } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); input.addEventListener("keypress", function(e) { if(e.key === "Enter") process(); }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; charCount.textContent = "0"; }); if (copyBtn) { copyBtn.addEventListener("click", function() { var textToCopy = outEl.textContent; if (textToCopy === "カタカナ" || textToCopy === "Please wait, loading Kanji dictionary (20MB)..." || textToCopy === "Converting..." || textToCopy === "Error parsing Kanji") return; navigator.clipboard.writeText(textToCopy).then(function() { var originalHTML = copyBtn.innerHTML; copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'; copyBtn.classList.add("copied"); setTimeout(function() { copyBtn.innerHTML = originalHTML; copyBtn.classList.remove("copied"); }, 2000); }); }); } });</script></body>
+<script src="../js/tool-converters.js"></script><script src="https://unpkg.com/wanakana"></script><script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js"></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js"></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:"https://unpkg.com/kuromoji@0.1.2/dict"})).then(function(){window.kuroshiroInstance=k;console.log("Kuroshiro ready");});});</script><script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var sourceTag = document.getElementById("source-tag"); var charCount = document.getElementById("char-count"); var copyBtn = document.getElementById("copy-btn"); function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; return; } outEl.classList.remove("placeholder-text"); ToolConverters.convertJapaneseName(val).then(function(out){ if(out.pending){ phEl.textContent = out.phonemes; return; } outEl.textContent = out.katakana ? out.katakana.replace(/\s+/g, ' ') : 'カタカナ'; phEl.textContent = out.phonemes || 'Japanese name conversion'; if(sourceTag) sourceTag.textContent = /[\u3400-\u9fff]/.test(val) ? 'Kanji reading conversion' : 'Kana and romaji conversion'; }); } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "カタカナ"; outEl.classList.add("placeholder-text"); phEl.textContent = "Your phoneme breakdown will appear here after conversion."; if(sourceTag) sourceTag.textContent = "Ready to convert"; charCount.textContent = "0"; }); if (copyBtn) { copyBtn.addEventListener("click", function() { var textToCopy = outEl.textContent; if (textToCopy === "カタカナ" || textToCopy === "Please wait, loading Kanji dictionary (20MB)..." || textToCopy === "Converting..." || textToCopy === "Error parsing Kanji") return; navigator.clipboard.writeText(textToCopy).then(function() { var originalHTML = copyBtn.innerHTML; copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'; copyBtn.classList.add("copied"); setTimeout(function() { copyBtn.innerHTML = originalHTML; copyBtn.classList.remove("copied"); }, 2000); }); }); } });</script></body>
 </html>
