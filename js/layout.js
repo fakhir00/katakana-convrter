@@ -278,6 +278,20 @@
       renderHeader(activePage || '/');
       renderFooter();
 
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          if (!document.querySelector('script[data-id="cmu-dict"]')) {
+            var s = document.createElement('script');
+            s.setAttribute('data-id', 'cmu-dict');
+            var layoutScript = document.querySelector('script[src*="layout"]');
+            var dictUrl = layoutScript ? layoutScript.src.replace(/layout(\.min)?\.js/, 'cmudict-data.min.js') : '/js/cmudict-data.min.js';
+            s.src = dictUrl;
+            s.defer = true;
+            document.body.appendChild(s);
+          }
+        }, 50);
+      });
+
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
