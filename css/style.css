@@ -22,8 +22,8 @@
   --accent-warning: #fbbf24;
 
   --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-secondary: #a8b8cc;
+  --text-muted: #8494ab;
   --text-accent: #a78bfa;
 
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -420,7 +420,7 @@ body::before {
 }
 
 #katakana-output.placeholder-text {
-  color: rgba(241, 245, 249, 0.24);
+  color: rgba(241, 245, 249, 0.38);
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -836,7 +836,7 @@ body::before {
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   list-style: none;
 }
 
@@ -845,6 +845,10 @@ body::before {
   text-decoration: none;
   font-size: 0.85rem;
   transition: var(--transition-fast);
+  display: block;
+  padding: 8px 0;
+  min-height: 44px;
+  line-height: 1.6;
 }
 
 .footer-links a:hover { color: var(--text-accent); }
@@ -913,6 +917,7 @@ body::before {
   padding: 20px 0;
   text-align: center;
   font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
 .back-to-top {
@@ -1420,6 +1425,8 @@ body::before {
   .site-header::before { inset: 0 12px auto; }
   .header-inner { min-height: 72px; padding: 0 10px; }
   .logo-tagline { display: none; }
+  .tools-grid { gap: 16px; }
+  .tool-card { padding: 20px 16px; min-height: 48px; }
 }
 
 @media (max-width: 480px) {
