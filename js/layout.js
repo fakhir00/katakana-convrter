@@ -309,8 +309,11 @@
         backToTop.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        syncBackToTop();
-        window.addEventListener('scroll', syncBackToTop, { passive: true });
+        // Defer read of scrollY to prevent forced synchronous layout after HTML insertion
+        requestAnimationFrame(syncBackToTop);
+        window.addEventListener('scroll', function() {
+          requestAnimationFrame(syncBackToTop);
+        }, { passive: true });
       }
     };
 
