@@ -9,27 +9,355 @@
    * TEST DATASET
    * ======================================== */
   var testSet = [
-    { input: 'coffee', expected: 'コーヒー' },
-    { input: 'camera', expected: 'カメラ' },
-    { input: 'strike', expected: 'ストライク' },
-    { input: 'faakhir', expected: 'ファーキル' },
-    { input: 'computer', expected: 'コンピュータ' },
-    { input: 'chocolate', expected: 'チョコレート' },
-    { input: 'internet', expected: 'インターネット' },
-    { input: 'hamburger', expected: 'ハンバーガー' },
-    { input: 'television', expected: 'テレビジョン' },
-    { input: 'restaurant', expected: 'レストラン' },
-    { input: 'piano', expected: 'ピアノ' },
-    { input: 'taxi', expected: 'タクシー' },
-    { input: 'hotel', expected: 'ホテル' },
-    { input: 'bus', expected: 'バス' },
-    { input: 'table', expected: 'テーブル' },
-    { input: 'soccer', expected: 'サッカー' },
-    { input: 'system', expected: 'システム' },
-    { input: 'marathon', expected: 'マラソン' },
-    { input: 'orange', expected: 'オレンジ' },
-    { input: 'christmas', expected: 'クリスマス' },
-  ];
+  {
+    "input": "coffee",
+    "expected": "コーヒー"
+  },
+  {
+    "input": "camera",
+    "expected": "カメラ"
+  },
+  {
+    "input": "strike",
+    "expected": "ストライク"
+  },
+  {
+    "input": "faakhir",
+    "expected": "ファーキル"
+  },
+  {
+    "input": "computer",
+    "expected": "コンピュータ"
+  },
+  {
+    "input": "chocolate",
+    "expected": "チョコレート"
+  },
+  {
+    "input": "internet",
+    "expected": "インターネット"
+  },
+  {
+    "input": "hamburger",
+    "expected": "ハンバーガー"
+  },
+  {
+    "input": "television",
+    "expected": "テレビジョン"
+  },
+  {
+    "input": "restaurant",
+    "expected": "レストラン"
+  },
+  {
+    "input": "piano",
+    "expected": "ピアノ"
+  },
+  {
+    "input": "taxi",
+    "expected": "タクシー"
+  },
+  {
+    "input": "hotel",
+    "expected": "ホテル"
+  },
+  {
+    "input": "bus",
+    "expected": "バス"
+  },
+  {
+    "input": "table",
+    "expected": "テーブル"
+  },
+  {
+    "input": "soccer",
+    "expected": "サッカー"
+  },
+  {
+    "input": "system",
+    "expected": "システム"
+  },
+  {
+    "input": "marathon",
+    "expected": "マラソン"
+  },
+  {
+    "input": "orange",
+    "expected": "オレンジ"
+  },
+  {
+    "input": "christmas",
+    "expected": "クリスマス"
+  },
+  {
+    "input": "johnson",
+    "expected": "ジョンソン"
+  },
+  {
+    "input": "shakespeare",
+    "expected": "シェイクスピア"
+  },
+  {
+    "input": "washington",
+    "expected": "ワシントン"
+  },
+  {
+    "input": "thatcher",
+    "expected": "サッチャー"
+  },
+  {
+    "input": "einstein",
+    "expected": "アインシュタイン"
+  },
+  {
+    "input": "newton",
+    "expected": "ニュートン"
+  },
+  {
+    "input": "kennedy",
+    "expected": "ケネディ"
+  },
+  {
+    "input": "lincoln",
+    "expected": "リンカーン"
+  },
+  {
+    "input": "obama",
+    "expected": "オバマ"
+  },
+  {
+    "input": "trump",
+    "expected": "トランプ"
+  },
+  {
+    "input": "biden",
+    "expected": "バイデン"
+  },
+  {
+    "input": "merkel",
+    "expected": "メルケル"
+  },
+  {
+    "input": "macron",
+    "expected": "マクロン"
+  },
+  {
+    "input": "churchill",
+    "expected": "チャーチル"
+  },
+  {
+    "input": "knight",
+    "expected": "ナイト"
+  },
+  {
+    "input": "psychology",
+    "expected": "サイコロジー"
+  },
+  {
+    "input": "knife",
+    "expected": "ナイフ"
+  },
+  {
+    "input": "doubt",
+    "expected": "ダウト"
+  },
+  {
+    "input": "island",
+    "expected": "アイランド"
+  },
+  {
+    "input": "comb",
+    "expected": "コーム"
+  },
+  {
+    "input": "debt",
+    "expected": "デット"
+  },
+  {
+    "input": "phantom",
+    "expected": "ファントム"
+  },
+  {
+    "input": "rhythm",
+    "expected": "リズム"
+  },
+  {
+    "input": "queue",
+    "expected": "キュー"
+  },
+  {
+    "input": "thorough",
+    "expected": "サロー"
+  },
+  {
+    "input": "receipt",
+    "expected": "レシート"
+  },
+  {
+    "input": "gnome",
+    "expected": "ノーム"
+  },
+  {
+    "input": "mnemonic",
+    "expected": "ニモニック"
+  },
+  {
+    "input": "beautiful",
+    "expected": "ビューティフル"
+  },
+  {
+    "input": "ocean",
+    "expected": "オーシャン"
+  },
+  {
+    "input": "europe",
+    "expected": "ヨーロッパ"
+  },
+  {
+    "input": "audio",
+    "expected": "オーディオ"
+  },
+  {
+    "input": "mountain",
+    "expected": "マウンテン"
+  },
+  {
+    "input": "journey",
+    "expected": "ジャーニー"
+  },
+  {
+    "input": "leather",
+    "expected": "レザー"
+  },
+  {
+    "input": "feather",
+    "expected": "フェザー"
+  },
+  {
+    "input": "weather",
+    "expected": "ウェザー"
+  },
+  {
+    "input": "feature",
+    "expected": "フィーチャー"
+  },
+  {
+    "input": "creature",
+    "expected": "クリーチャー"
+  },
+  {
+    "input": "structure",
+    "expected": "ストラクチャー"
+  },
+  {
+    "input": "algorithm",
+    "expected": "アルゴリズム"
+  },
+  {
+    "input": "blockchain",
+    "expected": "ブロックチェーン"
+  },
+  {
+    "input": "encryption",
+    "expected": "エンクリプション"
+  },
+  {
+    "input": "database",
+    "expected": "データベース"
+  },
+  {
+    "input": "software",
+    "expected": "ソフトウェア"
+  },
+  {
+    "input": "hardware",
+    "expected": "ハードウェア"
+  },
+  {
+    "input": "processor",
+    "expected": "プロセッサー"
+  },
+  {
+    "input": "interface",
+    "expected": "インターフェース"
+  },
+  {
+    "input": "protocol",
+    "expected": "プロトコル"
+  },
+  {
+    "input": "browser",
+    "expected": "ブラウザ"
+  },
+  {
+    "input": "compiler",
+    "expected": "コンパイラ"
+  },
+  {
+    "input": "debug",
+    "expected": "デバッグ"
+  },
+  {
+    "input": "function",
+    "expected": "ファンクション"
+  },
+  {
+    "input": "variable",
+    "expected": "バリアブル"
+  },
+  {
+    "input": "apple",
+    "expected": "アップル"
+  },
+  {
+    "input": "google",
+    "expected": "グーグル"
+  },
+  {
+    "input": "microsoft",
+    "expected": "マイクロソフト"
+  },
+  {
+    "input": "amazon",
+    "expected": "アマゾン"
+  },
+  {
+    "input": "netflix",
+    "expected": "ネットフリックス"
+  },
+  {
+    "input": "disney",
+    "expected": "ディズニー"
+  },
+  {
+    "input": "london",
+    "expected": "ロンドン"
+  },
+  {
+    "input": "paris",
+    "expected": "パリ"
+  },
+  {
+    "input": "tokyo",
+    "expected": "トウキョウ"
+  },
+  {
+    "input": "new york",
+    "expected": "ニュー・ヨーク"
+  },
+  {
+    "input": "berlin",
+    "expected": "ベルリン"
+  },
+  {
+    "input": "moscow",
+    "expected": "モスクワ"
+  },
+  {
+    "input": "beijing",
+    "expected": "ベイジン"
+  }
+];
 
   /* ========================================
    * LEVENSHTEIN DISTANCE
