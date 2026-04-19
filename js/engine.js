@@ -206,6 +206,72 @@
   "lincoln": "リンカーン",
   };
 
+  const PHRASE_DICT = {
+    "good morning": "グッドモーニング",
+    "thank you": "サンキュー",
+    "how are you": "ハゥ・アー・ユー",
+    "merry christmas": "メリークリスマス",
+    "happy birthday": "ハッピーバースデー",
+    "new york city": "ニューヨークシティ",
+    "los angeles": "ロサンゼルス",
+    "san francisco": "サンフランシスコ",
+    "artificial intelligence": "アーティフィシャル・インテリジェンス",
+    "machine learning": "マシンラーニング",
+    "social media": "ソーシャルメディア",
+    "good luck": "グッドラック",
+    "excuse me": "エクスキューズミー",
+    "no problem": "ノープロブレム",
+    "see you": "シーユー",
+    "i love you": "アイラブユー",
+    "good afternoon": "グッドアフタヌーン",
+    "good evening": "グッドイブニング",
+    "good night": "グッドナイト",
+    "how do you do": "ハウ・ドゥ・ユ・ドゥ",
+    "pleased to meet you": "プリーズド・トゥ・ミート・ユー",
+    "nice to meet you": "ナイス・トゥ・ミート・ユー",
+    "you are welcome": "ユー・アー・ウェルカム",
+    "youre welcome": "ユア・ウェルカム",
+    "im sorry": "アイム・ソーリー",
+    "i am sorry": "アイ・アム・ソーリー",
+    "never mind": "ネバー・マインド",
+    "take care": "テイク・ケア",
+    "goodbye": "グッドバイ",
+    "see you again": "シー・ユー・アゲイン",
+    "on your mark": "オン・ユア・マーク",
+    "deep learning": "ディープラーニング",
+    "data science": "データサイエンス",
+    "big data": "ビッグデータ",
+    "cloud computing": "クラウドコンピューティング",
+    "cyber security": "サイバーセキュリティ",
+    "software development": "ソフトウェア・デベロップメント",
+    "open source": "オープンソース",
+    "virtual reality": "バーチャルリアリティ",
+    "augmented reality": "オーグメンテッド・リアリティ",
+    "internet of things": "インターネット・オブ・シングス",
+    "united states": "ユナイテッド・ステイツ",
+    "united kingdom": "ユナイテッド・キングダム",
+    "south korea": "サウス・コリア",
+    "north korea": "ノース・コリア",
+    "hong kong": "ホンコン",
+    "salt lake city": "ソルトレイクシティ",
+    "las vegas": "ラスベガス",
+    "new orleans": "ニューオーリンズ",
+    "silicon valley": "シリコンバレー",
+    "wall street": "ウォール・ストリート",
+    "european union": "ヨーロピアン・ユニオン",
+    "united nations": "ユナイテッド・ネイションズ",
+    "white house": "ホワイト・ハウス",
+    "hot dog": "ホットドッグ",
+    "ice cream": "アイスクリーム",
+    "fast food": "ファストフード",
+    "credit card": "クレジットカード",
+    "smart phone": "スマートフォン",
+    "mobile phone": "モバイルフォン",
+    "working holiday": "ワーキングホリデー",
+    "best friend": "ベストフレンド"
+};
+
+
   /* ========================================
    * HELPER UTILITIES
    * ======================================== */
@@ -673,13 +739,37 @@
     };
   }
 
-  function convert(input, options) {
+    function convert(input, options) {
     options = options || {};
     var rulesOnly = options.rulesOnly || false;
-    var words = normalize(input);
-    var results = words.map(function (w) {
-      return convertWord(w, rulesOnly);
-    });
+    var rawInput = input.toLowerCase().replace(/[^a-z\s]/g, '').trim();
+    var words = rawInput.split(/\s+/).filter(function (w) { return w.length > 0; });
+    
+    var results = [];
+    var i = 0;
+    while (i < words.length) {
+      var foundPhrase = false;
+      // Try longest phrase matches first (up to 4 words)
+      for (var len = Math.min(4, words.length - i); len >= 2; len--) {
+        var phraseSlice = words.slice(i, i + len).join(' ');
+        if (!rulesOnly && PHRASE_DICT[phraseSlice]) {
+          results.push({
+            word: phraseSlice,
+            katakana: PHRASE_DICT[phraseSlice],
+            phonemes: ['[phrase-dictionary]'],
+            source: 'phrase-dictionary'
+          });
+          i += len;
+          foundPhrase = true;
+          break;
+        }
+      }
+      
+      if (!foundPhrase) {
+        results.push(convertWord(words[i], rulesOnly));
+        i++;
+      }
+    }
     return {
       katakana: results.map(function (r) { return r.katakana; }).join('・'),
       details: results,

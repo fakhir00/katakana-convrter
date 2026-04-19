@@ -356,6 +356,102 @@
   {
     "input": "beijing",
     "expected": "ベイジン"
+  },
+  {
+    "input": "good morning",
+    "expected": "グッドモーニング"
+  },
+  {
+    "input": "thank you",
+    "expected": "サンキュー"
+  },
+  {
+    "input": "how are you",
+    "expected": "ハゥ・アー・ユー"
+  },
+  {
+    "input": "merry christmas",
+    "expected": "メリークリスマス"
+  },
+  {
+    "input": "happy birthday",
+    "expected": "ハッピーバースデー"
+  },
+  {
+    "input": "new york city",
+    "expected": "ニューヨークシティ"
+  },
+  {
+    "input": "los angeles",
+    "expected": "ロサンゼルス"
+  },
+  {
+    "input": "san francisco",
+    "expected": "サンフランシスコ"
+  },
+  {
+    "input": "artificial intelligence",
+    "expected": "アーティフィシャル・インテリジェンス"
+  },
+  {
+    "input": "machine learning",
+    "expected": "マシンラーニング"
+  },
+  {
+    "input": "social media",
+    "expected": "ソーシャルメディア"
+  },
+  {
+    "input": "good luck",
+    "expected": "グッドラック"
+  },
+  {
+    "input": "excuse me",
+    "expected": "エクスキューズミー"
+  },
+  {
+    "input": "no problem",
+    "expected": "ノープロブレム"
+  },
+  {
+    "input": "see you",
+    "expected": "シーユー"
+  },
+  {
+    "input": "i love you",
+    "expected": "アイラブユー"
+  },
+  {
+    "input": "good afternoon",
+    "expected": "グッドアフタヌーン"
+  },
+  {
+    "input": "nice to meet you",
+    "expected": "ナイス・トゥ・ミート・ユー"
+  },
+  {
+    "input": "united states",
+    "expected": "ユナイテッド・ステイツ"
+  },
+  {
+    "input": "hong kong",
+    "expected": "ホンコン"
+  },
+  {
+    "input": "ice cream",
+    "expected": "アイスクリーム"
+  },
+  {
+    "input": "hot dog",
+    "expected": "ホットドッグ"
+  },
+  {
+    "input": "smart phone",
+    "expected": "スマートフォン"
+  },
+  {
+    "input": "cyber security",
+    "expected": "サイバーセキュリティ"
   }
 ];
 
