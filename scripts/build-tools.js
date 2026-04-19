@@ -22,7 +22,7 @@ const tools = [
     placeholder: 'e.g. John Smith',
     buttonLabel: 'Convert Name to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; renderPhonemes(out.details || out.phonemes); if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
-    deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
+    deps: '<script src="../js/engine.min.js"></script><script src="../js/cmudict-data.min.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'Katakana Name Converter',
     sections: [
       {
@@ -67,7 +67,7 @@ const tools = [
     placeholder: 'Enter an English Name...',
     buttonLabel: 'Translate to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { separator: '・', rulesOnly: document.getElementById('rules-only-toggle') && document.getElementById('rules-only-toggle').checked }); outEl.textContent = out.katakana; phEl.textContent = out.phonemes || 'Smart conversion'; if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
-    deps: '<script src="../js/engine.js"></script><script src="../js/cmudict-data.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
+    deps: '<script src="../js/engine.min.js"></script><script src="../js/cmudict-data.min.js"></script><script src=\"https://unpkg.com/wanakana\"></script>',
     h1: 'English Name to Katakana',
     sections: [
       {
@@ -112,7 +112,7 @@ const tools = [
     placeholder: 'Type half-width/romaji texts here...',
     buttonLabel: 'Convert to Full-Width',
     logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.min.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full-Width Katakana Converter',
     sections: [
       {
@@ -157,7 +157,7 @@ const tools = [
     placeholder: 'Type your mapped name for web form validation...',
     buttonLabel: 'Get Full-Width Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { imeMode: true }); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; renderPhonemes(out.details || out.phonemes); if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
-    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.min.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Full Width Katakana Name Converter',
     sections: [
       {
@@ -202,7 +202,7 @@ const tools = [
     placeholder: 'Paste Katakana (e.g. カタカナ)...',
     buttonLabel: 'Convert to Hiragana',
     logic: "var text = wanakana.toHiragana(val); outEl.textContent = text ? text : 'ひらがな'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.min.js"></script><script src="https://unpkg.com/wanakana"></script>',
     emptyOutput: 'ひらがな',
     h1: 'Katakana to Hiragana Converter',
     sections: [
@@ -383,7 +383,7 @@ const tools = [
     placeholder: 'Enter Latin mapping phonetes...',
     buttonLabel: 'Convert Latin to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; renderPhonemes(out.details || out.phonemes); if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
-    deps: '<script src="../js/cmudict-data.js"></script><script src="https://unpkg.com/wanakana"></script>',
+    deps: '<script src="../js/cmudict-data.min.js"></script><script src="https://unpkg.com/wanakana"></script>',
     h1: 'Latin to Katakana Converter',
     sections: [
       {
@@ -929,17 +929,17 @@ tools.forEach(function (tool) {
   }
   locHtml = locHtml.substring(0, semanticStart) + exploreHtml + '\n\n    ' + semanticBody + '\n\n    ' + faqHtml + '\n\n  </main>' + locHtml.substring(mainEnd + 7);
 
-  locHtml = locHtml.replace('<script src="js/engine.js"></script>', '');
-  locHtml = locHtml.replace('<script src="../js/engine.js"></script>', '');
-  locHtml = locHtml.replace('<script src="js/cmudict-data.js"></script>', '');
-  locHtml = locHtml.replace('<script src="../js/cmudict-data.js"></script>', '');
+  locHtml = locHtml.replace('<script src="js/engine.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/engine.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="js/cmudict-data.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/cmudict-data.min.js"></script>', '');
   locHtml = locHtml.replace('<script src="https://unpkg.com/wanakana"></script>', '');
-  locHtml = locHtml.replace('<script src="js/tool-converters.js"></script>', '');
-  locHtml = locHtml.replace('<script src="../js/tool-converters.js"></script>', '');
-  locHtml = locHtml.replace('<script src="js/benchmark.js"></script>', '');
-  locHtml = locHtml.replace('<script src="../js/benchmark.js"></script>', '');
-  locHtml = locHtml.replace('<script src="js/app.js"></script>', '');
-  locHtml = locHtml.replace('<script src="../js/app.js"></script>', '');
+  locHtml = locHtml.replace('<script src="js/tool-converters.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/tool-converters.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="js/benchmark.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/benchmark.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="js/app.min.js"></script>', '');
+  locHtml = locHtml.replace('<script src="../js/app.min.js"></script>', '');
 
   if (!tool.isFile) {
     locHtml = locHtml.replace(/href="css\//g, 'href="../css/');
@@ -949,7 +949,7 @@ tools.forEach(function (tool) {
     locHtml = locHtml.replace(/SiteLayout\.init\('\/'\);/g, 'SiteLayout.init(\'/' + tool.path + '\');');
   }
 
-  const helperScript = tool.isFile ? '<script src="js/tool-converters.js"></script>' : '<script src="../js/tool-converters.js"></script>';
+  const helperScript = tool.isFile ? '<script src="js/tool-converters.min.js"></script>' : '<script src="../js/tool-converters.min.js"></script>';
   const emptyOutput = tool.emptyOutput || 'カタカナ';
   const customScript = helperScript + tool.deps + '<script>document.addEventListener("DOMContentLoaded", function() { var btn = document.getElementById("convert-btn"); var clearBtn = document.getElementById("clear-btn"); var input = document.getElementById("english-input"); var outEl = document.getElementById("katakana-output"); var phEl = document.getElementById("phoneme-output"); var sourceTag = document.getElementById("source-tag"); var charCount = document.getElementById("char-count"); var copyBtn = document.getElementById("copy-btn"); function renderPhonemes(phData) { if(!phEl) return; phEl.innerHTML = ""; if(!phData || (Array.isArray(phData) && phData.length === 0)) { phEl.textContent = "Your phoneme breakdown will appear here after conversion."; return; } if(typeof phData === "string") { phEl.textContent = phData; return; } phData.forEach(function(item) { var group = document.createElement("div"); group.className = "phoneme-group"; var wordLabel = document.createElement("span"); wordLabel.className = "phoneme-word-text"; wordLabel.textContent = item.word; group.appendChild(wordLabel); var tokenList = document.createElement("div"); tokenList.className = "phoneme-tokens"; var pText = (item.phonemes || "").replace(/[\\[\\]]/g, "").trim(); if(!pText || pText === "romaji" || pText === "romaji phrase" || pText === "kana" || pText === "[engine-dictionary]") { var note = document.createElement("span"); note.style.fontSize = "0.86rem"; note.style.color = "var(--text-muted)"; note.style.fontWeight = "500"; note.textContent = item.source === "kana" ? "Direct kana map" : (item.source === "dictionary" || item.source === "english-engine-dictionary" ? "Dictionary match" : "Direct romaji map"); tokenList.appendChild(note); } else { var tokens = pText.split(/\\s+/); tokens.forEach(function(token) { var badge = document.createElement("span"); badge.className = "phoneme-token"; badge.textContent = token; tokenList.appendChild(badge); }); } group.appendChild(tokenList); phEl.appendChild(group); }); } function process() { var val = input.value.trim(); if(!val) { outEl.textContent = "' + emptyOutput + '"; outEl.classList.add("placeholder-text"); renderPhonemes([]); if(sourceTag) sourceTag.textContent = "Ready to convert"; return; } outEl.classList.remove("placeholder-text"); ' + tool.logic + ' } btn.addEventListener("click", process); input.addEventListener("input", function() { charCount.textContent = input.value.length; }); clearBtn.addEventListener("click", function() { input.value = ""; outEl.textContent = "' + emptyOutput + '"; outEl.classList.add("placeholder-text"); renderPhonemes([]); if(sourceTag) sourceTag.textContent = "Ready to convert"; charCount.textContent = "0"; }); if (copyBtn) { copyBtn.addEventListener("click", function() { var textToCopy = outEl.textContent; if (textToCopy === "' + emptyOutput + '" || textToCopy === "Please wait, loading Kanji dictionary (20MB)..." || textToCopy === "Converting..." || textToCopy === "Error parsing Kanji") return; navigator.clipboard.writeText(textToCopy).then(function() { var originalHTML = copyBtn.innerHTML; copyBtn.innerHTML = \'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>\'; copyBtn.classList.add("copied"); setTimeout(function() { copyBtn.innerHTML = originalHTML; copyBtn.classList.remove("copied"); }, 2000); }); }); } });</script></body>';
   locHtml = locHtml.replace(/<\/body>/, customScript);
