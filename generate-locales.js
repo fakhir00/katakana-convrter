@@ -33,7 +33,7 @@ locales.forEach(loc => {
   locHtml = locHtml.replace(/"url": "https:\/\/katakana-converter\.com\/"/g, `"url": "https://katakana-converter.com/${loc}/"`);
 
   // Update relative base paths for css/js so they point up one directory
-  // Example: href="css/style.css" -> href="../css/style.css"
+  // Example: href="css/style.min.css" -> href="../css/style.min.css"
   locHtml = locHtml.replace(/href="css\//g, 'href="../css/');
   locHtml = locHtml.replace(/src="js\//g, 'src="../js/');
   

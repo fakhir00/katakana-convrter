@@ -532,10 +532,7 @@ body::before {
     padding-top: 0;
   }
 }
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin-top: 4px;
-}
+
 
 .phoneme-section {
   margin-top: 20px;
