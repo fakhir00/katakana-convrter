@@ -5,6 +5,14 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
+    /* ── Load Pro Dictionary (Background) ── */
+    if (window.KatakanaEngine && window.KatakanaEngine.loadProDictionary) {
+      window.KatakanaEngine.loadProDictionary('/js/loanwords-pro.json', function(err) {
+        if (err) console.error('Failed to load Pro Dictionary:', err);
+        else console.log('Pro Dictionary (JMdict 9k) loaded successfully.');
+      });
+    }
+
     /* ── DOM References ── */
     var inputField = document.getElementById('english-input');
     var convertBtn = document.getElementById('convert-btn');

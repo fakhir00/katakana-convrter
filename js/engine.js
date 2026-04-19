@@ -10,6 +10,8 @@
    * LOANWORD EXCEPTION DICTIONARY
    * Words where standard katakana differs from pure phonetic rules
    * ======================================== */
+  var PRO_DICT = null;
+
   const LOANWORD_DICT = {
     'coffee': 'コーヒー', 'computer': 'コンピュータ', 'chocolate': 'チョコレート',
     'internet': 'インターネット', 'hamburger': 'ハンバーガー', 'television': 'テレビジョン',
@@ -718,16 +720,27 @@
    * MAIN CONVERT FUNCTION
    * ======================================== */
   function convertWord(word, rulesOnly) {
-    // Check dictionary first (unless rules-only mode)
+    // 1. Check Hardcoded Overrides (highest priority)
     if (!rulesOnly && LOANWORD_DICT[word]) {
       return {
         word: word,
         katakana: LOANWORD_DICT[word],
-        phonemes: ['[dictionary]'],
+        phonemes: ['[dictionary-override]'],
         source: 'dictionary'
       };
     }
-    // G2P Pipeline
+
+    // 2. Check Pro Dictionary (JMdict/Academic data)
+    if (!rulesOnly && PRO_DICT && PRO_DICT[word]) {
+      return {
+        word: word,
+        katakana: PRO_DICT[word],
+        phonemes: ['[pro-dictionary]'],
+        source: 'pro-dictionary'
+      };
+    }
+
+    // 3. G2P Pipeline Fallback
     var phonemes = graphemeToPhoneme(word);
     var katakana = phonemeToKatakana(phonemes);
     katakana = postProcess(katakana);
@@ -786,6 +799,19 @@
     phonemeToKatakana: phonemeToKatakana,
     postProcess: postProcess,
     convert: convert,
+    loadProDictionary: function (url, callback) {
+      if (typeof fetch !== 'undefined') {
+        fetch(url)
+          .then(function (response) { return response.json(); })
+          .then(function (data) {
+            PRO_DICT = data;
+            if (callback) callback(null, data);
+          })
+          .catch(function (err) {
+            if (callback) callback(err);
+          });
+      }
+    },
     _dict: LOANWORD_DICT
   };
 
