@@ -112,7 +112,7 @@ const tools = [
     placeholder: 'Type half-width/romaji texts here...',
     buttonLabel: 'Convert to Full-Width',
     logic: "var text = wanakana.toKatakana(val, { IMEMode: true }); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="../js/wanakana.min.js" defer></script>',
+    deps: '',
     h1: 'Full-Width Katakana Converter',
     sections: [
       {
@@ -157,7 +157,7 @@ const tools = [
     placeholder: 'Type your mapped name for web form validation...',
     buttonLabel: 'Get Full-Width Katakana',
     logic: "var out = ToolConverters.convertLatinText(val, { imeMode: true }); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; renderPhonemes(out.details || out.phonemes); if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
-    deps: '<script src="../js/wanakana.min.js" defer></script>',
+    deps: '',
     h1: 'Full Width Katakana Name Converter',
     sections: [
       {
@@ -202,7 +202,7 @@ const tools = [
     placeholder: 'Paste Katakana (e.g. カタカナ)...',
     buttonLabel: 'Convert to Hiragana',
     logic: "var text = wanakana.toHiragana(val); outEl.textContent = text ? text : 'ひらがな'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="../js/wanakana.min.js" defer></script>',
+    deps: '',
     emptyOutput: 'ひらがな',
     h1: 'Katakana to Hiragana Converter',
     sections: [
@@ -248,7 +248,7 @@ const tools = [
     placeholder: 'Paste Hiragana (e.g. ひらがな)...',
     buttonLabel: 'Convert to Katakana',
     logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Kana conversion';",
-    deps: '<script src="../js/wanakana.min.js" defer></script>',
+    deps: '',
     h1: 'Hiragana to Katakana Converter',
     sections: [
       {
@@ -293,7 +293,7 @@ const tools = [
     placeholder: 'e.g. Suzuki Ichiro...',
     buttonLabel: 'Create Katakana',
     logic: "ToolConverters.convertJapaneseName(val).then(function(out){ if(out.pending){ phEl.textContent = out.phonemes; return; } outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; renderPhonemes(out.phonemes); if(sourceTag) sourceTag.textContent = /[\\u3400-\\u9fff]/.test(val) ? 'Kanji reading conversion' : 'Kana and romaji conversion'; });",
-    deps: '<script src="../js/wanakana.min.js" defer></script><script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js" defer></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js" defer></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:\"https://unpkg.com/kuromoji@0.1.2/dict\"})).then(function(){window.kuroshiroInstance=k;console.log(\"Kuroshiro ready\");});});</script>',
+    deps: '<script src="https://unpkg.com/kuroshiro@1.2.0/dist/kuroshiro.min.js" defer></script><script src="https://unpkg.com/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js" defer></script><script>window.kuroshiroInstance=null;document.addEventListener("DOMContentLoaded",function(){var k=new Kuroshiro();k.init(new KuromojiAnalyzer({dictPath:\"https://unpkg.com/kuromoji@0.1.2/dict\"})).then(function(){window.kuroshiroInstance=k;console.log(\"Kuroshiro ready\");});});</script>',
     h1: 'Japanese Name to Katakana',
     sections: [
       {
@@ -338,7 +338,7 @@ const tools = [
     placeholder: 'Type Romaji blocks e.g. "konnichiwa"...',
     buttonLabel: 'Convert to Katakana',
     logic: "var text = wanakana.toKatakana(val); outEl.textContent = text ? text : 'カタカナ'; phEl.textContent = 'Powered by WanaKana.js'; if(sourceTag) sourceTag.textContent = 'Romaji conversion';",
-    deps: '<script src="../js/wanakana.min.js" defer></script>',
+    deps: '',
     h1: 'Romaji to Katakana Converter',
     sections: [
       {
@@ -383,7 +383,7 @@ const tools = [
     placeholder: 'Enter Latin mapping phonetes...',
     buttonLabel: 'Convert Latin to Katakana',
     logic: "var out = ToolConverters.convertLatinText(val); outEl.textContent = out.katakana ? out.katakana.replace(/\\s+/g, ' ') : 'カタカナ'; renderPhonemes(out.details || out.phonemes); if(sourceTag) sourceTag.textContent = out.sourceLabel || 'English + romaji smart conversion';",
-    deps: '<script src="../js/wanakana.min.js" defer></script>',
+    deps: '',
     h1: 'Latin to Katakana Converter',
     sections: [
       {
@@ -929,17 +929,7 @@ tools.forEach(function (tool) {
   }
   locHtml = locHtml.substring(0, semanticStart) + exploreHtml + '\n\n    ' + semanticBody + '\n\n    ' + faqHtml + '\n\n  </main>' + locHtml.substring(mainEnd + 7);
 
-  locHtml = locHtml.replace('<script src="js/engine.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="../js/engine.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="js/cmudict-data.min.js" defer></script>', '');
-  locHtml = locHtml.replace('', '');
-  locHtml = locHtml.replace('<script src="../js/wanakana.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="js/tool-converters.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="../js/tool-converters.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="js/benchmark.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="../js/benchmark.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="js/app.min.js" defer></script>', '');
-  locHtml = locHtml.replace('<script src="../js/app.min.js" defer></script>', '');
+  // Individual scripts removed by bundling
 
   if (!tool.isFile) {
     locHtml = locHtml.replace(/href="css\//g, 'href="../css/');
