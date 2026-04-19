@@ -280,14 +280,14 @@
 
       window.addEventListener('load', function() {
         setTimeout(function() {
-          if (!document.querySelector('script[data-id="cmu-dict"]')) {
-            var s = document.createElement('script');
-            s.setAttribute('data-id', 'cmu-dict');
+          if (!window.CMUDict && !window._fetchingCmu) {
+            window._fetchingCmu = true;
             var layoutScript = document.querySelector('script[src*="layout"]');
-            var dictUrl = layoutScript ? layoutScript.src.replace(/layout(\.min)?\.js/, 'cmudict-data.min.js') : '/js/cmudict-data.min.js';
-            s.src = dictUrl;
-            s.defer = true;
-            document.body.appendChild(s);
+            var dictUrl = layoutScript ? layoutScript.src.replace(/layout(\.min)?\.js/, 'cmudict-data.json') : '/js/cmudict-data.json';
+            fetch(dictUrl)
+              .then(function(r) { return r.json(); })
+              .then(function(data) { window.CMUDict = data; })
+              .catch(function(e) { console.error('Failed to load CMU dict:', e); });
           }
         }, 50);
       });

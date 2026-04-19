@@ -97,6 +97,7 @@ body::before {
   z-index: 100;
   padding: 0 0 10px;
   background: transparent;
+  min-height: 88px;
 }
 
 .site-header::before {
@@ -1415,7 +1416,7 @@ body::before {
   .steps-grid { grid-template-columns: 1fr 1fr; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .page-hero { padding: 50px 0 24px; }
-  .site-header { top: 10px; }
+  .site-header { top: 10px; min-height: 82px; }
   .site-header::before { inset: 0 12px auto; }
   .header-inner { min-height: 72px; padding: 0 10px; }
   .logo-tagline { display: none; }
