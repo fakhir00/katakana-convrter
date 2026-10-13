@@ -8,7 +8,6 @@
     url: 'https://www.katakanaconverter.com',
     description: 'Convert English words to Katakana instantly with our free, zero-API phoneme-based Katakana Converter. Accurate browser-based transliteration for names, scripts, and form-friendly Japanese text.',
     email: 'contact@katakanaconverter.com',
-    phone: '+1 (555) 240-9087',
     logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect rx='18' width='100' height='100' fill='%236366f1'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E3%82%AB%3C/text%3E%3C/svg%3E",
     social: {
       twitter: 'https://twitter.com/katakanaconvert',
@@ -234,10 +233,6 @@
 
     var contactHTML =
       '<div class="footer-contact-list">' +
-      '<a href="tel:+15552409087" class="footer-contact-item">' +
-      '<span class="footer-contact-label">Phone</span>' +
-      '<span>' + SITE.phone + '</span>' +
-      '</a>' +
       '<a href="mailto:' + SITE.email + '" class="footer-contact-item">' +
       '<span class="footer-contact-label">Email</span>' +
       '<span>' + SITE.email + '</span>' +

@@ -38,15 +38,40 @@
     </section>
     <section class="content-section">
       <div class="container">
-        <div class="content-card glass-card" style="max-width:640px;">
-          <form class="contact-form" id="contact-form" novalidate>
+        <div class="content-card glass-card">
+          <h2>Get in Touch with the Katakana Converter Team</h2>
+          <p>We are dedicated to building fast, private, and phonetically accurate Japanese transliteration tools that run entirely in your web browser. Whether you are an educator introducing Japanese kana to students, a developer localizing names for official Japanese registration forms, or a language enthusiast exploring Katakana phonology, your feedback helps us continuously improve our conversion algorithms and loanword dictionaries.</p>
+
+          <h2>What You Can Contact Us About</h2>
+          <p>We welcome inquiries, feedback, and contributions from users around the world. Here are the primary topics you can reach out to us regarding:</p>
+          <ul>
+            <li><strong>Tool Accuracy Feedback</strong> &mdash; If you notice an English word, personal name, or brand term that converts into an unnatural or outdated Katakana spelling, please let us know. We constantly review our phoneme-to-syllable mapping tables, geminate consonant rules, and vowel length conventions to match standard Japanese usage.</li>
+            <li><strong>Conversion Questions</strong> &mdash; If you are uncertain about why a specific sound converts the way it does, have questions about long vowels (ー) versus diphthongs, or need guidance on full-width (全角) versus half-width (半角) kana for Japanese web forms and bank documents, our team is happy to provide clarification.</li>
+            <li><strong>Reporting Errors &amp; Bugs</strong> &mdash; While our engine runs with zero server dependencies and client-side JavaScript, subtle edge cases can occur across different devices and browsers. If you experience an unexpected character glitch, copy button failure, mobile rendering issue, or parsing error on any of our tools, we appreciate bug reports.</li>
+            <li><strong>Business &amp; Collaboration Inquiries</strong> &mdash; If you are interested in educational licensing, integrating our conversion logic into your workflow, media inquiries, or technical collaborations, we are open to exploring partnerships.</li>
+          </ul>
+
+          <h2>What to Include in Your Message</h2>
+          <p>To help us investigate linguistic inquiries or technical bug reports as quickly and accurately as possible, please include the following details in your message:</p>
+          <ol>
+            <li><strong>The exact input text</strong> &mdash; The precise English word, foreign name, romanized phrase, or kanji string that you typed into the converter.</li>
+            <li><strong>The tool used</strong> &mdash; The specific tool or page you were visiting (for example, the main English to Katakana Converter, Katakana Name Converter, English Name to Katakana, Romaji to Katakana, Japanese Name to Katakana, or Kanji to Katakana tool).</li>
+            <li><strong>What looked wrong</strong> &mdash; The Katakana output you received compared to the spelling you expected, along with any relevant context (such as standard dictionary entries, passport guidelines, or official katakana brand spellings).</li>
+            <li><strong>Your device or browser</strong> &mdash; If you are reporting a display glitch, layout misalignment, or JavaScript execution issue, noting your operating system and browser version helps us reproduce and resolve the problem.</li>
+          </ol>
+
+          <h2>Response Time Expectations</h2>
+          <p>Every submission is reviewed by our team. We reply within 2 business days (Monday through Friday, excluding major holidays). Inquiries concerning complex phonetic edge cases or dictionary expansion requests may require consultation with standard reference sources such as the NHK pronunciation dictionary or Kenkyusha guidelines, but we will acknowledge your email and share our findings promptly.</p>
+
+          <h2>Send Us a Message</h2>
+          <form class="contact-form" id="contact-form" novalidate style="margin-top:20px;">
             <div class="form-group">
               <label for="contact-name">Your Name</label>
               <input type="text" id="contact-name" name="name" class="form-input" placeholder="Enter your name" required>
             </div>
             <div class="form-group">
               <label for="contact-email">Email Address</label>
-              <input type="email" id="contact-email" name="email" class="form-input" placeholder="you@example.com" required>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="contact@katakanaconverter.com" required>
             </div>
             <div class="form-group">
               <label for="contact-message">Message</label>

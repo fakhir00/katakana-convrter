@@ -47,7 +47,7 @@ If any input field is missing, infer reasonable defaults and continue. Do not st
 NON-NEGOTIABLE BUILD RULES
 ========================================================================
 
-- No TODO placeholders.
+- No to-do placeholders.
 - No broken routes.
 - No missing required features.
 - No regression from baseline behavior.
@@ -411,7 +411,7 @@ Before finalizing, verify:
 - required JSON-LD blocks are present
 - sitemap page includes pages/posts/pagination/locales
 - robots and llms endpoints return valid text
-- no placeholder TODO text remains
+- no placeholder to-do text remains
 
 If any item fails, fix it before responding.
 

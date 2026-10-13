@@ -627,7 +627,6 @@ function buildOrganizationSchema() {
     logo: 'https://www.katakanaconverter.com/favicon.svg',
     description: 'Free Katakana conversion tool for names, forms, and Japanese text formatting.',
     email: 'contact@katakanaconverter.com',
-    telephone: '+1-555-240-9087',
     sameAs: [
       'https://twitter.com/katakanaconvert',
       'https://facebook.com/katakanaconverter',
